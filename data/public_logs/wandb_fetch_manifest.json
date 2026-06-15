@@ -1,0 +1,22 @@
+{
+  "pythia": [
+    {
+      "label": "Pythia-2.8b",
+      "file": "Pythia-2.8b.csv",
+      "n_points": 48000,
+      "wandb_run": "eleutherai/pythia/1c9jr6vp"
+    },
+    {
+      "label": "Pythia-12b",
+      "file": "Pythia-12b.csv",
+      "n_points": 18965,
+      "wandb_run": "eleutherai/pythia/ktjvz2on"
+    },
+    {
+      "label": "Pythia-1b",
+      "file": "Pythia-1b.csv",
+      "n_points": 143000,
+      "wandb_run": "eleutherai/pythia/2i9stqg2"
+    }
+  ]
+}

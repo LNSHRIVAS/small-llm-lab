@@ -1,0 +1,78 @@
+{
+  "act": "IV — Scaling laws (mixed: one confirmed point estimate, two falsified laws)",
+  "verification_note": "Corrected after auditing logs. Two pre-registered laws were RUN and FAILED their own kill gates. Reported honestly.",
+  "branches": {
+    "rotation_budget_law": {
+      "hypothesis": "A_floor ∝ V² / T_trained (log-log slope ≈ 1.0)",
+      "gate": "CONFIRM slope ∈ [0.8, 1.2]; PARTIAL [0.5, 1.5]; FALSIFY outside [0.5, 1.5]",
+      "status": "NOT SUPPORTED — but the ORIGINAL falsification test was INVALID; corrected scan is negative with caveats",
+      "audit": {
+        "original_scan_plus_0.183": {
+          "verdict": "INVALID TEST — both regression axes were mis-specified",
+          "problems": [
+            "max_opt_steps was fixed per variant, so every T_frac variant trained on ~32.8M tokens regardless — the T axis measured corpus diversity, not tokens trained",
+            "V_eff was implemented as target masking only (ignore_index); the 50K-way softmax partition function was unchanged — the V axis did not vary partition size",
+            "regression x-axis used T_corpus (subset length), not T_trained (tokens optimized)"
+          ],
+          "numbers": "slope +0.1830, R²=0.9095 across 5 variants (A: 502.8/301.1/282.1/509.3/552.8)",
+          "conclusion": "The +0.183 result is a consistent measurement of the wrong experiment. It is NOT evidence the law is false."
+        },
+        "corrected_scan_minus_0.2525": {
+          "verdict": "PARTIALLY VALID negative — credible but not definitive",
+          "improvements": [
+            "true V_eff-way head (logits over top-V_eff rows of A_out only, V_eff-class cross-entropy)",
+            "T_trained scales with corpus (33.4M / 16.7M / 8.3M tokens across T_frac variants)",
+            "regression on V²/T_trained"
+          ],
+          "remaining_issues": [
+            "V_eff truncation drops tail target positions, so A across V variants is not the same global LM object (A barely moves: 500 -> 444 -> 432 while V²/T drops ~16x)",
+            "short-T variants under-identified: V50K_T0.25 has only 50 fit points, R²(1/t)=0.005; V50K_T0.5 R²=0.35",
+            "full-V R²(1/t) ~0.74 — fit window may still include fast-learning phase"
+          ],
+          "numbers": "slope -0.2525, R²=0.4857; per-variant A: 500.0/444.2/432.3/285.7/114.1",
+          "conclusion": "A does not track V²/T with slope ~ +1 under the corrected protocol — credible negative evidence, but the T branch needs fixed fit windows before this is a definitive kill."
+        },
+        "honest_status": "The simple A_floor ∝ V²/T power law is NOT SUPPORTED by the best available test. The underlying mechanism (A ∝ Σ_tail 1/N_v) was never directly tested."
+      },
+      "source": "Experiments/Scaling_law.ipynb + scan code v32_zipf_diagnostics.py (SCAN_VARIANTS, _train_scan_variant, _scan_compute_max_steps) + chat audit cursor_transformer_input_and_output_par.md"
+    },
+    "cstar_phase_transition": {
+      "hypothesis": "C* ≈ H_language + c·(V²/T) with fixed (H_language=2.698, c=0.1263) from ep2",
+      "gate": "delta stays within ±0.05 nats across epochs 3–8",
+      "status": "FALSIFIED as stated — but the test only kills the fixed-(H,c) ansatz, not an entropy claim",
+      "measured_deltas": { "ep3": 0.37, "ep4": 0.57, "ep6": 0.76, "ep8": 0.85 },
+      "audit_caveats": [
+        "C* is the OLS intercept of CE = A/t + C* on TRAIN CE — it is not corpus entropy (WT103 unigram H ~7.44 nats; the 2.698 constant aligns with the OWT triangulation E, a different quantity)",
+        "c was fit at ep2 and extrapolated; deltas grow monotonically, so the ansatz systematically under-predicts how fast C* falls",
+        "ep3-8 resumed without optimizer state, adding noise (does not explain the full +0.85 gap)"
+      ],
+      "source": "vmf_exp_ep3_ep8.ipynb [P1 C*-vs-T] lines"
+    },
+    "beta_rep_sqrt_N": {
+      "hypothesis": "β_rep(N) = 0.000161 × √N (β_rep ∝ N^0.5)",
+      "gate": "|Δ| < 0.05",
+      "status": "FAILED",
+      "measured": "Fitted β_rep ∝ N^-0.0843 (essentially flat/decreasing), not N^0.5",
+      "source": "Experiments/triangulation.txt (Overall β_rep scaling PASS: False)"
+    },
+    "chinchilla_E_owt": {
+      "hypothesis": "Triangulate entropy floor E from 3 model sizes on OpenWebText",
+      "status": "CONFIRMED (point estimate within pre-registered band)",
+      "models": {
+        "A_10M": { "params": 10165681, "E_app": 4.1379, "beta_rep": 1.8254 },
+        "C_25M": { "params": 25147153, "E_app": 3.6984, "beta_rep": 1.4915 },
+        "B_51M": { "params": 51016529, "E_app": 3.4406, "beta_rep": 1.5933 }
+      },
+      "E_true": {
+        "two_point_alpha_0.34": 2.4863,
+        "three_point_free_alpha": { "alpha": 0.3531, "E_true": 2.5322 },
+        "three_point_fixed_0.34": 2.4852
+      },
+      "pre_registered_band": "PASS if 2.485 < E < 2.855 (E_WT103=2.68 lower-ish, GPT-2-medium OWT upper 2.855)",
+      "verdict": "PASS — E ≈ 2.49–2.53 nats, fit residuals ~0 nats",
+      "owt_ppl": { "A_10M": 43, "C_25M": 39, "B_51M": 31, "tail_top_ratio": "~3.7x invariant" },
+      "source": "Experiments/triangulation.txt + archive/colab_runs/08_chinchilla_E_owt.ipynb"
+    }
+  },
+  "honest_summary": "Of three pre-registered scaling claims, ONE (Chinchilla-E point estimate) passed; β_rep~√N failed its gate cleanly; the V²/T law is NOT SUPPORTED but its original 'falsification' was itself an invalid test — the corrected scan (slope -0.25) is the honest negative record."
+}

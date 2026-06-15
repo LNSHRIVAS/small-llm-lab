@@ -1,0 +1,44 @@
+========================================================================
+CHINCHILLA-E ROBUSTNESS BATTERY (CPU / public logs)
+========================================================================
+
+Chinchilla original runs: NOT public (MassiveText + code proprietary).
+Paper reference E on MassiveText ~ 1.69 nats (compare only).
+
+--- Synthetic validation ---
+  (skipped — no results on disk)
+
+--- Pythia / The Pile (public logs) ---
+  E_true (fixed alpha=0.34): 1.4820 nats
+  Report: 1.48 ± 0.06 nats (LOO std, α=0.34)
+  Method: N-point OLS + holdout/LOO (not corpus Shannon entropy)
+  Holdout 6.9b: pred E_app=1.7533  actual=1.7500  delta=0.0034  PASS=True (gate < 0.15)
+  Holdout 6.9b: pred E_app=1.7533  actual=1.7500  delta=0.0034  PASS=True (gate < 0.15)
+  LOO E_true: [1.3743, 1.5389]  std=0.0565  PASS=True (gate < 0.15)
+  Sanity: E_true < min E_app=True  monotonic E_app=True  PASS=True
+  vs Chinchilla paper E: delta=-0.21 nats (MassiveText != Pile; reference only)
+
+--- Meta Step-2 scaling (public CSV) ---
+  E_true (fixed alpha=0.34): 1.6493 nats
+  Holdout h1280: pred E_app=1.9168  actual=1.8929  delta=0.0238  PASS=True (gate < 0.15)
+  LOO E_true: [1.5843, 1.7185]  std=0.0673  PASS=True (gate < 0.15)
+  Sanity: E_true < min E_app=True  monotonic E_app=True  PASS=True
+  Note: E_app = late C*; holdout on flat asymptotes (256B-token runs)
+
+--- OLMo / Dolma (Allen AI logs) ---
+  E_true (fixed alpha=0.34): 2.1879 nats
+  Holdout 13b: pred E_app=1.8069  actual=2.3512  delta=0.5442  PASS=False (gate < 0.15)
+  LOO E_true: [1.6051, 4.4726]  std=1.4623  PASS=False (gate < 0.15)
+  Sanity: E_true < min E_app=False  monotonic E_app=False  PASS=False
+
+--- OWT (published E_app summary) ---
+  E_true (fixed alpha=0.34): 2.4851 nats
+  Holdout B_51M: pred E_app=3.4379  actual=3.4406  delta=0.0027  PASS=True
+  LOO E_true: [2.4797, 2.4925]  std=0.0064  PASS=True (gate < 0.15)
+  Sanity: E_true < min E_app=True  monotonic E_app=True  PASS=True
+  Note: Holdout/LOO on flat E_app — optimistic; full test needs epoch JSON curves
+
+OVERALL (Pythia + Meta Step-2 holdout gates; synthetic if present):
+  PASS — method supported for cheap floor estimation
+  Pythia floor estimate: 1.48 ± 0.06 nats (LOO std, α=0.34)  |  Step-2: ~1.65 ± 0.07 nats (LOO std)
+========================================================================

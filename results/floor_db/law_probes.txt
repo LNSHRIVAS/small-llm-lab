@@ -1,0 +1,31 @@
+========================================================================
+FLOORDB LAW PROBES (honest / confound-aware)
+========================================================================
+
+Universal constant: REJECTED  spread=1.517 nats (13 passes)
+  Floors differ by >0.3 nats across passing corpora — not one universal constant.
+
+Kempner same-stack ordering: INCONCLUSIVE
+  PASS  2.42  unknown  Kempner OLMo / slimpajama-chunk1 (iso-fl
+  PASS  2.50  web_edu  Kempner OLMo / fineweb-edu-100b (iso-flo
+  PASS  2.66  web_mixed  Kempner OLMo / smollm-corpus (iso-flop)
+  PASS  2.94  web_raw  Kempner OLMo / fineweb-100b (iso-flop)
+  Gated out (do not use as evidence):
+    0.91  unknown  (loo_std=0.2766)
+    1.26  code  (non_monotonic_at_161M->192M; E_true_not_below_min_)
+    1.75  mixed  (non_monotonic_at_134M->161M; E_true_not_below_min_)
+    2.81  web  (non_monotonic_at_192M->227M; E_true_not_below_min_)
+
+Confounded domain regression: R²=0.831  verdict=NOT_A_LAW
+  Confounded: stack, tokenizer, protocol differ across rows. High R² would be mirage.
+
+Alpha sensitivity (Kempner fineweb-edu-100b): STABLE  spread=0.035
+  α=0.24  E_true=2.479
+  α=0.30  E_true=2.494
+  α=0.34  E_true=2.502
+  α=0.38  E_true=2.507
+  α=0.44  E_true=2.514
+
+BOTTOM LINE: Method + corpus-specific floors confirmed. Universal E_true law REJECTED.
+Best same-stack signal: Kempner OLMo ordering on passing corpora only.
+========================================================================

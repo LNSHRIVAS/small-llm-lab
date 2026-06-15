@@ -1,0 +1,175 @@
+{
+  "universal_constant": {
+    "test": "universal_constant",
+    "n": 13,
+    "e_true_min": 1.4204765601686378,
+    "e_true_max": 2.9370925201388607,
+    "spread": 1.516615959970223,
+    "pooled_std": 0.5268963046569833,
+    "verdict": "REJECTED",
+    "note": "Floors differ by >0.3 nats across passing corpora \u2014 not one universal constant."
+  },
+  "kempner_ordering": {
+    "test": "kempner_same_stack_ordering",
+    "n_total": 8,
+    "n_pass": 4,
+    "passing_corpora": [
+      {
+        "corpus": "Kempner OLMo / slimpajama-chunk1 (iso-flop) [monotonic prefix]",
+        "e_true": 2.416738452590652,
+        "domain": "unknown"
+      },
+      {
+        "corpus": "Kempner OLMo / fineweb-edu-100b (iso-flop)",
+        "e_true": 2.501593467715663,
+        "domain": "web_edu"
+      },
+      {
+        "corpus": "Kempner OLMo / smollm-corpus (iso-flop)",
+        "e_true": 2.6610980346864377,
+        "domain": "web_mixed"
+      },
+      {
+        "corpus": "Kempner OLMo / fineweb-100b (iso-flop)",
+        "e_true": 2.9370925201388607,
+        "domain": "web_raw"
+      }
+    ],
+    "gated_out": [
+      {
+        "corpus": "Kempner OLMo / starcoder (iso-flop) [monotonic prefix]",
+        "e_true": 0.9115442387392663,
+        "domain": "unknown",
+        "failure_diagnosis": "loo_std=0.2766"
+      },
+      {
+        "corpus": "Kempner OLMo / starcoder (iso-flop)",
+        "e_true": 1.2607053788573928,
+        "domain": "code",
+        "failure_diagnosis": "non_monotonic_at_161M->192M; E_true_not_below_min_E_app; sanity:non_monotonic; sanity:E_true_above_min_E_app"
+      },
+      {
+        "corpus": "Kempner OLMo / proof-pile-2 (iso-flop)",
+        "e_true": 1.7473335986992944,
+        "domain": "mixed",
+        "failure_diagnosis": "non_monotonic_at_134M->161M; E_true_not_below_min_E_app; sanity:non_monotonic; sanity:E_true_above_min_E_app"
+      },
+      {
+        "corpus": "Kempner OLMo / slimpajama-chunk1 (iso-flop)",
+        "e_true": 2.811851074542476,
+        "domain": "web",
+        "failure_diagnosis": "non_monotonic_at_192M->227M; E_true_not_below_min_E_app; sanity:non_monotonic; sanity:E_true_above_min_E_app"
+      }
+    ],
+    "spearman_e_vs_domain_rank": null,
+    "verdict": "INCONCLUSIVE",
+    "note": "Same OLMo stack; domain tags are manual. Gated-out rows excluded from ordering claim."
+  },
+  "domain_spread": {
+    "test": "domain_spread_passing_only",
+    "by_domain": [
+      {
+        "domain": "mixed",
+        "count": 1,
+        "mean": 1.4820262894360565,
+        "std": NaN,
+        "min": 1.4820262894360565,
+        "max": 1.4820262894360565
+      },
+      {
+        "domain": "pile",
+        "count": 2,
+        "mean": 1.9674133177054256,
+        "std": 0.7734853802688906,
+        "min": 1.4204765601686378,
+        "max": 2.5143500752422137
+      },
+      {
+        "domain": "unknown",
+        "count": 1,
+        "mean": 2.416738452590652,
+        "std": NaN,
+        "min": 2.416738452590652,
+        "max": 2.416738452590652
+      },
+      {
+        "domain": "web",
+        "count": 6,
+        "mean": 1.589572586807005,
+        "std": 0.046333204743609545,
+        "min": 1.5544921347971958,
+        "max": 1.6492566488960247
+      },
+      {
+        "domain": "web_edu",
+        "count": 1,
+        "mean": 2.501593467715663,
+        "std": NaN,
+        "min": 2.501593467715663,
+        "max": 2.501593467715663
+      },
+      {
+        "domain": "web_mixed",
+        "count": 1,
+        "mean": 2.6610980346864377,
+        "std": NaN,
+        "min": 2.6610980346864377,
+        "max": 2.6610980346864377
+      },
+      {
+        "domain": "web_raw",
+        "count": 1,
+        "mean": 2.9370925201388607,
+        "std": NaN,
+        "min": 2.9370925201388607,
+        "max": 2.9370925201388607
+      }
+    ],
+    "verdict": "DESCRIPTIVE_ONLY",
+    "note": "Cross-stack domain means are confounded by tokenizer/stack/protocol."
+  },
+  "confounded_regression": {
+    "test": "confounded_domain_regression",
+    "n": 13,
+    "r2": 0.8312540977115463,
+    "coefficients": {
+      "intercept": 1.4820262894360574,
+      "dom_pile": 0.48538702826937086,
+      "dom_unknown": 0.9347121631545946,
+      "dom_web": 0.10754629737094679,
+      "dom_web_edu": 1.0195671782796047,
+      "dom_web_mixed": 1.1790717452503792,
+      "dom_web_raw": 1.4550662307028035
+    },
+    "verdict": "NOT_A_LAW",
+    "note": "Confounded: stack, tokenizer, protocol differ across rows. High R\u00b2 would be mirage."
+  },
+  "alpha_sensitivity": {
+    "test": "alpha_sensitivity_fineweb_edu",
+    "corpus": "Kempner fineweb-edu-100b",
+    "rows": [
+      {
+        "alpha": 0.24,
+        "e_true": 2.479251916176862
+      },
+      {
+        "alpha": 0.3,
+        "e_true": 2.494436596650009
+      },
+      {
+        "alpha": 0.34,
+        "e_true": 2.501593467715663
+      },
+      {
+        "alpha": 0.38,
+        "e_true": 2.5072520969069045
+      },
+      {
+        "alpha": 0.44,
+        "e_true": 2.513825415929902
+      }
+    ],
+    "e_true_spread": 0.034573499753039805,
+    "verdict": "STABLE"
+  }
+}

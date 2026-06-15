@@ -1,0 +1,44 @@
+====================================================================================================
+PUBLIC LADDER SWEEP — log-only Chinchilla-E holdout/LOO
+====================================================================================================
+Corpus                                          n        E_true ± LOO   holdout Δ   PASS
+----------------------------------------------------------------------------------------------------
+The Pile (Pythia)                               6  1.48 ± 0.06 nats         0.0034    YES
+The Pile (Pythia 7-size)                        7  1.78 ± 0.14 nats         0.3618     no
+Meta FAIR Step-2 (public CSV)                   3  1.65 ± 0.07 nats         0.0238    YES
+Meta Step-2 (ti134698)                          5  1.65 ± 0.02 nats         0.0137    YES
+Meta Step-2 (ti139508)                          4  1.56 ± 0.01 nats         0.0046    YES
+Meta Step-2 (ti145166)                          7  1.56 ± 0.00 nats         0.0058    YES
+Meta Step-2 (ti153451)                          5  1.55 ± 0.01 nats         0.0050    YES
+Meta Step-2 (ti172881)                          3  1.56 ± 0.01 nats         0.0018    YES
+Dolma / OLMo (Allen AI W&B exports)             3  2.19 ± 1.46 nats         0.5442     no
+Kempner OLMo / fineweb-100b (iso-flop)         14  2.94 ± 0.01 nats         0.0410    YES
+Kempner OLMo / fineweb-edu-100b (iso-flop)     13  2.50 ± 0.01 nats         0.0599    YES
+Kempner OLMo / proof-pile-2 (iso-flop)         13  1.75 ± 0.02 nats         0.0735     no
+Kempner OLMo / slimpajama-chunk1 (iso-flop)    14  2.81 ± 0.02 nats         0.0844     no
+Kempner OLMo / slimpajama-chunk1 (iso-flop) [monotonic prefix]  6  2.42 ± 0.03 nats         0.0163    YES
+Kempner OLMo / smollm-corpus (iso-flop)        13  2.66 ± 0.03 nats         0.1012    YES
+Kempner OLMo / starcoder (iso-flop)            13  1.26 ± 0.01 nats         0.0448     no
+Kempner OLMo / starcoder (iso-flop) [monotonic prefix]  3  0.91 ± 0.28 nats         0.0336     no
+Meta OPT / PILE                                 6  3.22 ± 0.05 nats         0.1355     no
+Meta OPT / PILE                                 6  2.51 ± 0.01 nats         0.0440    YES
+Cerebras-GPT / PILE (final eval)                7  1.42 ± 0.03 nats         0.1216    YES
+OpenWebText (published E_app only)              ?  2.49 ± 0.01 nats            nan     no
+----------------------------------------------------------------------------------------------------
+Corpora tested: 21  |  Holdout+LOO+sanity PASS: 13
+
+FAILURES (named causes — report prominently):
+  FAIL  The Pile (Pythia 7-size): non_monotonic_at_410m->1b; E_true_not_below_min_E_app; holdout_delta=0.3618; sanity:non_monotonic; sanity:E_true_above_min_E_app
+  FAIL  Dolma / OLMo (Allen AI W&B exports): non_monotonic_at_7b->13b; E_true_not_below_min_E_app; holdout_delta=0.5442; loo_std=1.4623; sanity:non_monotonic; sanity:E_true_above_min_E_app
+  FAIL  Kempner OLMo / proof-pile-2 (iso-flop): non_monotonic_at_134M->161M; E_true_not_below_min_E_app; sanity:non_monotonic; sanity:E_true_above_min_E_app
+  FAIL  Kempner OLMo / slimpajama-chunk1 (iso-flop): non_monotonic_at_192M->227M; E_true_not_below_min_E_app; sanity:non_monotonic; sanity:E_true_above_min_E_app
+  FAIL  Kempner OLMo / starcoder (iso-flop): non_monotonic_at_161M->192M; E_true_not_below_min_E_app; sanity:non_monotonic; sanity:E_true_above_min_E_app
+  FAIL  Kempner OLMo / starcoder (iso-flop) [monotonic prefix]: loo_std=0.2766
+  FAIL  Meta OPT / PILE: non_monotonic_at_6.7b->13b; E_true_not_below_min_E_app; sanity:non_monotonic; sanity:E_true_above_min_E_app
+  FAIL  OpenWebText (published E_app only): Holdout/LOO on flat E_app — optimistic; full test needs epoc
+
+Notes:
+  - Method = N-point OLS (α=0.34) + holdout on largest size + LOO std < 0.15
+  - Kempner *_mono_prefix = sensitivity retry on longest monotonic prefix
+  - Run floor_db.py for FloorDB CSV + law probes
+====================================================================================================

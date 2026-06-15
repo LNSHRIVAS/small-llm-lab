@@ -1,0 +1,20 @@
+========================================================================
+META STEP-2 CHINCHILLA-E FROM PUBLIC LOGS (ZERO TRAINING)
+========================================================================
+
+Corpus: Meta FAIR Step-2 English web mix (matched ti134698 ladder)
+Metric: train CE vs tokens; E_app = late C* (runs at ~256B tok, past knee)
+
+LADDER:
+  Step2-h832-L12       227.6M params  E_app=2.0090  beta=0.3388  final_loss=2.3865
+  Step2-h1024-L16      393.6M params  E_app=1.9596  beta=0.3057  final_loss=2.2456
+  Step2-h1280-L20      699.6M params  E_app=1.8929  beta=0.7538  final_loss=2.1192
+
+TRIANGULATION (E_app(N) = E_true + A*N^{-alpha}):
+  Two-point (alpha=0.34):          E_true = 1.6434 nats
+  Three-point free alpha:          E_true = 1.4367 nats  (alpha=0.2000)
+  Three-point fixed alpha=0.34:    E_true = 1.6493 nats
+
+NOTE: Independent corpus/stack from Pythia/The Pile — compare floors qualitatively.
+
+========================================================================

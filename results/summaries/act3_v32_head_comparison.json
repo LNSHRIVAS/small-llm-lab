@@ -1,0 +1,61 @@
+{
+  "act": "III — vMF vs softmax head: matched, head-only A/B",
+  "dataset": "WikiText-103, GPT-2 BPE 50,257",
+  "stack": "8-layer d=224, k_in=k_out=48, Muon+SparseMuon+AdamW, MTP, EMA, shortcut, unigram bias — identical for both heads",
+  "matched_config": "Both runs: params=9,958,162, identical optimizer stack and training extras. v32_standard_softmax_comparison.py docstring: 'ONLY intentional differences vs v32_zipf_diagnostics.py: HEAD_MODE=linear'. The vMF side is scripts/v41_vmf_concentrated.py --sota (interleaved FFFFFFFF, rw=0).",
+  "headline": "At matched epoch 2 and matched 9.96M params, swapping linear softmax for a vMF (row-normalized) head improves val PPL 57.05 -> 52.82 (-7.4%) and tail_30K+ CE 10.42 -> 8.94. By ep4 vMF reaches val 46.84 / test 46.16.",
+  "softmax_baseline": {
+    "head": "linear (standard softmax), HEAD_MODE='linear'",
+    "params": 9958162,
+    "epoch1": { "test_ppl": 62.20, "val_ppl": 67.11, "train_ce": 4.9229 },
+    "epoch2": { "test_ppl": 52.80, "val_ppl": 57.05, "train_ce": 4.3040 },
+    "head_body_grad_ratio_ep2": 3.78,
+    "tail_30K_ce_ep1": 11.38,
+    "tail_note": "ep1 tail CE 11.38 is ABOVE uniform (10.83): softmax actively damages tail tokens early in training",
+    "source": "archive/colab_runs/06_v32_softmax_baseline.ipynb (scripts/v32_standard_softmax_comparison.py)"
+  },
+  "vmf_matched_epoch": {
+    "head": "vMF (row-normalized A_out, score = z · a_v/||a_v||), HEAD_MODE='vmf'",
+    "run": "v41 interleaved FFFFFFFF, rw=0, 4 epochs",
+    "params": 9958162,
+    "epoch1": { "val_ppl": 61.76, "tail_30K_ce": 9.54 },
+    "epoch2": { "val_ppl": 52.82, "tail_30K_ce": 8.94 },
+    "epoch3": { "val_ppl": 49.21 },
+    "epoch4": { "val_ppl": 46.84, "test_ppl": 46.16, "tail_30K_ce": 8.52 },
+    "pearson_aout_norm_vs_logrank_ep4": 0.9504,
+    "source": "scripts/v41_vmf_concentrated.py; full epoch logs preserved in internal run transcript (AGG val lines: 61.76 / 52.82 / 49.21 / 46.84; test 46.16)"
+  },
+  "vmf_long_run": {
+    "head": "vMF, original v32 main run (v32_zipf_full_diagnostics)",
+    "params": 9958162,
+    "epoch1_2": "NOT LOGGED in repo — only Drive checkpoints exist (v32_zipf_full_diagnostics_ep{1,2}.pt); ep3 notebook resumes from ep2 without optimizer state",
+    "epoch3": { "test_ppl": 44.71, "val_ppl": 48.91, "train_ce": 4.1095 },
+    "epoch8": { "test_ppl": 39.20, "val_ppl": 42.72, "train_ce": 3.9313 },
+    "head_body_grad_ratio_ep3": 1.31,
+    "source": "archive/colab_runs/07_v32_vmf_ep3-8.ipynb"
+  },
+  "convergence_verdict": {
+    "claim": "vMF-head models converge faster than identical softmax models",
+    "status": "CONFIRMED at matched epoch, head-only",
+    "evidence": [
+      "ep2 val: vMF 52.82 vs softmax 57.05 (-7.4%) at identical params/optimizer/data (v41 vs 06)",
+      "ep1 val: vMF 61.76 vs softmax 67.11 — vMF ahead from the first epoch",
+      "tail_30K+ CE: vMF below uniform from ep1 (9.54); softmax above uniform at ep1 (11.38 > 10.83)",
+      "mechanism: head/body gradient ratio 3.78x (softmax, head hoards gradient) vs 1.31x (vMF) — body receives signal from epoch 1"
+    ],
+    "corrected_claims": [
+      "findings_summary.md 'vMF ~42 at ep2' is a MISLABEL — 42.72 is vMF ep8 val. The honest ep2 gap is ~4.2 val PPL (-7.4%), not 26%.",
+      "findings_summary.md 'softmax AdamW' label is wrong for the 8L pair — the softmax baseline uses the same Muon+SparseMuon+AdamW stack (verified in script).",
+      "v32 main vMF run's own ep1-2 are unlogged; the matched-epoch claim rests on the v41 run, which uses the identical v32 stack/architecture."
+    ],
+    "interpretation": "vMF acts as a preconditioner: it removes the radial scoring term so the head cannot hoard gradient, the body learns earlier, and |A_out| is freed to encode pure frequency (Pearson 0.95 vs ~0.7 for softmax). Later analysis suggests the asymptotic floor is body-determined, not head-determined — head changes the path to the floor, not the floor."
+  },
+  "hypothesis_verdicts_epoch8": {
+    "H1_zipf_angle_correlation": { "value": 0.2308, "gate": 0.5, "verdict": "WEAK" },
+    "H2_two_learning_problems": { "ratio": 0.337, "verdict": "NULL (stable)" },
+    "H4_radial_damping": { "pearson": 0.9591, "verdict": "CONFIRMED" },
+    "H8_one_over_t_floor": { "A_nats": 918.06, "note": "check units vs findings doc (~0.67); likely label bug" }
+  },
+  "honest_summary": "Head-only matched A/B confirms vMF converges faster (-7.4% val PPL at ep2, tail rescued from ep1) and reaches val 42.72 / test 39.20 by ep8. H1 main Zipf-angle claim did NOT pass gate; H4 radial structure confirmed at 0.96.",
+  "reproduce": "python scripts/v32_standard_softmax_comparison.py  (softmax arm)  |  python scripts/v41_vmf_concentrated.py --sota  (vMF arm)"
+}

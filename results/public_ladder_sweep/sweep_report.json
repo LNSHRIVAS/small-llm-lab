@@ -1,0 +1,3082 @@
+{
+  "log_dir": "data/public_logs/meta_step2",
+  "step2_ladders": {
+    "134698": [
+      "h832",
+      "h896",
+      "h1024",
+      "h1152",
+      "h1280"
+    ],
+    "139508": [
+      "h1472",
+      "h1600",
+      "h1792",
+      "h2048"
+    ],
+    "145166": [
+      "h960",
+      "h1088",
+      "h1216",
+      "h1344",
+      "h1536",
+      "h1920",
+      "h2176"
+    ],
+    "153451": [
+      "h1280",
+      "h1472",
+      "h1600",
+      "h1792",
+      "h2048"
+    ],
+    "172881": [
+      "h1216",
+      "h1344",
+      "h1536"
+    ]
+  },
+  "sections": {
+    "pythia_pile_6": {
+      "corpus": "The Pile (Pythia)",
+      "method": "N-point OLS + holdout/LOO (not corpus Shannon entropy)",
+      "n_sizes": 6,
+      "ladder_sizes": [
+        "14m",
+        "70m",
+        "160m",
+        "410m",
+        "1.4b",
+        "6.9b"
+      ],
+      "triangulation_fixed_alpha": 1.4820262894360565,
+      "uncertainty_loo_std": 0.056548347634793376,
+      "triangulation_report": "1.48 \u00b1 0.06 nats (LOO std, \u03b1=0.34)",
+      "n_point_fit": {
+        "alpha_prior": 0.34,
+        "n_points": 6,
+        "dof": 4,
+        "E_true": 1.4820262894360565,
+        "A_amp": 596.7096903643651,
+        "rmse": 0.10019399620014792,
+        "residuals": [
+          -0.07273988469205817,
+          0.05315786614728868,
+          0.19124354160202728,
+          -0.06065422828446021,
+          -0.10889762798968117,
+          -0.0021096667831237426
+        ],
+        "E_app_pred": [
+          3.6998158775699554,
+          2.763044690316164,
+          2.4571728541462807,
+          2.188278992337827,
+          1.939868815271903,
+          1.7520929512625776
+        ]
+      },
+      "per_model": [
+        {
+          "size": "14m",
+          "label": "Pythia-14M",
+          "n_params": 14015104,
+          "E_app": 3.6270759928778973,
+          "beta": 0.043713061321197975,
+          "final_loss": 3.586955070495605
+        },
+        {
+          "size": "70m",
+          "label": "Pythia-70M",
+          "n_params": 70415744,
+          "E_app": 2.8162025564634527,
+          "beta": 1.4784524576735418,
+          "final_loss": 2.800392866134644
+        },
+        {
+          "size": "160m",
+          "label": "Pythia-160M",
+          "n_params": 157092864,
+          "E_app": 2.648416395748308,
+          "beta": 1.8693818657687178,
+          "final_loss": 2.4990196228027344
+        },
+        {
+          "size": "410m",
+          "label": "Pythia-410M",
+          "n_params": 405736448,
+          "E_app": 2.1276247640533668,
+          "beta": 1.4668276450084123,
+          "final_loss": 2.178030490875244
+        },
+        {
+          "size": "1.4b",
+          "label": "Pythia-1.4B",
+          "n_params": 1451786752,
+          "E_app": 1.8309711872822219,
+          "beta": 0.10144820879407034,
+          "final_loss": 2.019484043121338
+        },
+        {
+          "size": "6.9b",
+          "label": "Pythia-6.9B",
+          "n_params": 6857302016,
+          "E_app": 1.7499832844794538,
+          "beta": 1.4448812337772783,
+          "final_loss": 1.802158236503601
+        }
+      ],
+      "holdout": {
+        "holdout": "6.9b",
+        "train_sizes": [
+          "14m",
+          "70m",
+          "160m",
+          "410m",
+          "1.4b"
+        ],
+        "n_train": 5,
+        "E_true": 1.4835441679699526,
+        "A_amp": 596.1297370714537,
+        "E_app_pred": 1.7533483469637643,
+        "E_app_actual": 1.7499832844794538,
+        "delta": 0.003365062484310455,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "1.4b",
+            "E_true": 1.538855516148986
+          },
+          {
+            "dropped": "14m",
+            "E_true": 1.3742745380507015
+          },
+          {
+            "dropped": "160m",
+            "E_true": 1.4429045822591546
+          },
+          {
+            "dropped": "410m",
+            "E_true": 1.5030115296908477
+          },
+          {
+            "dropped": "6.9b",
+            "E_true": 1.4835441679699526
+          },
+          {
+            "dropped": "70m",
+            "E_true": 1.4787793720151867
+          }
+        ],
+        "E_true_min": 1.3742745380507015,
+        "E_true_max": 1.538855516148986,
+        "E_true_std": 0.056548347634793376,
+        "E_true_spread": 0.16458097809828454,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": true,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "vs_chinchilla_paper": {
+        "note": "MassiveText != Pile; reference only",
+        "chinchilla_E": 1.69,
+        "delta_nats": -0.20797371056394343
+      },
+      "preflight": {
+        "e_app_monotonic": true,
+        "monotonic_prefix_len": 6,
+        "e_true_below_min_eapp": true,
+        "preflight_pass": true,
+        "failure_reasons": []
+      },
+      "failure_diagnosis": "fail:unspecified",
+      "overall_pass": true
+    },
+    "pythia_pile_7": {
+      "corpus": "The Pile (Pythia 7-size)",
+      "protocol": "matched Pile ladder; E_app=late C*",
+      "n_sizes": 7,
+      "ladder_sizes": [
+        "14m",
+        "70m",
+        "160m",
+        "410m",
+        "1b",
+        "1.4b",
+        "6.9b"
+      ],
+      "triangulation_fixed_alpha": 1.775377542490931,
+      "uncertainty_loo_std": 0.14410789387841105,
+      "triangulation_report": "1.78 \u00b1 0.14 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "14m",
+          "label": "Pythia-14M",
+          "n_params": 14015104,
+          "E_app": 3.6270759928778973,
+          "beta": 0.043713061321197975,
+          "final_loss": 3.586955070495605
+        },
+        {
+          "size": "70m",
+          "label": "Pythia-70M",
+          "n_params": 70415744,
+          "E_app": 2.8162025564634527,
+          "beta": 1.4784524576735418,
+          "final_loss": 2.800392866134644
+        },
+        {
+          "size": "160m",
+          "label": "Pythia-160M",
+          "n_params": 157092864,
+          "E_app": 2.648416395748308,
+          "beta": 1.8693818657687178,
+          "final_loss": 2.4990196228027344
+        },
+        {
+          "size": "410m",
+          "label": "Pythia-410M",
+          "n_params": 405736448,
+          "E_app": 2.1276247640533668,
+          "beta": 1.4668276450084123,
+          "final_loss": 2.178030490875244
+        },
+        {
+          "size": "1b",
+          "label": "Pythia-1B",
+          "n_params": 1010560000,
+          "E_app": 3.0442252343022025,
+          "beta": 1.365322386345487,
+          "final_loss": 2.8879315853118896
+        },
+        {
+          "size": "1.4b",
+          "label": "Pythia-1.4B",
+          "n_params": 1451786752,
+          "E_app": 1.8309711872822219,
+          "beta": 0.10144820879407034,
+          "final_loss": 2.019484043121338
+        },
+        {
+          "size": "6.9b",
+          "label": "Pythia-6.9B",
+          "n_params": 6857302016,
+          "E_app": 1.7499832844794538,
+          "beta": 1.4448812337772783,
+          "final_loss": 1.802158236503601
+        }
+      ],
+      "holdout": {
+        "holdout": "6.9b",
+        "train_sizes": [
+          "14m",
+          "70m",
+          "160m",
+          "410m",
+          "1b",
+          "1.4b"
+        ],
+        "n_train": 6,
+        "E_true": 1.907941821474708,
+        "A_amp": 450.4337789414883,
+        "E_app_pred": 2.1118050216489035,
+        "E_app_actual": 1.7499832844794538,
+        "delta": 0.36182173716944965,
+        "gate_pass": false
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "1.4b",
+            "E_true": 1.9035125501302013
+          },
+          {
+            "dropped": "14m",
+            "E_true": 1.7508856843733762
+          },
+          {
+            "dropped": "160m",
+            "E_true": 1.7680362456964898
+          },
+          {
+            "dropped": "1b",
+            "E_true": 1.4820262894360565
+          },
+          {
+            "dropped": "410m",
+            "E_true": 1.8378388109976256
+          },
+          {
+            "dropped": "6.9b",
+            "E_true": 1.907941821474708
+          },
+          {
+            "dropped": "70m",
+            "E_true": 1.7762290574187385
+          }
+        ],
+        "E_true_min": 1.4820262894360565,
+        "E_true_max": 1.907941821474708,
+        "E_true_std": 0.14410789387841105,
+        "E_true_spread": 0.4259155320386514,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": false,
+        "E_true_below_min_E_app": false,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": false
+      },
+      "preflight": {
+        "e_app_monotonic": false,
+        "monotonic_prefix_len": 4,
+        "e_true_below_min_eapp": false,
+        "preflight_pass": false,
+        "failure_reasons": [
+          "non_monotonic_at_410m->1b",
+          "E_true_not_below_min_E_app"
+        ]
+      },
+      "overall_pass": false,
+      "failure_diagnosis": "non_monotonic_at_410m->1b; E_true_not_below_min_E_app; holdout_delta=0.3618; sanity:non_monotonic; sanity:E_true_above_min_E_app"
+    },
+    "meta_step2_ti134698_3pt": {
+      "corpus": "Meta FAIR Step-2 (public CSV)",
+      "n_sizes": 3,
+      "triangulation_fixed_alpha": 1.6492566488960247,
+      "per_model": [
+        {
+          "size": "h832",
+          "label": "Step2-h832-L12",
+          "n_params": 227556992,
+          "E_app": 2.0089568801447513,
+          "beta": 0.3387944224041482,
+          "final_loss": 2.386531
+        },
+        {
+          "size": "h1024",
+          "label": "Step2-h1024-L16",
+          "n_params": 393644032,
+          "E_app": 1.9595839434679563,
+          "beta": 0.30567736032986487,
+          "final_loss": 2.24557
+        },
+        {
+          "size": "h1280",
+          "label": "Step2-h1280-L20",
+          "n_params": 699640320,
+          "E_app": 1.8929224580077375,
+          "beta": 0.7538449466655069,
+          "final_loss": 2.119199
+        }
+      ],
+      "holdout": {
+        "holdout": "h1280",
+        "train_sizes": [
+          "h832",
+          "h1024"
+        ],
+        "n_train": 2,
+        "E_true": 1.7185365843519154,
+        "A_amp": 201.57544447337222,
+        "E_app_pred": 1.9167715153530867,
+        "E_app_actual": 1.8929224580077375,
+        "delta": 0.023849057345349145,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "h1024",
+            "E_true": 1.643402637610264
+          },
+          {
+            "dropped": "h1280",
+            "E_true": 1.7185365843519154
+          },
+          {
+            "dropped": "h832",
+            "E_true": 1.5842589331269215
+          }
+        ],
+        "E_true_min": 1.5842589331269215,
+        "E_true_max": 1.7185365843519154,
+        "E_true_std": 0.06729731959928686,
+        "E_true_spread": 0.1342776512249939,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": true,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "note": "E_app = late C*; holdout on flat asymptotes (256B-token runs)",
+      "preflight": {
+        "e_app_monotonic": true,
+        "monotonic_prefix_len": 3,
+        "e_true_below_min_eapp": true,
+        "preflight_pass": true,
+        "failure_reasons": []
+      },
+      "failure_diagnosis": "E_app = late C*; holdout on flat asymptotes (256B-token runs",
+      "overall_pass": true
+    },
+    "meta_step2_ti134698_5sz": {
+      "corpus": "Meta Step-2 (ti134698)",
+      "protocol": "matched token budget; E_app=late C*",
+      "n_sizes": 5,
+      "ladder_sizes": [
+        "h832",
+        "h896",
+        "h1024",
+        "h1152",
+        "h1280"
+      ],
+      "triangulation_fixed_alpha": 1.6492566488960247,
+      "uncertainty_loo_std": 0.016054160535201135,
+      "triangulation_report": "1.65 \u00b1 0.02 nats (LOO std)",
+      "holdout": {
+        "holdout": "h1280",
+        "train_sizes": [
+          "h832",
+          "h896",
+          "h1024",
+          "h1152"
+        ],
+        "n_train": 4,
+        "E_true": 1.6934347598853805,
+        "A_amp": 216.8192285341459,
+        "E_app_pred": 1.9066608545641464,
+        "E_app_actual": 1.8929224580077375,
+        "delta": 0.01373839655640885,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "h1024",
+            "E_true": 1.6597794434861797
+          },
+          {
+            "dropped": "h1152",
+            "E_true": 1.6571305999025066
+          },
+          {
+            "dropped": "h1280",
+            "E_true": 1.6934347598853805
+          },
+          {
+            "dropped": "h832",
+            "E_true": 1.6661586303568432
+          },
+          {
+            "dropped": "h896",
+            "E_true": 1.653315440556235
+          }
+        ],
+        "E_true_min": 1.653315440556235,
+        "E_true_max": 1.6934347598853805,
+        "E_true_std": 0.016054160535201135,
+        "E_true_spread": 0.040119319329145586,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": true,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "preflight": {
+        "e_app_monotonic": true,
+        "monotonic_prefix_len": 5,
+        "e_true_below_min_eapp": true,
+        "preflight_pass": true,
+        "failure_reasons": []
+      },
+      "per_model": [
+        {
+          "size": "h832",
+          "label": "Step2-h832",
+          "n_params": 227556992,
+          "E_app": 2.0089568801447513,
+          "beta": 0.3387944224041482,
+          "final_loss": 2.386531
+        },
+        {
+          "size": "h896",
+          "label": "Step2-h896",
+          "n_params": 288757504,
+          "E_app": 1.973780628055022,
+          "beta": 0.3151109469467005,
+          "final_loss": 2.310593
+        },
+        {
+          "size": "h1024",
+          "label": "Step2-h1024",
+          "n_params": 393644032,
+          "E_app": 1.9595839434679563,
+          "beta": 0.30567736032986487,
+          "final_loss": 2.24557
+        },
+        {
+          "size": "h1152",
+          "label": "Step2-h1152",
+          "n_params": 528189696,
+          "E_app": 1.9257702333696398,
+          "beta": 0.5025814063854182,
+          "final_loss": 2.176208
+        },
+        {
+          "size": "h1280",
+          "label": "Step2-h1280",
+          "n_params": 699640320,
+          "E_app": 1.8929224580077375,
+          "beta": 0.7538449466655069,
+          "final_loss": 2.119199
+        }
+      ],
+      "overall_pass": true,
+      "failure_diagnosis": "pass"
+    },
+    "meta_step2_ti139508_4sz": {
+      "corpus": "Meta Step-2 (ti139508)",
+      "protocol": "matched token budget; E_app=late C*",
+      "n_sizes": 4,
+      "ladder_sizes": [
+        "h1472",
+        "h1600",
+        "h1792",
+        "h2048"
+      ],
+      "triangulation_fixed_alpha": 1.5597233729249254,
+      "uncertainty_loo_std": 0.013276939511993102,
+      "triangulation_report": "1.56 \u00b1 0.01 nats (LOO std)",
+      "holdout": {
+        "holdout": "h2048",
+        "train_sizes": [
+          "h1472",
+          "h1600",
+          "h1792"
+        ],
+        "n_train": 3,
+        "E_true": 1.5710358623284368,
+        "A_amp": 378.81863367624453,
+        "E_app_pred": 1.8116596244235381,
+        "E_app_actual": 1.807063088964534,
+        "delta": 0.00459653545900407,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "h1472",
+            "E_true": 1.5389791687819656
+          },
+          {
+            "dropped": "h1600",
+            "E_true": 1.5597233729249236
+          },
+          {
+            "dropped": "h1792",
+            "E_true": 1.5560769932100065
+          },
+          {
+            "dropped": "h2048",
+            "E_true": 1.5710358623284368
+          }
+        ],
+        "E_true_min": 1.5389791687819656,
+        "E_true_max": 1.5710358623284368,
+        "E_true_std": 0.013276939511993102,
+        "E_true_spread": 0.03205669354647123,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": true,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "preflight": {
+        "e_app_monotonic": true,
+        "monotonic_prefix_len": 4,
+        "e_true_below_min_eapp": true,
+        "preflight_pass": true,
+        "failure_reasons": []
+      },
+      "per_model": [
+        {
+          "size": "h1472",
+          "label": "Step2-h1472",
+          "n_params": 971805568,
+          "E_app": 1.9031032884145258,
+          "beta": 1.3739857834007243,
+          "final_loss": 2.089551
+        },
+        {
+          "size": "h1600",
+          "label": "Step2-h1600",
+          "n_params": 1314307200,
+          "E_app": 1.8739549404905937,
+          "beta": 1.3774546436489734,
+          "final_loss": 2.041015
+        },
+        {
+          "size": "h1792",
+          "label": "Step2-h1792",
+          "n_params": 1799859712,
+          "E_app": 1.8400477569201952,
+          "beta": 1.3804199719330048,
+          "final_loss": 1.989541
+        },
+        {
+          "size": "h2048",
+          "label": "Step2-h2048",
+          "n_params": 2530545664,
+          "E_app": 1.807063088964534,
+          "beta": 1.3829545019329272,
+          "final_loss": 1.940022
+        }
+      ],
+      "overall_pass": true,
+      "failure_diagnosis": "pass"
+    },
+    "meta_step2_ti145166_7sz": {
+      "corpus": "Meta Step-2 (ti145166)",
+      "protocol": "matched token budget; E_app=late C*",
+      "n_sizes": 7,
+      "ladder_sizes": [
+        "h960",
+        "h1088",
+        "h1216",
+        "h1344",
+        "h1536",
+        "h1920",
+        "h2176"
+      ],
+      "triangulation_fixed_alpha": 1.5640952275352362,
+      "uncertainty_loo_std": 0.0029882238693487665,
+      "triangulation_report": "1.56 \u00b1 0.00 nats (LOO std)",
+      "holdout": {
+        "holdout": "h2176",
+        "train_sizes": [
+          "h960",
+          "h1088",
+          "h1216",
+          "h1344",
+          "h1536",
+          "h1920"
+        ],
+        "n_train": 6,
+        "E_true": 1.5719361799820142,
+        "A_amp": 595.5708040271443,
+        "E_app_pred": 1.9291431585013035,
+        "E_app_actual": 1.9233713814616762,
+        "delta": 0.005771777039627279,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "h1088",
+            "E_true": 1.5664049040551706
+          },
+          {
+            "dropped": "h1216",
+            "E_true": 1.566182593790189
+          },
+          {
+            "dropped": "h1344",
+            "E_true": 1.5658731019945187
+          },
+          {
+            "dropped": "h1536",
+            "E_true": 1.5643538345570824
+          },
+          {
+            "dropped": "h1920",
+            "E_true": 1.566523222222889
+          },
+          {
+            "dropped": "h2176",
+            "E_true": 1.5719361799820142
+          },
+          {
+            "dropped": "h960",
+            "E_true": 1.5620754943403066
+          }
+        ],
+        "E_true_min": 1.5620754943403066,
+        "E_true_max": 1.5719361799820142,
+        "E_true_std": 0.0029882238693487665,
+        "E_true_spread": 0.009860685641707612,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": true,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "preflight": {
+        "e_app_monotonic": true,
+        "monotonic_prefix_len": 7,
+        "e_true_below_min_eapp": true,
+        "preflight_pass": true,
+        "failure_reasons": []
+      },
+      "per_model": [
+        {
+          "size": "h960",
+          "label": "Step2-h960",
+          "n_params": 337031040,
+          "E_app": 2.3209253475935836,
+          "beta": 1.3724748659070545,
+          "final_loss": 2.331907
+        },
+        {
+          "size": "h1088",
+          "label": "Step2-h1088",
+          "n_params": 456492160,
+          "E_app": 2.2499909786096266,
+          "beta": 1.3739414880035166,
+          "final_loss": 2.263288
+        },
+        {
+          "size": "h1216",
+          "label": "Step2-h1216",
+          "n_params": 609072512,
+          "E_app": 2.186109636363637,
+          "beta": 1.3745392311592084,
+          "final_loss": 2.200977
+        },
+        {
+          "size": "h1344",
+          "label": "Step2-h1344",
+          "n_params": 823906944,
+          "E_app": 2.1267479964349385,
+          "beta": 1.3778727176274703,
+          "final_loss": 2.143253
+        },
+        {
+          "size": "h1536",
+          "label": "Step2-h1536",
+          "n_params": 1133497344,
+          "E_app": 2.0715336577540104,
+          "beta": 1.3795273250470246,
+          "final_loss": 2.088242
+        },
+        {
+          "size": "h1920",
+          "label": "Step2-h1920",
+          "n_params": 2117287680,
+          "E_app": 1.9713575365418903,
+          "beta": 1.3855087632064247,
+          "final_loss": 1.98794
+        },
+        {
+          "size": "h2176",
+          "label": "Step2-h2176",
+          "n_params": 2995781888,
+          "E_app": 1.9233713814616762,
+          "beta": 1.3891494587608908,
+          "final_loss": 1.939611
+        }
+      ],
+      "overall_pass": true,
+      "failure_diagnosis": "pass"
+    },
+    "meta_step2_ti153451_5sz": {
+      "corpus": "Meta Step-2 (ti153451)",
+      "protocol": "matched token budget; E_app=late C*",
+      "n_sizes": 5,
+      "ladder_sizes": [
+        "h1280",
+        "h1472",
+        "h1600",
+        "h1792",
+        "h2048"
+      ],
+      "triangulation_fixed_alpha": 1.5544921347971958,
+      "uncertainty_loo_std": 0.008766241786900988,
+      "triangulation_report": "1.55 \u00b1 0.01 nats (LOO std)",
+      "holdout": {
+        "holdout": "h2048",
+        "train_sizes": [
+          "h1280",
+          "h1472",
+          "h1600",
+          "h1792"
+        ],
+        "n_train": 4,
+        "E_true": 1.5642695143537766,
+        "A_amp": 595.7496469522529,
+        "E_app_pred": 1.942686805829977,
+        "E_app_actual": 1.937662536312848,
+        "delta": 0.0050242695171291984,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "h1280",
+            "E_true": 1.5403703469735561
+          },
+          {
+            "dropped": "h1472",
+            "E_true": 1.5575228308441362
+          },
+          {
+            "dropped": "h1600",
+            "E_true": 1.5543380041597243
+          },
+          {
+            "dropped": "h1792",
+            "E_true": 1.551975841681333
+          },
+          {
+            "dropped": "h2048",
+            "E_true": 1.5642695143537766
+          }
+        ],
+        "E_true_min": 1.5403703469735561,
+        "E_true_max": 1.5642695143537766,
+        "E_true_std": 0.008766241786900988,
+        "E_true_spread": 0.023899167380220465,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": true,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "preflight": {
+        "e_app_monotonic": true,
+        "monotonic_prefix_len": 5,
+        "e_true_below_min_eapp": true,
+        "preflight_pass": true,
+        "failure_reasons": []
+      },
+      "per_model": [
+        {
+          "size": "h1280",
+          "label": "Step2-h1280",
+          "n_params": 699640320,
+          "E_app": 2.148359318435753,
+          "beta": 1.397490781109323,
+          "final_loss": 2.132688
+        },
+        {
+          "size": "h1472",
+          "label": "Step2-h1472",
+          "n_params": 971805568,
+          "E_app": 2.091655899441339,
+          "beta": 1.3973410217667084,
+          "final_loss": 2.077213
+        },
+        {
+          "size": "h1600",
+          "label": "Step2-h1600",
+          "n_params": 1314307200,
+          "E_app": 2.0359947094972055,
+          "beta": 1.3984220945804557,
+          "final_loss": 2.023221
+        },
+        {
+          "size": "h1792",
+          "label": "Step2-h1792",
+          "n_params": 1799859712,
+          "E_app": 1.9886193277467399,
+          "beta": 1.4006992344475133,
+          "final_loss": 1.97719
+        },
+        {
+          "size": "h2048",
+          "label": "Step2-h2048",
+          "n_params": 2530545664,
+          "E_app": 1.937662536312848,
+          "beta": 1.4047048273585705,
+          "final_loss": 1.927605
+        }
+      ],
+      "overall_pass": true,
+      "failure_diagnosis": "pass"
+    },
+    "meta_step2_ti172881_3sz": {
+      "corpus": "Meta Step-2 (ti172881)",
+      "protocol": "matched token budget; E_app=late C*",
+      "n_sizes": 3,
+      "ladder_sizes": [
+        "h1216",
+        "h1344",
+        "h1536"
+      ],
+      "triangulation_fixed_alpha": 1.560611487792623,
+      "uncertainty_loo_std": 0.008807930034401156,
+      "triangulation_report": "1.56 \u00b1 0.01 nats (LOO std)",
+      "holdout": {
+        "holdout": "h1536",
+        "train_sizes": [
+          "h1216",
+          "h1344"
+        ],
+        "n_train": 2,
+        "E_true": 1.5697283326098004,
+        "A_amp": 588.4233877907411,
+        "E_app_pred": 2.0608475787945997,
+        "E_app_actual": 2.059038819767442,
+        "delta": 0.0018087590271576026,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "h1216",
+            "E_true": 1.55213115900034
+          },
+          {
+            "dropped": "h1344",
+            "E_true": 1.5602272465583806
+          },
+          {
+            "dropped": "h1536",
+            "E_true": 1.5697283326098004
+          }
+        ],
+        "E_true_min": 1.55213115900034,
+        "E_true_max": 1.5697283326098004,
+        "E_true_std": 0.008807930034401156,
+        "E_true_spread": 0.017597173609460448,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": true,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "preflight": {
+        "e_app_monotonic": true,
+        "monotonic_prefix_len": 3,
+        "e_true_below_min_eapp": true,
+        "preflight_pass": true,
+        "failure_reasons": []
+      },
+      "per_model": [
+        {
+          "size": "h1216",
+          "label": "Step2-h1216",
+          "n_params": 609072512,
+          "E_app": 2.176328416666667,
+          "beta": 1.387443195137204,
+          "final_loss": 2.144899
+        },
+        {
+          "size": "h1344",
+          "label": "Step2-h1344",
+          "n_params": 823906944,
+          "E_app": 2.1171113895348834,
+          "beta": 1.3866710852723994,
+          "final_loss": 2.085786
+        },
+        {
+          "size": "h1536",
+          "label": "Step2-h1536",
+          "n_params": 1133497344,
+          "E_app": 2.059038819767442,
+          "beta": 1.3895688917177906,
+          "final_loss": 2.028475
+        }
+      ],
+      "overall_pass": true,
+      "failure_diagnosis": "pass"
+    },
+    "olmo_dolma": {
+      "corpus": "Dolma / OLMo (Allen AI W&B exports)",
+      "n_sizes": 3,
+      "triangulation_fixed_alpha": 2.187929959549529,
+      "per_model": [
+        {
+          "size": "1b",
+          "label": "OLMo-1B",
+          "n_params": 1000000000,
+          "E_app": 1.6061649452582696,
+          "beta": 0.1748311786309882,
+          "final_loss": 2.1372556686401367
+        },
+        {
+          "size": "7b",
+          "label": "OLMo-7B",
+          "n_params": 7000000000,
+          "E_app": 1.3510818222526555,
+          "beta": 0.23228391900523063,
+          "final_loss": 1.9076638221740725
+        },
+        {
+          "size": "13b",
+          "label": "OLMo2-13B",
+          "n_params": 13000000000,
+          "E_app": 2.3206219736065927,
+          "beta": 1.557315836845454,
+          "final_loss": 2.4628968238830566
+        }
+      ],
+      "holdout": {
+        "holdout": "13b",
+        "train_sizes": [
+          "1b",
+          "7b"
+        ],
+        "n_train": 2,
+        "E_true": 1.6051083834661695,
+        "A_amp": 554.2449013699515,
+        "E_app_pred": 1.806926880144673,
+        "E_app_actual": 2.351168701879956,
+        "delta": 0.5442418217352829,
+        "gate_pass": false
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "13b",
+            "E_true": 1.6051083834661695
+          },
+          {
+            "dropped": "1b",
+            "E_true": 4.472567396262241
+          },
+          {
+            "dropped": "7b",
+            "E_true": 2.5403601409935774
+          }
+        ],
+        "E_true_min": 1.6051083834661695,
+        "E_true_max": 4.472567396262241,
+        "E_true_std": 1.4623293015674452,
+        "E_true_spread": 2.867459012796072,
+        "gate_pass": false
+      },
+      "sanity": {
+        "E_app_monotonic": false,
+        "E_true_below_min_E_app": false,
+        "E_true_below_min_final_loss": false,
+        "gate_pass": false
+      },
+      "preflight": {
+        "e_app_monotonic": false,
+        "monotonic_prefix_len": 2,
+        "e_true_below_min_eapp": false,
+        "preflight_pass": false,
+        "failure_reasons": [
+          "non_monotonic_at_7b->13b",
+          "E_true_not_below_min_E_app"
+        ]
+      },
+      "failure_diagnosis": "non_monotonic_at_7b->13b; E_true_not_below_min_E_app; holdout_delta=0.5442; loo_std=1.4623; sanity:non_monotonic; sanity:E_true_above_min_E_app",
+      "overall_pass": false
+    },
+    "kempner_fineweb_100b": {
+      "corpus": "Kempner OLMo / fineweb-100b (iso-flop)",
+      "protocol": "iso_flop=4.57e+18; E_app=final train CE",
+      "n_sizes": 14,
+      "ladder_sizes": [
+        "72M",
+        "90M",
+        "110M",
+        "134M",
+        "161M",
+        "192M",
+        "227M",
+        "266M",
+        "311M",
+        "360M",
+        "415M",
+        "475M",
+        "541M",
+        "613M"
+      ],
+      "triangulation_fixed_alpha": 2.9370925201388607,
+      "uncertainty_loo_std": 0.013814887399721231,
+      "triangulation_report": "2.94 \u00b1 0.01 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "72M",
+          "n_params": 72717120,
+          "E_app": 3.13662052154541,
+          "final_loss": 3.13662052154541,
+          "tokens_trained": 10481370639.342464
+        },
+        {
+          "size": "90M",
+          "n_params": 90138240,
+          "E_app": 3.068424224853516,
+          "final_loss": 3.068424224853516,
+          "tokens_trained": 8455624233.904974
+        },
+        {
+          "size": "110M",
+          "n_params": 110508992,
+          "E_app": 3.052152156829834,
+          "final_loss": 3.052152156829834,
+          "tokens_trained": 6896950852.158191
+        },
+        {
+          "size": "134M",
+          "n_params": 134124288,
+          "E_app": 3.051743268966675,
+          "final_loss": 3.051743268966675,
+          "tokens_trained": 5682603038.649813
+        },
+        {
+          "size": "161M",
+          "n_params": 161279040,
+          "E_app": 3.044640064239502,
+          "final_loss": 3.044640064239502,
+          "tokens_trained": 4725816116.871372
+        },
+        {
+          "size": "192M",
+          "n_params": 192268160,
+          "E_app": 3.022226333618164,
+          "final_loss": 3.022226333618164,
+          "tokens_trained": 3964125347.356227
+        },
+        {
+          "size": "227M",
+          "n_params": 227386560,
+          "E_app": 2.997781753540039,
+          "final_loss": 2.997781753540039,
+          "tokens_trained": 3351891538.9966
+        },
+        {
+          "size": "266M",
+          "n_params": 266929152,
+          "E_app": 3.01859188079834,
+          "final_loss": 3.01859188079834,
+          "tokens_trained": 2855346000.3707
+        },
+        {
+          "size": "311M",
+          "n_params": 311190848,
+          "E_app": 2.995418071746826,
+          "final_loss": 2.995418071746826,
+          "tokens_trained": 2449220764.183729
+        },
+        {
+          "size": "360M",
+          "n_params": 360466560,
+          "E_app": 3.0482568740844727,
+          "final_loss": 3.0482568740844727,
+          "tokens_trained": 2114412739.2719665
+        },
+        {
+          "size": "415M",
+          "n_params": 415051200,
+          "E_app": 3.020108699798584,
+          "final_loss": 3.020108699798584,
+          "tokens_trained": 1836339917.9319143
+        },
+        {
+          "size": "475M",
+          "n_params": 475239680,
+          "E_app": 3.029184579849243,
+          "final_loss": 3.029184579849243,
+          "tokens_trained": 1603769884.167801
+        },
+        {
+          "size": "541M",
+          "n_params": 541326912,
+          "E_app": 3.023418664932251,
+          "final_loss": 3.023418664932251,
+          "tokens_trained": 1407975605.2208664
+        },
+        {
+          "size": "613M",
+          "n_params": 613607808,
+          "E_app": 3.041818618774414,
+          "final_loss": 3.041818618774414,
+          "tokens_trained": 1242120906.2345283
+        }
+      ],
+      "holdout": {
+        "holdout": "613M",
+        "train_sizes": [
+          "72M",
+          "90M",
+          "110M",
+          "134M",
+          "161M",
+          "192M",
+          "227M",
+          "266M",
+          "311M",
+          "360M",
+          "415M",
+          "475M",
+          "541M"
+        ],
+        "n_train": 13,
+        "E_true": 2.917324472319642,
+        "A_amp": 81.14991053104188,
+        "E_app_pred": 3.0007703999885624,
+        "E_app_actual": 3.041818618774414,
+        "delta": 0.04104821878585163,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "110M",
+            "E_true": 2.9326848780702224
+          },
+          {
+            "dropped": "134M",
+            "E_true": 2.936043750373235
+          },
+          {
+            "dropped": "161M",
+            "E_true": 2.9366797938967855
+          },
+          {
+            "dropped": "192M",
+            "E_true": 2.937473452493043
+          },
+          {
+            "dropped": "227M",
+            "E_true": 2.941189356049684
+          },
+          {
+            "dropped": "266M",
+            "E_true": 2.9395558567072206
+          },
+          {
+            "dropped": "311M",
+            "E_true": 2.9452341668862907
+          },
+          {
+            "dropped": "360M",
+            "E_true": 2.9288458648131486
+          },
+          {
+            "dropped": "415M",
+            "E_true": 2.9366248040476117
+          },
+          {
+            "dropped": "475M",
+            "E_true": 2.9306429854210716
+          },
+          {
+            "dropped": "541M",
+            "E_true": 2.930964559337756
+          },
+          {
+            "dropped": "613M",
+            "E_true": 2.917324472319642
+          },
+          {
+            "dropped": "72M",
+            "E_true": 2.9798296282717276
+          },
+          {
+            "dropped": "90M",
+            "E_true": 2.93383195286851
+          }
+        ],
+        "E_true_min": 2.917324472319642,
+        "E_true_max": 2.9798296282717276,
+        "E_true_std": 0.013814887399721231,
+        "E_true_spread": 0.06250515595208572,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": false,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "preflight": {
+        "e_app_monotonic": false,
+        "monotonic_prefix_len": 7,
+        "e_true_below_min_eapp": true,
+        "preflight_pass": false,
+        "failure_reasons": [
+          "non_monotonic_at_227M->266M"
+        ]
+      },
+      "overall_pass": true,
+      "failure_diagnosis": "pass"
+    },
+    "kempner_fineweb_edu_100b": {
+      "corpus": "Kempner OLMo / fineweb-edu-100b (iso-flop)",
+      "protocol": "iso_flop=2.20e+19; E_app=final train CE",
+      "n_sizes": 13,
+      "ladder_sizes": [
+        "161M",
+        "192M",
+        "227M",
+        "266M",
+        "311M",
+        "360M",
+        "415M",
+        "475M",
+        "541M",
+        "613M",
+        "777M",
+        "970M",
+        "1193M"
+      ],
+      "triangulation_fixed_alpha": 2.501593467715663,
+      "uncertainty_loo_std": 0.014961480309578704,
+      "triangulation_report": "2.50 \u00b1 0.01 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "161M",
+          "n_params": 161279040,
+          "E_app": 2.6155426502227783,
+          "final_loss": 2.6155426502227783,
+          "tokens_trained": 22734923686.715065
+        },
+        {
+          "size": "192M",
+          "n_params": 192268160,
+          "E_app": 2.595890998840332,
+          "final_loss": 2.595890998840332,
+          "tokens_trained": 19070586969.08873
+        },
+        {
+          "size": "227M",
+          "n_params": 227386560,
+          "E_app": 2.556657314300537,
+          "final_loss": 2.556657314300537,
+          "tokens_trained": 16125256772.72512
+        },
+        {
+          "size": "266M",
+          "n_params": 266929152,
+          "E_app": 2.570833206176758,
+          "final_loss": 2.570833206176758,
+          "tokens_trained": 13736478909.080214
+        },
+        {
+          "size": "311M",
+          "n_params": 311190848,
+          "E_app": 2.5733654499053955,
+          "final_loss": 2.5733654499053955,
+          "tokens_trained": 11782694414.800611
+        },
+        {
+          "size": "360M",
+          "n_params": 360466560,
+          "E_app": 2.568779230117798,
+          "final_loss": 2.568779230117798,
+          "tokens_trained": 10172002270.24295
+        },
+        {
+          "size": "415M",
+          "n_params": 415051200,
+          "E_app": 2.548422813415528,
+          "final_loss": 2.548422813415528,
+          "tokens_trained": 8834251452.99343
+        },
+        {
+          "size": "475M",
+          "n_params": 475239680,
+          "E_app": 2.532309532165528,
+          "final_loss": 2.532309532165528,
+          "tokens_trained": 7715405133.398513
+        },
+        {
+          "size": "541M",
+          "n_params": 541326912,
+          "E_app": 2.539137840270996,
+          "final_loss": 2.539137840270996,
+          "tokens_trained": 6773479362.257657
+        },
+        {
+          "size": "613M",
+          "n_params": 613607808,
+          "E_app": 2.5435264110565186,
+          "final_loss": 2.5435264110565186,
+          "tokens_trained": 5975586716.567119
+        },
+        {
+          "size": "777M",
+          "n_params": 777930240,
+          "E_app": 2.542442798614502,
+          "final_loss": 2.542442798614502,
+          "tokens_trained": 4713361787.641353
+        },
+        {
+          "size": "970M",
+          "n_params": 970566272,
+          "E_app": 2.561404228210449,
+          "final_loss": 2.561404228210449,
+          "tokens_trained": 3777863266.4732313
+        },
+        {
+          "size": "1193M",
+          "n_params": 1193875200,
+          "E_app": 2.588646173477173,
+          "final_loss": 2.588646173477173,
+          "tokens_trained": 3071231119.1878905
+        }
+      ],
+      "holdout": {
+        "holdout": "1193M",
+        "train_sizes": [
+          "161M",
+          "192M",
+          "227M",
+          "266M",
+          "311M",
+          "360M",
+          "415M",
+          "475M",
+          "541M",
+          "613M",
+          "777M",
+          "970M"
+        ],
+        "n_train": 12,
+        "E_true": 2.4608131854297306,
+        "A_amp": 82.86937135261896,
+        "E_app_pred": 2.528769216746738,
+        "E_app_actual": 2.588646173477173,
+        "delta": 0.059876956730434916,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "1193M",
+            "E_true": 2.4608131854297306
+          },
+          {
+            "dropped": "161M",
+            "E_true": 2.527487526911655
+          },
+          {
+            "dropped": "192M",
+            "E_true": 2.509926122617774
+          },
+          {
+            "dropped": "227M",
+            "E_true": 2.493667409811153
+          },
+          {
+            "dropped": "266M",
+            "E_true": 2.50103000877608
+          },
+          {
+            "dropped": "311M",
+            "E_true": 2.501941738671738
+          },
+          {
+            "dropped": "360M",
+            "E_true": 2.5015527101890545
+          },
+          {
+            "dropped": "415M",
+            "E_true": 2.503352621736353
+          },
+          {
+            "dropped": "475M",
+            "E_true": 2.507581125391544
+          },
+          {
+            "dropped": "541M",
+            "E_true": 2.507288200638674
+          },
+          {
+            "dropped": "613M",
+            "E_true": 2.5063156828692184
+          },
+          {
+            "dropped": "777M",
+            "E_true": 2.506671758778917
+          },
+          {
+            "dropped": "970M",
+            "E_true": 2.4915617699886305
+          }
+        ],
+        "E_true_min": 2.4608131854297306,
+        "E_true_max": 2.527487526911655,
+        "E_true_std": 0.014961480309578704,
+        "E_true_spread": 0.06667434148192442,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": false,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "preflight": {
+        "e_app_monotonic": false,
+        "monotonic_prefix_len": 3,
+        "e_true_below_min_eapp": true,
+        "preflight_pass": false,
+        "failure_reasons": [
+          "non_monotonic_at_227M->266M"
+        ]
+      },
+      "overall_pass": true,
+      "failure_diagnosis": "pass"
+    },
+    "kempner_proof_pile_2": {
+      "corpus": "Kempner OLMo / proof-pile-2 (iso-flop)",
+      "protocol": "iso_flop=1.00e+19; E_app=final train CE",
+      "n_sizes": 13,
+      "ladder_sizes": [
+        "110M",
+        "134M",
+        "161M",
+        "192M",
+        "227M",
+        "266M",
+        "311M",
+        "360M",
+        "415M",
+        "475M",
+        "541M",
+        "613M",
+        "777M"
+      ],
+      "triangulation_fixed_alpha": 1.7473335986992944,
+      "uncertainty_loo_std": 0.02072737211620595,
+      "triangulation_report": "1.75 \u00b1 0.02 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "110M",
+          "n_params": 110508992,
+          "E_app": 1.814847469329834,
+          "final_loss": 1.814847469329834,
+          "tokens_trained": 15081728975.2011
+        },
+        {
+          "size": "134M",
+          "n_params": 134124288,
+          "E_app": 1.764635682106018,
+          "final_loss": 1.764635682106018,
+          "tokens_trained": 12426285287.469088
+        },
+        {
+          "size": "161M",
+          "n_params": 161279040,
+          "E_app": 1.7657259702682495,
+          "final_loss": 1.7657259702682495,
+          "tokens_trained": 10334056221.23412
+        },
+        {
+          "size": "192M",
+          "n_params": 192268160,
+          "E_app": 1.7599434852600098,
+          "final_loss": 1.7599434852600098,
+          "tokens_trained": 8668448622.313059
+        },
+        {
+          "size": "227M",
+          "n_params": 227386560,
+          "E_app": 1.7450765371322632,
+          "final_loss": 1.7450765371322632,
+          "tokens_trained": 7329662169.420508
+        },
+        {
+          "size": "266M",
+          "n_params": 266929152,
+          "E_app": 1.729562759399414,
+          "final_loss": 1.729562759399414,
+          "tokens_trained": 6243854049.581916
+        },
+        {
+          "size": "311M",
+          "n_params": 311190848,
+          "E_app": 1.737274408340454,
+          "final_loss": 1.737274408340454,
+          "tokens_trained": 5355770188.545733
+        },
+        {
+          "size": "360M",
+          "n_params": 360466560,
+          "E_app": 1.7279181480407717,
+          "final_loss": 1.7279181480407717,
+          "tokens_trained": 4623637395.564978
+        },
+        {
+          "size": "415M",
+          "n_params": 415051200,
+          "E_app": 1.727820873260498,
+          "final_loss": 1.727820873260498,
+          "tokens_trained": 4015568842.269741
+        },
+        {
+          "size": "475M",
+          "n_params": 475239680,
+          "E_app": 1.744889736175537,
+          "final_loss": 1.744889736175537,
+          "tokens_trained": 3507002333.3629603
+        },
+        {
+          "size": "541M",
+          "n_params": 541326912,
+          "E_app": 1.7743980884552002,
+          "final_loss": 1.7743980884552002,
+          "tokens_trained": 3078854255.571662
+        },
+        {
+          "size": "613M",
+          "n_params": 613607808,
+          "E_app": 1.7852365970611572,
+          "final_loss": 1.7852365970611572,
+          "tokens_trained": 2716175780.257781
+        },
+        {
+          "size": "777M",
+          "n_params": 777930240,
+          "E_app": 1.8128066062927248,
+          "final_loss": 1.8128066062927248,
+          "tokens_trained": 2142437176.200615
+        }
+      ],
+      "holdout": {
+        "holdout": "777M",
+        "train_sizes": [
+          "110M",
+          "134M",
+          "161M",
+          "192M",
+          "227M",
+          "266M",
+          "311M",
+          "360M",
+          "415M",
+          "475M",
+          "541M",
+          "613M"
+        ],
+        "n_train": 12,
+        "E_true": 1.7006687930239321,
+        "A_amp": 40.70619894342516,
+        "E_app_pred": 1.7392824317076787,
+        "E_app_actual": 1.8128066062927248,
+        "delta": 0.07352417458504612,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "110M",
+            "E_true": 1.7959286923105104
+          },
+          {
+            "dropped": "134M",
+            "E_true": 1.747314462230111
+          },
+          {
+            "dropped": "161M",
+            "E_true": 1.7481583641889866
+          },
+          {
+            "dropped": "192M",
+            "E_true": 1.746741131381026
+          },
+          {
+            "dropped": "227M",
+            "E_true": 1.7460258322676114
+          },
+          {
+            "dropped": "266M",
+            "E_true": 1.7486435113740215
+          },
+          {
+            "dropped": "311M",
+            "E_true": 1.7507855286848986
+          },
+          {
+            "dropped": "360M",
+            "E_true": 1.7553009707217508
+          },
+          {
+            "dropped": "415M",
+            "E_true": 1.7582199724382732
+          },
+          {
+            "dropped": "475M",
+            "E_true": 1.7534094711130057
+          },
+          {
+            "dropped": "541M",
+            "E_true": 1.7385741604439724
+          },
+          {
+            "dropped": "613M",
+            "E_true": 1.729846459815651
+          },
+          {
+            "dropped": "777M",
+            "E_true": 1.7006687930239321
+          }
+        ],
+        "E_true_min": 1.7006687930239321,
+        "E_true_max": 1.7959286923105104,
+        "E_true_std": 0.02072737211620595,
+        "E_true_spread": 0.0952598992865783,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": false,
+        "E_true_below_min_E_app": false,
+        "E_true_below_min_final_loss": false,
+        "gate_pass": false
+      },
+      "preflight": {
+        "e_app_monotonic": false,
+        "monotonic_prefix_len": 2,
+        "e_true_below_min_eapp": false,
+        "preflight_pass": false,
+        "failure_reasons": [
+          "non_monotonic_at_134M->161M",
+          "E_true_not_below_min_E_app"
+        ]
+      },
+      "overall_pass": false,
+      "failure_diagnosis": "non_monotonic_at_134M->161M; E_true_not_below_min_E_app; sanity:non_monotonic; sanity:E_true_above_min_E_app"
+    },
+    "kempner_slimpajama_chunk1": {
+      "corpus": "Kempner OLMo / slimpajama-chunk1 (iso-flop)",
+      "protocol": "iso_flop=4.57e+18; E_app=final train CE",
+      "n_sizes": 14,
+      "ladder_sizes": [
+        "72M",
+        "90M",
+        "110M",
+        "134M",
+        "161M",
+        "192M",
+        "227M",
+        "266M",
+        "311M",
+        "360M",
+        "415M",
+        "475M",
+        "541M",
+        "613M"
+      ],
+      "triangulation_fixed_alpha": 2.811851074542476,
+      "uncertainty_loo_std": 0.018643828635076597,
+      "triangulation_report": "2.81 \u00b1 0.02 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "72M",
+          "n_params": 72717120,
+          "E_app": 2.94929313659668,
+          "final_loss": 2.94929313659668,
+          "tokens_trained": 10481370639.342464
+        },
+        {
+          "size": "90M",
+          "n_params": 90138240,
+          "E_app": 2.938165187835694,
+          "final_loss": 2.938165187835694,
+          "tokens_trained": 8455624233.904974
+        },
+        {
+          "size": "110M",
+          "n_params": 110508992,
+          "E_app": 2.888341188430786,
+          "final_loss": 2.888341188430786,
+          "tokens_trained": 6896950852.158191
+        },
+        {
+          "size": "134M",
+          "n_params": 134124288,
+          "E_app": 2.849191188812256,
+          "final_loss": 2.849191188812256,
+          "tokens_trained": 5682603038.649813
+        },
+        {
+          "size": "161M",
+          "n_params": 161279040,
+          "E_app": 2.8439254760742188,
+          "final_loss": 2.8439254760742188,
+          "tokens_trained": 4725816116.871372
+        },
+        {
+          "size": "192M",
+          "n_params": 192268160,
+          "E_app": 2.798729658126831,
+          "final_loss": 2.798729658126831,
+          "tokens_trained": 3964125347.356227
+        },
+        {
+          "size": "227M",
+          "n_params": 227386560,
+          "E_app": 2.860336303710937,
+          "final_loss": 2.860336303710937,
+          "tokens_trained": 3351891538.9966
+        },
+        {
+          "size": "266M",
+          "n_params": 266929152,
+          "E_app": 2.814448595046997,
+          "final_loss": 2.814448595046997,
+          "tokens_trained": 2855346000.3707
+        },
+        {
+          "size": "311M",
+          "n_params": 311190848,
+          "E_app": 2.828320026397705,
+          "final_loss": 2.828320026397705,
+          "tokens_trained": 2449220764.183729
+        },
+        {
+          "size": "360M",
+          "n_params": 360466560,
+          "E_app": 2.880701303482056,
+          "final_loss": 2.880701303482056,
+          "tokens_trained": 2114412739.2719665
+        },
+        {
+          "size": "415M",
+          "n_params": 415051200,
+          "E_app": 2.882547378540039,
+          "final_loss": 2.882547378540039,
+          "tokens_trained": 1836339917.9319143
+        },
+        {
+          "size": "475M",
+          "n_params": 475239680,
+          "E_app": 2.870227336883545,
+          "final_loss": 2.870227336883545,
+          "tokens_trained": 1603769884.167801
+        },
+        {
+          "size": "541M",
+          "n_params": 541326912,
+          "E_app": 2.87163519859314,
+          "final_loss": 2.87163519859314,
+          "tokens_trained": 1407975605.2208664
+        },
+        {
+          "size": "613M",
+          "n_params": 613607808,
+          "E_app": 2.921516895294189,
+          "final_loss": 2.921516895294189,
+          "tokens_trained": 1242120906.2345283
+        }
+      ],
+      "holdout": {
+        "holdout": "613M",
+        "train_sizes": [
+          "72M",
+          "90M",
+          "110M",
+          "134M",
+          "161M",
+          "192M",
+          "227M",
+          "266M",
+          "311M",
+          "360M",
+          "415M",
+          "475M",
+          "541M"
+        ],
+        "n_train": 13,
+        "E_true": 2.771192228369586,
+        "A_amp": 64.08369176787048,
+        "E_app_pred": 2.8370890737638095,
+        "E_app_actual": 2.921516895294189,
+        "delta": 0.08442782153037953,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "110M",
+            "E_true": 2.8124929700989187
+          },
+          {
+            "dropped": "134M",
+            "E_true": 2.8056582997093695
+          },
+          {
+            "dropped": "161M",
+            "E_true": 2.8092436142228334
+          },
+          {
+            "dropped": "192M",
+            "E_true": 2.8131985912907758
+          },
+          {
+            "dropped": "227M",
+            "E_true": 2.812867290014743
+          },
+          {
+            "dropped": "266M",
+            "E_true": 2.8213987531232556
+          },
+          {
+            "dropped": "311M",
+            "E_true": 2.8210236103947355
+          },
+          {
+            "dropped": "360M",
+            "E_true": 2.8056707908928855
+          },
+          {
+            "dropped": "415M",
+            "E_true": 2.802713486340099
+          },
+          {
+            "dropped": "475M",
+            "E_true": 2.8058508872374857
+          },
+          {
+            "dropped": "541M",
+            "E_true": 2.8031872247589793
+          },
+          {
+            "dropped": "613M",
+            "E_true": 2.771192228369586
+          },
+          {
+            "dropped": "72M",
+            "E_true": 2.854509713234958
+          },
+          {
+            "dropped": "90M",
+            "E_true": 2.836255617801464
+          }
+        ],
+        "E_true_min": 2.771192228369586,
+        "E_true_max": 2.854509713234958,
+        "E_true_std": 0.018643828635076597,
+        "E_true_spread": 0.08331748486537194,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": false,
+        "E_true_below_min_E_app": false,
+        "E_true_below_min_final_loss": false,
+        "gate_pass": false
+      },
+      "preflight": {
+        "e_app_monotonic": false,
+        "monotonic_prefix_len": 6,
+        "e_true_below_min_eapp": false,
+        "preflight_pass": false,
+        "failure_reasons": [
+          "non_monotonic_at_192M->227M",
+          "E_true_not_below_min_E_app"
+        ]
+      },
+      "overall_pass": false,
+      "failure_diagnosis": "non_monotonic_at_192M->227M; E_true_not_below_min_E_app; sanity:non_monotonic; sanity:E_true_above_min_E_app"
+    },
+    "kempner_slimpajama_chunk1_mono_prefix": {
+      "corpus": "Kempner OLMo / slimpajama-chunk1 (iso-flop) [monotonic prefix]",
+      "protocol": "iso_flop=4.57e+18; E_app=final train CE; prefix_n=6",
+      "n_sizes": 6,
+      "ladder_sizes": [
+        "72M",
+        "90M",
+        "110M",
+        "134M",
+        "161M",
+        "192M"
+      ],
+      "triangulation_fixed_alpha": 2.416738452590652,
+      "uncertainty_loo_std": 0.03397013746256463,
+      "triangulation_report": "2.42 \u00b1 0.03 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "72M",
+          "n_params": 72717120,
+          "E_app": 2.94929313659668,
+          "final_loss": 2.94929313659668,
+          "tokens_trained": 10481370639.342464
+        },
+        {
+          "size": "90M",
+          "n_params": 90138240,
+          "E_app": 2.938165187835694,
+          "final_loss": 2.938165187835694,
+          "tokens_trained": 8455624233.904974
+        },
+        {
+          "size": "110M",
+          "n_params": 110508992,
+          "E_app": 2.888341188430786,
+          "final_loss": 2.888341188430786,
+          "tokens_trained": 6896950852.158191
+        },
+        {
+          "size": "134M",
+          "n_params": 134124288,
+          "E_app": 2.849191188812256,
+          "final_loss": 2.849191188812256,
+          "tokens_trained": 5682603038.649813
+        },
+        {
+          "size": "161M",
+          "n_params": 161279040,
+          "E_app": 2.8439254760742188,
+          "final_loss": 2.8439254760742188,
+          "tokens_trained": 4725816116.871372
+        },
+        {
+          "size": "192M",
+          "n_params": 192268160,
+          "E_app": 2.798729658126831,
+          "final_loss": 2.798729658126831,
+          "tokens_trained": 3964125347.356227
+        }
+      ],
+      "holdout": {
+        "holdout": "192M",
+        "train_sizes": [
+          "72M",
+          "90M",
+          "110M",
+          "134M",
+          "161M"
+        ],
+        "n_train": 5,
+        "E_true": 2.451758075694005,
+        "A_amp": 238.07571164777522,
+        "E_app_pred": 2.8149921526977124,
+        "E_app_actual": 2.798729658126831,
+        "delta": 0.01626249457088136,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "110M",
+            "E_true": 2.4167504781611666
+          },
+          {
+            "dropped": "134M",
+            "E_true": 2.424781380636694
+          },
+          {
+            "dropped": "161M",
+            "E_true": 2.390332956327523
+          },
+          {
+            "dropped": "192M",
+            "E_true": 2.451758075694005
+          },
+          {
+            "dropped": "72M",
+            "E_true": 2.359831567684641
+          },
+          {
+            "dropped": "90M",
+            "E_true": 2.440945393831753
+          }
+        ],
+        "E_true_min": 2.359831567684641,
+        "E_true_max": 2.451758075694005,
+        "E_true_std": 0.03397013746256463,
+        "E_true_spread": 0.0919265080093643,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": true,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "preflight": {
+        "e_app_monotonic": true,
+        "monotonic_prefix_len": 6,
+        "e_true_below_min_eapp": true,
+        "preflight_pass": true,
+        "failure_reasons": []
+      },
+      "overall_pass": true,
+      "failure_diagnosis": "pass"
+    },
+    "kempner_smollm_corpus": {
+      "corpus": "Kempner OLMo / smollm-corpus (iso-flop)",
+      "protocol": "iso_flop=2.09e+18; E_app=final train CE",
+      "n_sizes": 13,
+      "ladder_sizes": [
+        "45M",
+        "57M",
+        "72M",
+        "90M",
+        "110M",
+        "134M",
+        "161M",
+        "192M",
+        "227M",
+        "266M",
+        "311M",
+        "360M",
+        "415M"
+      ],
+      "triangulation_fixed_alpha": 2.6610980346864377,
+      "uncertainty_loo_std": 0.02584238665252671,
+      "triangulation_report": "2.66 \u00b1 0.03 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "45M",
+          "n_params": 45544128,
+          "E_app": 2.881822347640991,
+          "final_loss": 2.881822347640991,
+          "tokens_trained": 7652940847.400204
+        },
+        {
+          "size": "57M",
+          "n_params": 57950720,
+          "E_app": 2.846133232116699,
+          "final_loss": 2.846133232116699,
+          "tokens_trained": 6014532995.110731
+        },
+        {
+          "size": "72M",
+          "n_params": 72717120,
+          "E_app": 2.767275333404541,
+          "final_loss": 2.767275333404541,
+          "tokens_trained": 4793183744.494052
+        },
+        {
+          "size": "90M",
+          "n_params": 90138240,
+          "E_app": 2.7540409564971924,
+          "final_loss": 2.7540409564971924,
+          "tokens_trained": 3866799679.363868
+        },
+        {
+          "size": "110M",
+          "n_params": 110508992,
+          "E_app": 2.7444090843200684,
+          "final_loss": 2.7444090843200684,
+          "tokens_trained": 3154010467.5864143
+        },
+        {
+          "size": "134M",
+          "n_params": 134124288,
+          "E_app": 2.7278623580932617,
+          "final_loss": 2.7278623580932617,
+          "tokens_trained": 2598683077.6721315
+        },
+        {
+          "size": "161M",
+          "n_params": 161279040,
+          "E_app": 2.681055784225464,
+          "final_loss": 2.681055784225464,
+          "tokens_trained": 2161139584.7248554
+        },
+        {
+          "size": "192M",
+          "n_params": 192268160,
+          "E_app": 2.712721347808838,
+          "final_loss": 2.712721347808838,
+          "tokens_trained": 1812814547.8191671
+        },
+        {
+          "size": "227M",
+          "n_params": 227386560,
+          "E_app": 2.7249069213867188,
+          "final_loss": 2.7249069213867188,
+          "tokens_trained": 1532836934.2956038
+        },
+        {
+          "size": "266M",
+          "n_params": 266929152,
+          "E_app": 2.7380757331848145,
+          "final_loss": 2.7380757331848145,
+          "tokens_trained": 1305764150.9700048
+        },
+        {
+          "size": "311M",
+          "n_params": 311190848,
+          "E_app": 2.7736058235168457,
+          "final_loss": 2.7736058235168457,
+          "tokens_trained": 1120041028.7465246
+        },
+        {
+          "size": "360M",
+          "n_params": 360466560,
+          "E_app": 2.7868056297302246,
+          "final_loss": 2.7868056297302246,
+          "tokens_trained": 966931627.5285656
+        },
+        {
+          "size": "415M",
+          "n_params": 415051200,
+          "E_app": 2.81349778175354,
+          "final_loss": 2.81349778175354,
+          "tokens_trained": 839767521.5260752
+        }
+      ],
+      "holdout": {
+        "holdout": "415M",
+        "train_sizes": [
+          "45M",
+          "57M",
+          "72M",
+          "90M",
+          "110M",
+          "134M",
+          "161M",
+          "192M",
+          "227M",
+          "266M",
+          "311M",
+          "360M"
+        ],
+        "n_train": 12,
+        "E_true": 2.6108151506567916,
+        "A_amp": 86.44558392772127,
+        "E_app_pred": 2.7123437145373397,
+        "E_app_actual": 2.81349778175354,
+        "delta": 0.10115406721620035,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "110M",
+            "E_true": 2.6599069430930085
+          },
+          {
+            "dropped": "134M",
+            "E_true": 2.6635357244881703
+          },
+          {
+            "dropped": "161M",
+            "E_true": 2.6733056094904257
+          },
+          {
+            "dropped": "192M",
+            "E_true": 2.6711229075411835
+          },
+          {
+            "dropped": "227M",
+            "E_true": 2.668976434893952
+          },
+          {
+            "dropped": "266M",
+            "E_true": 2.6638234917178005
+          },
+          {
+            "dropped": "311M",
+            "E_true": 2.645515448618664
+          },
+          {
+            "dropped": "360M",
+            "E_true": 2.633604883327616
+          },
+          {
+            "dropped": "415M",
+            "E_true": 2.6108151506567916
+          },
+          {
+            "dropped": "45M",
+            "E_true": 2.7207293650424846
+          },
+          {
+            "dropped": "57M",
+            "E_true": 2.68426266835526
+          },
+          {
+            "dropped": "72M",
+            "E_true": 2.6535189551487766
+          },
+          {
+            "dropped": "90M",
+            "E_true": 2.6565620602398186
+          }
+        ],
+        "E_true_min": 2.6108151506567916,
+        "E_true_max": 2.7207293650424846,
+        "E_true_std": 0.02584238665252671,
+        "E_true_spread": 0.10991421438569304,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": false,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "preflight": {
+        "e_app_monotonic": false,
+        "monotonic_prefix_len": 7,
+        "e_true_below_min_eapp": true,
+        "preflight_pass": false,
+        "failure_reasons": [
+          "non_monotonic_at_161M->192M"
+        ]
+      },
+      "overall_pass": true,
+      "failure_diagnosis": "pass"
+    },
+    "kempner_starcoder": {
+      "corpus": "Kempner OLMo / starcoder (iso-flop)",
+      "protocol": "iso_flop=1.00e+19; E_app=final train CE",
+      "n_sizes": 13,
+      "ladder_sizes": [
+        "110M",
+        "134M",
+        "161M",
+        "192M",
+        "227M",
+        "266M",
+        "311M",
+        "360M",
+        "415M",
+        "475M",
+        "541M",
+        "613M",
+        "777M"
+      ],
+      "triangulation_fixed_alpha": 1.2607053788573928,
+      "uncertainty_loo_std": 0.014010739508238395,
+      "triangulation_report": "1.26 \u00b1 0.01 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "110M",
+          "n_params": 110508992,
+          "E_app": 1.325193166732788,
+          "final_loss": 1.325193166732788,
+          "tokens_trained": 15081728975.2011
+        },
+        {
+          "size": "134M",
+          "n_params": 134124288,
+          "E_app": 1.3158832788467407,
+          "final_loss": 1.3158832788467407,
+          "tokens_trained": 12426285287.469088
+        },
+        {
+          "size": "161M",
+          "n_params": 161279040,
+          "E_app": 1.2739572525024414,
+          "final_loss": 1.2739572525024414,
+          "tokens_trained": 10334056221.23412
+        },
+        {
+          "size": "192M",
+          "n_params": 192268160,
+          "E_app": 1.2821069955825806,
+          "final_loss": 1.2821069955825806,
+          "tokens_trained": 8668448622.313059
+        },
+        {
+          "size": "227M",
+          "n_params": 227386560,
+          "E_app": 1.245450735092163,
+          "final_loss": 1.245450735092163,
+          "tokens_trained": 7329662169.420508
+        },
+        {
+          "size": "266M",
+          "n_params": 266929152,
+          "E_app": 1.2755378484725952,
+          "final_loss": 1.2755378484725952,
+          "tokens_trained": 6243854049.581916
+        },
+        {
+          "size": "311M",
+          "n_params": 311190848,
+          "E_app": 1.259468913078308,
+          "final_loss": 1.259468913078308,
+          "tokens_trained": 5355770188.545733
+        },
+        {
+          "size": "360M",
+          "n_params": 360466560,
+          "E_app": 1.2525262832641602,
+          "final_loss": 1.2525262832641602,
+          "tokens_trained": 4623637395.564978
+        },
+        {
+          "size": "415M",
+          "n_params": 415051200,
+          "E_app": 1.2859903573989868,
+          "final_loss": 1.2859903573989868,
+          "tokens_trained": 4015568842.269741
+        },
+        {
+          "size": "475M",
+          "n_params": 475239680,
+          "E_app": 1.294859766960144,
+          "final_loss": 1.294859766960144,
+          "tokens_trained": 3507002333.3629603
+        },
+        {
+          "size": "541M",
+          "n_params": 541326912,
+          "E_app": 1.299027681350708,
+          "final_loss": 1.299027681350708,
+          "tokens_trained": 3078854255.571662
+        },
+        {
+          "size": "613M",
+          "n_params": 613607808,
+          "E_app": 1.2723841667175293,
+          "final_loss": 1.2723841667175293,
+          "tokens_trained": 2716175780.257781
+        },
+        {
+          "size": "777M",
+          "n_params": 777930240,
+          "E_app": 1.3113789558410645,
+          "final_loss": 1.3113789558410645,
+          "tokens_trained": 2142437176.200615
+        }
+      ],
+      "holdout": {
+        "holdout": "777M",
+        "train_sizes": [
+          "110M",
+          "134M",
+          "161M",
+          "192M",
+          "227M",
+          "266M",
+          "311M",
+          "360M",
+          "415M",
+          "475M",
+          "541M",
+          "613M"
+        ],
+        "n_train": 12,
+        "E_true": 1.232292553071612,
+        "A_amp": 36.17956026427899,
+        "E_app_pred": 1.2666122513987228,
+        "E_app_actual": 1.3113789558410645,
+        "delta": 0.044766704442341654,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "110M",
+            "E_true": 1.2926672581029541
+          },
+          {
+            "dropped": "134M",
+            "E_true": 1.2763298137170398
+          },
+          {
+            "dropped": "161M",
+            "E_true": 1.2548048082863692
+          },
+          {
+            "dropped": "192M",
+            "E_true": 1.25954871104036
+          },
+          {
+            "dropped": "227M",
+            "E_true": 1.2575421794901285
+          },
+          {
+            "dropped": "266M",
+            "E_true": 1.261082664844916
+          },
+          {
+            "dropped": "311M",
+            "E_true": 1.2642836491170766
+          },
+          {
+            "dropped": "360M",
+            "E_true": 1.2681615788320555
+          },
+          {
+            "dropped": "415M",
+            "E_true": 1.2590666005593267
+          },
+          {
+            "dropped": "475M",
+            "E_true": 1.2542787766013772
+          },
+          {
+            "dropped": "541M",
+            "E_true": 1.250197649574096
+          },
+          {
+            "dropped": "613M",
+            "E_true": 1.2647216448522391
+          },
+          {
+            "dropped": "777M",
+            "E_true": 1.232292553071612
+          }
+        ],
+        "E_true_min": 1.232292553071612,
+        "E_true_max": 1.2926672581029541,
+        "E_true_std": 0.014010739508238395,
+        "E_true_spread": 0.060374705031342124,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": false,
+        "E_true_below_min_E_app": false,
+        "E_true_below_min_final_loss": false,
+        "gate_pass": false
+      },
+      "preflight": {
+        "e_app_monotonic": false,
+        "monotonic_prefix_len": 3,
+        "e_true_below_min_eapp": false,
+        "preflight_pass": false,
+        "failure_reasons": [
+          "non_monotonic_at_161M->192M",
+          "E_true_not_below_min_E_app"
+        ]
+      },
+      "overall_pass": false,
+      "failure_diagnosis": "non_monotonic_at_161M->192M; E_true_not_below_min_E_app; sanity:non_monotonic; sanity:E_true_above_min_E_app"
+    },
+    "kempner_starcoder_mono_prefix": {
+      "corpus": "Kempner OLMo / starcoder (iso-flop) [monotonic prefix]",
+      "protocol": "iso_flop=1.00e+19; E_app=final train CE; prefix_n=3",
+      "n_sizes": 3,
+      "ladder_sizes": [
+        "110M",
+        "134M",
+        "161M"
+      ],
+      "triangulation_fixed_alpha": 0.9115442387392663,
+      "uncertainty_loo_std": 0.27661869081261303,
+      "triangulation_report": "0.91 \u00b1 0.28 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "110M",
+          "n_params": 110508992,
+          "E_app": 1.325193166732788,
+          "final_loss": 1.325193166732788,
+          "tokens_trained": 15081728975.2011
+        },
+        {
+          "size": "134M",
+          "n_params": 134124288,
+          "E_app": 1.3158832788467407,
+          "final_loss": 1.3158832788467407,
+          "tokens_trained": 12426285287.469088
+        },
+        {
+          "size": "161M",
+          "n_params": 161279040,
+          "E_app": 1.2739572525024414,
+          "final_loss": 1.2739572525024414,
+          "tokens_trained": 10334056221.23412
+        }
+      ],
+      "holdout": {
+        "holdout": "161M",
+        "train_sizes": [
+          "110M",
+          "134M"
+        ],
+        "n_train": 2,
+        "E_true": 1.1791021899989897,
+        "A_amp": 79.31924699696883,
+        "E_app_pred": 1.3075722972152504,
+        "E_app_actual": 1.2739572525024414,
+        "delta": 0.03361504471280896,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "110M",
+            "E_true": 0.6258700182345025
+          },
+          {
+            "dropped": "134M",
+            "E_true": 0.9004068219777268
+          },
+          {
+            "dropped": "161M",
+            "E_true": 1.1791021899989897
+          }
+        ],
+        "E_true_min": 0.6258700182345025,
+        "E_true_max": 1.1791021899989897,
+        "E_true_std": 0.27661869081261303,
+        "E_true_spread": 0.5532321717644872,
+        "gate_pass": false
+      },
+      "sanity": {
+        "E_app_monotonic": true,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "preflight": {
+        "e_app_monotonic": true,
+        "monotonic_prefix_len": 3,
+        "e_true_below_min_eapp": true,
+        "preflight_pass": true,
+        "failure_reasons": []
+      },
+      "overall_pass": false,
+      "failure_diagnosis": "loo_std=0.2766"
+    },
+    "opt_pile_10B": {
+      "corpus": "Meta OPT / PILE",
+      "protocol": "E_app=interp train CE at 10^10.0 tokens",
+      "target_log10_tokens": 10.0,
+      "n_sizes": 6,
+      "ladder_sizes": [
+        "125m",
+        "1.3b",
+        "6.7b",
+        "13b",
+        "30b",
+        "175b"
+      ],
+      "triangulation_fixed_alpha": 3.2173685731003774,
+      "uncertainty_loo_std": 0.054737471222994,
+      "triangulation_report": "3.22 \u00b1 0.05 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "125m",
+          "n_params": 125000000,
+          "E_app": 3.7012709616914674,
+          "final_loss": 3.7012709616914674
+        },
+        {
+          "size": "1.3b",
+          "n_params": 1300000000,
+          "E_app": 3.288940855798706,
+          "final_loss": 3.288940855798706
+        },
+        {
+          "size": "6.7b",
+          "n_params": 6700000000,
+          "E_app": 3.2353844167098433,
+          "final_loss": 3.2353844167098433
+        },
+        {
+          "size": "13b",
+          "n_params": 13000000000,
+          "E_app": 3.435788993963157,
+          "final_loss": 3.435788993963157
+        },
+        {
+          "size": "30b",
+          "n_params": 30000000000,
+          "E_app": 3.437405242885724,
+          "final_loss": 3.437405242885724
+        },
+        {
+          "size": "175b",
+          "n_params": 175000000000,
+          "E_app": 3.160023498705471,
+          "final_loss": 3.160023498705471
+        }
+      ],
+      "holdout": {
+        "holdout": "175b",
+        "train_sizes": [
+          "125m",
+          "1.3b",
+          "6.7b",
+          "13b",
+          "30b"
+        ],
+        "n_train": 5,
+        "E_true": 3.2634032940963458,
+        "A_amp": 213.76259432214434,
+        "E_app_pred": 3.295562015628682,
+        "E_app_actual": 3.160023498705471,
+        "delta": 0.13553851692321084,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "1.3b",
+            "E_true": 3.234398704702556
+          },
+          {
+            "dropped": "125m",
+            "E_true": 3.3042513834771183
+          },
+          {
+            "dropped": "13b",
+            "E_true": 3.1751123946660416
+          },
+          {
+            "dropped": "175b",
+            "E_true": 3.2634032940963458
+          },
+          {
+            "dropped": "30b",
+            "E_true": 3.1585373351871735
+          },
+          {
+            "dropped": "6.7b",
+            "E_true": 3.2445948720197384
+          }
+        ],
+        "E_true_min": 3.1585373351871735,
+        "E_true_max": 3.3042513834771183,
+        "E_true_std": 0.054737471222994,
+        "E_true_spread": 0.14571404828994483,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": false,
+        "E_true_below_min_E_app": false,
+        "E_true_below_min_final_loss": false,
+        "gate_pass": false
+      },
+      "preflight": {
+        "e_app_monotonic": false,
+        "monotonic_prefix_len": 3,
+        "e_true_below_min_eapp": false,
+        "preflight_pass": false,
+        "failure_reasons": [
+          "non_monotonic_at_6.7b->13b",
+          "E_true_not_below_min_E_app"
+        ]
+      },
+      "overall_pass": false,
+      "failure_diagnosis": "non_monotonic_at_6.7b->13b; E_true_not_below_min_E_app; sanity:non_monotonic; sanity:E_true_above_min_E_app"
+    },
+    "opt_pile_best_mono": {
+      "corpus": "Meta OPT / PILE",
+      "protocol": "E_app=interp train CE at 10^10.8 tokens",
+      "target_log10_tokens": 10.7531,
+      "n_sizes": 6,
+      "ladder_sizes": [
+        "125m",
+        "1.3b",
+        "6.7b",
+        "13b",
+        "30b",
+        "175b"
+      ],
+      "triangulation_fixed_alpha": 2.5143500752422137,
+      "uncertainty_loo_std": 0.010575485853765205,
+      "triangulation_report": "2.51 \u00b1 0.01 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "125m",
+          "n_params": 125000000,
+          "E_app": 3.567367462674597,
+          "final_loss": 3.567367462674597
+        },
+        {
+          "size": "1.3b",
+          "n_params": 1300000000,
+          "E_app": 3.0091265910165705,
+          "final_loss": 3.0091265910165705
+        },
+        {
+          "size": "6.7b",
+          "n_params": 6700000000,
+          "E_app": 2.7766919993296564,
+          "final_loss": 2.7766919993296564
+        },
+        {
+          "size": "13b",
+          "n_params": 13000000000,
+          "E_app": 2.7463423378103418,
+          "final_loss": 2.7463423378103418
+        },
+        {
+          "size": "30b",
+          "n_params": 30000000000,
+          "E_app": 2.699387026277869,
+          "final_loss": 2.699387026277869
+        },
+        {
+          "size": "175b",
+          "n_params": 175000000000,
+          "E_app": 2.5738173438445537,
+          "final_loss": 2.5738173438445537
+        }
+      ],
+      "holdout": {
+        "holdout": "175b",
+        "train_sizes": [
+          "125m",
+          "1.3b",
+          "6.7b",
+          "13b",
+          "30b"
+        ],
+        "n_train": 5,
+        "E_true": 2.5293032212177553,
+        "A_amp": 588.5364061827144,
+        "E_app_pred": 2.6178434003734643,
+        "E_app_actual": 2.5738173438445537,
+        "delta": 0.04402605652891056,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "1.3b",
+            "E_true": 2.512174869655815
+          },
+          {
+            "dropped": "125m",
+            "E_true": 2.498119498577929
+          },
+          {
+            "dropped": "13b",
+            "E_true": 2.509923554167023
+          },
+          {
+            "dropped": "175b",
+            "E_true": 2.5293032212177553
+          },
+          {
+            "dropped": "30b",
+            "E_true": 2.506389003762461
+          },
+          {
+            "dropped": "6.7b",
+            "E_true": 2.517630714402116
+          }
+        ],
+        "E_true_min": 2.498119498577929,
+        "E_true_max": 2.5293032212177553,
+        "E_true_std": 0.010575485853765205,
+        "E_true_spread": 0.03118372263982616,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": true,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "preflight": {
+        "e_app_monotonic": true,
+        "monotonic_prefix_len": 6,
+        "e_true_below_min_eapp": true,
+        "preflight_pass": true,
+        "failure_reasons": []
+      },
+      "overall_pass": true,
+      "failure_diagnosis": "pass"
+    },
+    "cerebras_pile": {
+      "corpus": "Cerebras-GPT / PILE (final eval)",
+      "protocol": "E_app=PILE test CE at final checkpoint (varying train FLOPs per size)",
+      "n_sizes": 7,
+      "ladder_sizes": [
+        "111M",
+        "256M",
+        "590M",
+        "1.3B",
+        "2.7B",
+        "6.7B",
+        "13B"
+      ],
+      "triangulation_fixed_alpha": 1.4204765601686378,
+      "uncertainty_loo_std": 0.029714026944032426,
+      "triangulation_report": "1.42 \u00b1 0.03 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "111M",
+          "n_params": 111000000,
+          "E_app": 2.566,
+          "final_loss": 2.566
+        },
+        {
+          "size": "256M",
+          "n_params": 256000000,
+          "E_app": 2.299,
+          "final_loss": 2.299
+        },
+        {
+          "size": "590M",
+          "n_params": 590000000,
+          "E_app": 2.184,
+          "final_loss": 2.184
+        },
+        {
+          "size": "1.3B",
+          "n_params": 1300000000,
+          "E_app": 1.996,
+          "final_loss": 1.996
+        },
+        {
+          "size": "2.7B",
+          "n_params": 2700000000,
+          "E_app": 1.834,
+          "final_loss": 1.834
+        },
+        {
+          "size": "6.7B",
+          "n_params": 6700000000,
+          "E_app": 1.704,
+          "final_loss": 1.704
+        },
+        {
+          "size": "13B",
+          "n_params": 13000000000,
+          "E_app": 1.575,
+          "final_loss": 1.575
+        }
+      ],
+      "holdout": {
+        "holdout": "13B",
+        "train_sizes": [
+          "111M",
+          "256M",
+          "590M",
+          "1.3B",
+          "2.7B",
+          "6.7B"
+        ],
+        "n_train": 6,
+        "E_true": 1.4753375007676763,
+        "A_amp": 607.700168956957,
+        "E_app_pred": 1.6966207894853862,
+        "E_app_actual": 1.575,
+        "delta": 0.12162078948538624,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "1.3B",
+            "E_true": 1.405421330038649
+          },
+          {
+            "dropped": "111M",
+            "E_true": 1.376380662388262
+          },
+          {
+            "dropped": "13B",
+            "E_true": 1.4753375007676763
+          },
+          {
+            "dropped": "2.7B",
+            "E_true": 1.4162665759831483
+          },
+          {
+            "dropped": "256M",
+            "E_true": 1.4178240944862865
+          },
+          {
+            "dropped": "590M",
+            "E_true": 1.4120480309239174
+          },
+          {
+            "dropped": "6.7B",
+            "E_true": 1.4271603453594703
+          }
+        ],
+        "E_true_min": 1.376380662388262,
+        "E_true_max": 1.4753375007676763,
+        "E_true_std": 0.029714026944032426,
+        "E_true_spread": 0.09895683837941438,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": true,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "preflight": {
+        "e_app_monotonic": true,
+        "monotonic_prefix_len": 7,
+        "e_true_below_min_eapp": true,
+        "preflight_pass": true,
+        "failure_reasons": []
+      },
+      "overall_pass": true,
+      "failure_diagnosis": "pass"
+    },
+    "owt_trained": {
+      "corpus": "OpenWebText (published E_app only)",
+      "note": "Holdout/LOO on flat E_app \u2014 optimistic; full test needs epoch JSON curves",
+      "triangulation_fixed_alpha": 2.4850769269815354,
+      "per_model": [
+        {
+          "size": "A_10M",
+          "n_params": 10165681,
+          "E_app": 4.1379
+        },
+        {
+          "size": "C_25M",
+          "n_params": 25147153,
+          "E_app": 3.6984
+        },
+        {
+          "size": "B_51M",
+          "n_params": 51016529,
+          "E_app": 3.4406
+        }
+      ],
+      "holdout_B_51M": {
+        "holdout": "B_51M",
+        "train_sizes": [
+          "A_10M",
+          "C_25M"
+        ],
+        "n_train": 2,
+        "E_true": 2.479696804887643,
+        "A_amp": 400.003830241748,
+        "E_app_pred": 3.437866523261376,
+        "E_app_actual": 3.4406,
+        "delta": 0.0027334767386237857,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "A_10M",
+            "E_true": 2.4924832493662037
+          },
+          {
+            "dropped": "B_51M",
+            "E_true": 2.479696804887643
+          },
+          {
+            "dropped": "C_25M",
+            "E_true": 2.486171723605624
+          }
+        ],
+        "E_true_min": 2.479696804887643,
+        "E_true_max": 2.4924832493662037,
+        "E_true_std": 0.006393396231454265,
+        "E_true_spread": 0.01278644447856081,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": true,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "preflight": {
+        "e_app_monotonic": true,
+        "monotonic_prefix_len": 3,
+        "e_true_below_min_eapp": true,
+        "preflight_pass": true,
+        "failure_reasons": []
+      },
+      "failure_diagnosis": "Holdout/LOO on flat E_app \u2014 optimistic; full test needs epoc",
+      "overall_pass": false
+    }
+  },
+  "pass_count": 13,
+  "test_count": 21
+}
