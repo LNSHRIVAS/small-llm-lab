@@ -1,7 +1,6 @@
 # Publication narrative  -  Small Language Model Architecture Lab
 
-This document is the **GitHub-facing research story**: what was done, what was found, what failed, and how each claim is backed. It is written for reviewers, hiring managers, and collaborators who will not read fifty notebook cells.
-
+This document is the **GitHub-facing research story**: what was done, what was found, what failed, and how each claim is backed. 
 Shorter tables live in [`RESULTS.md`](RESULTS.md). Interpretation and limits in [`FINDINGS.md`](FINDINGS.md). Audit trail in [`VERIFICATION.md`](VERIFICATION.md). Step-by-step reproduction in [`REPRO.md`](REPRO.md). GitHub release checklist in [`PUBLISHING.md`](PUBLISHING.md).
 
 ---
