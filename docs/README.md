@@ -5,12 +5,13 @@ Reading order for GitHub visitors and reviewers.
 | Order | Document | Audience | Time |
 |------:|----------|----------|------|
 | 1 | [`../README.md`](../README.md) | Everyone | 5 min |
-| 2 | [`PUBLICATION.md`](PUBLICATION.md) | Reviewers, hiring, collaborators | 20 min |
-| 3 | [`LOG_ONLY_TRIANGULATION_RESULTS.md`](LOG_ONLY_TRIANGULATION_RESULTS.md) | Scaling / ML-systems | 10 min |
-| 4 | [`RESULTS.md`](RESULTS.md) | Numbers-only | 15 min |
-| 5 | [`FINDINGS.md`](FINDINGS.md) | Interpretation + limits | 15 min |
-| 6 | [`VERIFICATION.md`](VERIFICATION.md) | Auditors | 10 min |
-| 7 | [`REPRO.md`](REPRO.md) | Reproducers | 10 min |
+| 2 | [`FINAL_DISCOVERY.md`](FINAL_DISCOVERY.md) | Discovery / IV-E headline | 8 min |
+| 3 | [`PUBLICATION.md`](PUBLICATION.md) | Reviewers, hiring, collaborators | 20 min |
+| 4 | [`LOG_ONLY_TRIANGULATION_RESULTS.md`](LOG_ONLY_TRIANGULATION_RESULTS.md) | Scaling / ML-systems | 10 min |
+| 5 | [`RESULTS.md`](RESULTS.md) | Numbers-only | 15 min |
+| 6 | [`FINDINGS.md`](FINDINGS.md) | Interpretation + limits | 15 min |
+| 7 | [`VERIFICATION.md`](VERIFICATION.md) | Auditors | 10 min |
+| 8 | [`REPRO.md`](REPRO.md) | Reproducers | 10 min |
 
 ## By topic
 

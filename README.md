@@ -4,11 +4,29 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](requirements.txt)
 [![Verified](https://img.shields.io/badge/results-log--verified-brightgreen.svg)](docs/VERIFICATION.md)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/read-PUBLICATION.md-blue.svg)](docs/PUBLICATION.md)
 
 A **pre-registered falsification program** on custom small transformers (10M-51M parameters): factorized embeddings, Muon optimizers, spherical vMF heads, Chinchilla-E scaling on OpenWebText, and a **zero-GPU method** to recover corpus-specific irreducible-loss floors from public training ladders.
 
 Every headline metric links to an executed log. Full narrative: **[`docs/PUBLICATION.md`](docs/PUBLICATION.md)** · Release checklist: **[`docs/PUBLISHING.md`](docs/PUBLISHING.md)**
+
+---
+
+## The discovery
+
+**Not a new equation** — the Chinchilla separable ansatz is prior art. The result is a **portable instrument** that reads **corpus-specific irreducible training CE** from scaling ladders (public logs or small matched runs), with holdout/LOO gates that pass or fail for named reasons.
+
+| Headline | Number | Source |
+|----------|--------|--------|
+| Pile: Pythia vs Cerebras (different stacks) | **1.482 vs 1.420** nats (Δ 0.06) | `results/floor_db/floor_db.csv` |
+| Pythia holdout: small models → 6.9B loss | **Δ 0.003** nats | `results/robustness_chinchilla_e/` |
+| Meta Step-2: five independent budgets | **σ ≈ 0.04** nats | `results/public_ladder_sweep/sweep_report.txt` |
+| Public ladder sweep | **13 / 21 pass** | `results/floor_db/law_probes.txt` |
+
+Floors are **corpus-specific**, not one universal constant (spread **1.52 nats** across passing corpora — law probes **reject** a single \(E_{\text{true}}\)).
+
+**Full write-up (every claim → file):** **[`docs/FINAL_DISCOVERY.md`](docs/FINAL_DISCOVERY.md)**
 
 ---
 
@@ -85,6 +103,7 @@ Full guide: [`docs/REPRO.md`](docs/REPRO.md)
 
 | Document | Purpose |
 |----------|---------|
+| **[`docs/FINAL_DISCOVERY.md`](docs/FINAL_DISCOVERY.md)** | Discovery framing + headline numbers (start here for the IV-E result) |
 | **[`docs/PUBLICATION.md`](docs/PUBLICATION.md)** | Full research narrative (start here for deep read) |
 | [`docs/LOG_ONLY_TRIANGULATION_RESULTS.md`](docs/LOG_ONLY_TRIANGULATION_RESULTS.md) | IV-E methods + numbers |
 | [`docs/PUBLISHING.md`](docs/PUBLISHING.md) | GitHub release checklist |
@@ -137,6 +156,12 @@ See [`docs/FINDINGS.md`](docs/FINDINGS.md) and [`docs/LINEAGE.md`](docs/LINEAGE.
 
 ---
 
-## License
+## License and citation
 
-MIT
+This repository is licensed under **[CC BY 4.0](LICENSE)** (Creative Commons Attribution 4.0 International).
+
+You may use, adapt, and build on this work **including commercially**, provided you **cite** this repository. Minimum citation:
+
+> Shrivas, L. (2026). *Small Language Model Architecture Lab*. https://github.com/LNSHRIVAS/small-llm-lab
+
+BibTeX and machine-readable metadata: [`CITATION.cff`](CITATION.cff)
