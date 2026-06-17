@@ -217,7 +217,7 @@ def run_owt_summary() -> dict[str, Any]:
 
     return dict(
         corpus="OpenWebText (published E_app only)",
-        note="Holdout/LOO on flat E_app — optimistic; full test needs epoch JSON curves",
+        note="Holdout/LOO on flat E_app - optimistic; full test needs epoch JSON curves",
         triangulation_fixed_alpha=e_true,
         per_model=per,
         holdout_B_51M=holdout,
@@ -342,7 +342,7 @@ def write_report(sections: dict[str, Any]) -> str:
     def block(title: str, data: dict):
         lines.append(f"--- {title} ---")
         if data is None:
-            lines.append("  (skipped — no results on disk)")
+            lines.append("  (skipped - no results on disk)")
             lines.append("")
             return
         if "triangulation_fixed_alpha" in data:
@@ -352,7 +352,7 @@ def write_report(sections: dict[str, Any]) -> str:
         if data.get("method"):
             lines.append(f"  Method: {data['method']}")
         if data.get("skipped"):
-            lines.append(f"  (skipped — {data.get('error', 'unavailable')})")
+            lines.append(f"  (skipped - {data.get('error', 'unavailable')})")
             lines.append("")
             return
         if "holdout" in data:
@@ -438,7 +438,7 @@ def write_report(sections: dict[str, Any]) -> str:
     lines.extend(
         [
             "OVERALL (Pythia + Meta Step-2 holdout gates; synthetic if present):",
-            f"  {'PASS' if p_pass else 'FAIL'} — method supported for cheap floor estimation",
+            f"  {'PASS' if p_pass else 'FAIL'} - method supported for cheap floor estimation",
             f"  Pythia floor estimate: {pythia_report}  |  Step-2: {meta_report}",
             "=" * 72,
         ]

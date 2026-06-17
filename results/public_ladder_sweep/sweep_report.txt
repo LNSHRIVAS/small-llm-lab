@@ -1,5 +1,5 @@
 ====================================================================================================
-PUBLIC LADDER SWEEP — log-only Chinchilla-E holdout/LOO
+PUBLIC LADDER SWEEP - log-only Chinchilla-E holdout/LOO
 ====================================================================================================
 Corpus                                          n        E_true ± LOO   holdout Δ   PASS
 ----------------------------------------------------------------------------------------------------
@@ -27,7 +27,7 @@ OpenWebText (published E_app only)              ?  2.49 ± 0.01 nats            
 ----------------------------------------------------------------------------------------------------
 Corpora tested: 21  |  Holdout+LOO+sanity PASS: 13
 
-FAILURES (named causes — report prominently):
+FAILURES (named causes - report prominently):
   FAIL  The Pile (Pythia 7-size): non_monotonic_at_410m->1b; E_true_not_below_min_E_app; holdout_delta=0.3618; sanity:non_monotonic; sanity:E_true_above_min_E_app
   FAIL  Dolma / OLMo (Allen AI W&B exports): non_monotonic_at_7b->13b; E_true_not_below_min_E_app; holdout_delta=0.5442; loo_std=1.4623; sanity:non_monotonic; sanity:E_true_above_min_E_app
   FAIL  Kempner OLMo / proof-pile-2 (iso-flop): non_monotonic_at_134M->161M; E_true_not_below_min_E_app; sanity:non_monotonic; sanity:E_true_above_min_E_app
@@ -35,7 +35,7 @@ FAILURES (named causes — report prominently):
   FAIL  Kempner OLMo / starcoder (iso-flop): non_monotonic_at_161M->192M; E_true_not_below_min_E_app; sanity:non_monotonic; sanity:E_true_above_min_E_app
   FAIL  Kempner OLMo / starcoder (iso-flop) [monotonic prefix]: loo_std=0.2766
   FAIL  Meta OPT / PILE: non_monotonic_at_6.7b->13b; E_true_not_below_min_E_app; sanity:non_monotonic; sanity:E_true_above_min_E_app
-  FAIL  OpenWebText (published E_app only): Holdout/LOO on flat E_app — optimistic; full test needs epoc
+  FAIL  OpenWebText (published E_app only): Holdout/LOO on flat E_app - optimistic; full test needs epoc
 
 Notes:
   - Method = N-point OLS (α=0.34) + holdout on largest size + LOO std < 0.15

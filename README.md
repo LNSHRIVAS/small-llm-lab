@@ -15,7 +15,7 @@ Every headline metric links to an executed log. Full narrative: **[`docs/PUBLICA
 
 ## The discovery
 
-**Not a new equation** — the Chinchilla separable ansatz is prior art. The result is a **portable instrument** that reads **corpus-specific irreducible training CE** from scaling ladders (public logs or small matched runs), with holdout/LOO gates that pass or fail for named reasons.
+**Not a new equation** - the Chinchilla separable ansatz is prior art. The result is a **portable instrument** that reads **corpus-specific irreducible training CE** from scaling ladders (public logs or small matched runs), with holdout/LOO gates that pass or fail for named reasons.
 
 | Headline | Number | Source |
 |----------|--------|--------|
@@ -24,7 +24,7 @@ Every headline metric links to an executed log. Full narrative: **[`docs/PUBLICA
 | Meta Step-2: five independent budgets | **σ ≈ 0.04** nats | `results/public_ladder_sweep/sweep_report.txt` |
 | Public ladder sweep | **13 / 21 pass** | `results/floor_db/law_probes.txt` |
 
-Floors are **corpus-specific**, not one universal constant (spread **1.52 nats** across passing corpora — law probes **reject** a single \(E_{\text{true}}\)).
+Floors are **corpus-specific**, not one universal constant (spread **1.52 nats** across passing corpora - law probes **reject** a single E_true).
 
 **Full write-up (every claim → file):** **[`docs/FINAL_DISCOVERY.md`](docs/FINAL_DISCOVERY.md)**
 
@@ -34,7 +34,7 @@ Floors are **corpus-specific**, not one universal constant (spread **1.52 nats**
 
 I test architectural and scaling hypotheses with **quantitative gates declared before training**. The main architecture result is a head-only matched comparison at 9.96M parameters: a row-normalized vMF output head improves validation perplexity from **57.05 → 52.82** at epoch 2 (−7.4%) and rebalances gradient flow (head/body ratio **3.78× → 1.31×**).
 
-The main scaling **method** result: you can recover a **corpus-specific irreducible-loss floor** cheaply from existing public model ladders, validated by holdout on **three independent corpus families** (Pythia/Pile, Meta Step-2, Kempner OLMo fineweb/smollm). This is **not** a claim that we measured Shannon entropy of text  -  it is a portable triangulation tool under the Chinchilla ansatz. Example estimates (α=0.34, uncertainty = LOO std): Pile **≈1.48 ± 0.06 nats** (6-size ladder), Step-2 **≈1.55-1.65 nats**, fineweb-edu **≈2.50 nats**, our trained OWT reference **≈2.5 nats**.
+The main scaling **method** result: you can recover a **corpus-specific irreducible-loss floor** cheaply from existing public model ladders, validated by holdout on **three independent corpus families** (Pythia/Pile, Meta Step-2, Kempner OLMo fineweb/smollm). This is **not** a claim that we measured Shannon entropy of text - it is a portable triangulation tool under the Chinchilla ansatz. Example estimates (α=0.34, uncertainty = LOO std): Pile **≈1.48 ± 0.06 nats** (6-size ladder), Step-2 **≈1.55-1.65 nats**, fineweb-edu **≈2.50 nats**, our trained OWT reference **≈2.5 nats**.
 
 ---
 
@@ -49,7 +49,7 @@ The main scaling **method** result: you can recover a **corpus-specific irreduci
 | **IV-A** | Chinchilla-E on OWT (trained)? | ✓ Confirmed | reference floor **≈2.5 nats**; PPL **43 / 39 / 31** |
 | **IV-B** | β_rep ∝ √N? | ✗ Failed | Fitted **N^−0.084** |
 | **IV-C** | A_floor ∝ V²/T? | ✗ Not supported | Protocol audit; corrected slope −0.25 |
-| **Open** | Shared within-run shape law? | ? | Needs optional +2 OWT sizes  -  [`PREREGISTER_owt_6size_bounded_law.md`](docs/PREREGISTER_owt_6size_bounded_law.md) |
+| **Open** | Shared within-run shape law? | ? | Needs optional +2 OWT sizes - [`PREREGISTER_owt_6size_bounded_law.md`](docs/PREREGISTER_owt_6size_bounded_law.md) |
 
 Detailed tables: [`docs/RESULTS.md`](docs/RESULTS.md) · Interpretation: [`docs/FINDINGS.md`](docs/FINDINGS.md)
 
@@ -59,8 +59,8 @@ Detailed tables: [`docs/RESULTS.md`](docs/RESULTS.md) · Interpretation: [`docs/
 
 | Thread | Status | Cost |
 |--------|--------|------|
-| **Corpus floor method** (IV-E) | **Done**  -  13/21 corpora pass; FloorDB + law probes | CPU, ~3 min |
-| **Within-run shape law** on OWT | **Open**  -  sharply pre-registered; one bounded experiment away | ~25-35 A100-h incremental |
+| **Corpus floor method** (IV-E) | **Done** - 13/21 corpora pass; FloorDB + law probes | CPU, ~3 min |
+| **Within-run shape law** on OWT | **Open** - sharply pre-registered; one bounded experiment away | ~25-35 A100-h incremental |
 
 Do not merge these claims. See [`docs/PUBLICATION.md` §5](docs/PUBLICATION.md).
 
@@ -68,7 +68,7 @@ Do not merge these claims. See [`docs/PUBLICATION.md` §5](docs/PUBLICATION.md).
 
 ## Quick start
 
-### Zero GPU  -  log-only floor recovery (IV-E)
+### Zero GPU - log-only floor recovery (IV-E)
 
 ```bash
 pip install numpy scipy pandas
@@ -81,7 +81,7 @@ python scripts/floor_db.py --skip-sweep
 
 Outputs: `results/pythia_chinchilla_from_logs/`, `results/meta_step2_chinchilla_from_logs/`, `results/robustness_chinchilla_e/`
 
-### GPU  -  architecture & OWT (Acts I-IV-A)
+### GPU - architecture & OWT (Acts I-IV-A)
 
 ```bash
 pip install -r requirements.txt
@@ -146,7 +146,7 @@ flowchart TD
 ## Scope and limitations
 
 - Floors are **corpus-specific model-data irreducible loss**, not Shannon entropy of text.
-- IV-E is a **method/tool** validated by holdout  -  report estimates with LOO uncertainty, not false four-decimal precision from exact-fit.
+- IV-E is a **method/tool** validated by holdout - report estimates with LOO uncertainty, not false four-decimal precision from exact-fit.
 - vMF is prior art; contribution is **matched measurement**, not inventing spherical heads.
 - vMF changes **convergence trajectory**, not necessarily asymptotic floor.
 - H1 Zipf-angle weak; H4 radial structure confirmed.

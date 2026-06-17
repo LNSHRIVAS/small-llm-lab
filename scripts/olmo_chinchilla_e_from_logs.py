@@ -259,7 +259,7 @@ def write_report(tri: dict) -> str:
             f"(alpha={t3['alpha_used']:.4f})",
             f"  Three-point fixed alpha=0.34:    E_true = {t34['E_true']:.4f} nats",
             "",
-            "NOTE: 7B/13B curves are short W&B samples — prefer Meta Step-2 or Pythia for holdout gates.",
+            "NOTE: 7B/13B curves are short W&B samples - prefer Meta Step-2 or Pythia for holdout gates.",
             "",
             "=" * 72,
         ]

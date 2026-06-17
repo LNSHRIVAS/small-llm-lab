@@ -1,4 +1,4 @@
-# Publication narrative  -  Small Language Model Architecture Lab
+# Publication narrative - Small Language Model Architecture Lab
 
 This document is the **GitHub-facing research story**: what was done, what was found, what failed, and how each claim is backed. 
 Shorter tables live in [`RESULTS.md`](RESULTS.md). Interpretation and limits in [`FINDINGS.md`](FINDINGS.md). Audit trail in [`VERIFICATION.md`](VERIFICATION.md). Step-by-step reproduction in [`REPRO.md`](REPRO.md). GitHub release checklist in [`PUBLISHING.md`](PUBLISHING.md).
@@ -14,7 +14,7 @@ The principal **architecture result** is a head-only matched comparison at 9.96M
 The principal **scaling result** is twofold and should not be conflated:
 
 1. **Confirmed (zero GPU):** corpus-specific irreducible loss floors can be recovered from **public training ladders** via fixed-α Chinchilla-E triangulation, with holdout validation on Pythia/The Pile and Meta Step-2.
-2. **Open (GPU sweep):** whether a **shared within-run decay shape** \( \mathrm{CE} = C_\infty(N) + (H - C_\infty(N))(1 + t/\tau)^{-p} \) simultaneously locks the triangulated OWT floor at n≥5 sizes.
+2. **Open (GPU sweep):** whether a **shared within-run decay shape** `CE = C_inf(N) + (H - C_inf(N)) * (1 + t/tau)^(-p)` simultaneously locks the triangulated OWT floor at n≥5 sizes.
 
 I report negative outcomes with the same rigor: β_rep ∝ √N failed; A_floor ∝ V²/T is not supported after protocol audit; Zipf-angle hypothesis H1 was weak at epoch 8.
 
@@ -33,7 +33,7 @@ Each act began with a written hypothesis, a quantitative prediction, and a pass/
 | III (vMF) | Faster convergence vs softmax at matched params | Δ val PPL @ ep2 |
 | IV-A (OWT) | E_true in band **2.485-2.855 nats** | Triangulation + PPL ladder |
 
-When a gate fails, I record the failure. When a protocol is invalid, I audit and retract  -  the original V²/T “falsification” at slope +0.183 was withdrawn after discovering fixed token budgets across T variants.
+When a gate fails, I record the failure. When a protocol is invalid, I audit and retract - the original V²/T “falsification” at slope +0.183 was withdrawn after discovering fixed token budgets across T variants.
 
 ### 1.2 Evidence hierarchy
 
@@ -55,7 +55,7 @@ Cross-checks are documented in [`VERIFICATION.md`](VERIFICATION.md). I do not tr
 
 ---
 
-## 2. Act I  -  Embedding geometry (E4 factorization)
+## 2. Act I - Embedding geometry (E4 factorization)
 
 **Question:** At fixed depth and width, does output embedding width (`k_out`) dominate input width (`k_in`) for perplexity?
 
@@ -63,13 +63,13 @@ Cross-checks are documented in [`VERIFICATION.md`](VERIFICATION.md). I do not tr
 
 **Finding:** From marginal rates across v13-v15, one `k_out` dimension yields **11.2×** more perplexity improvement per dimension than one `k_in` dimension (0.201 vs 0.018 PPL/dim).
 
-**Boundary test (v16):** k_in = k_out = 96. Pre-registered test PPL **45.7 ± 2**; observed **46.46** (confirmed). Naive linear extrapolation to 43.77 was rejected  -  the optimum sits in a **boundary region**, not at a sharp interior point.
+**Boundary test (v16):** k_in = k_out = 96. Pre-registered test PPL **45.7 ± 2**; observed **46.46** (confirmed). Naive linear extrapolation to 43.77 was rejected - the optimum sits in a **boundary region**, not at a sharp interior point.
 
 **Artifacts:** notebooks `01`-`04`; [`act1_embedding_geometry.json`](../results/summaries/act1_embedding_geometry.json).
 
 ---
 
-## 3. Act II  -  Optimizer stack (Muon + SparseMuon)
+## 3. Act II - Optimizer stack (Muon + SparseMuon)
 
 **Question:** Does the v31 Muon + per-row SparseMuon stack beat the AdamW-only baseline at matched architecture?
 
@@ -81,7 +81,7 @@ Cross-checks are documented in [`VERIFICATION.md`](VERIFICATION.md). I do not tr
 
 ---
 
-## 4. Act III  -  vMF head vs softmax (head-only matched)
+## 4. Act III - vMF head vs softmax (head-only matched)
 
 **Question:** With architecture, data, and optimizer fixed, does replacing only the output head accelerate convergence?
 
@@ -93,7 +93,7 @@ Cross-checks are documented in [`VERIFICATION.md`](VERIFICATION.md). I do not tr
 |------:|------------:|--------:|--:|
 | 1 | 67.11 | **61.76** | −5.35 |
 | 2 | 57.05 | **52.82** | −4.23 (−7.4%) |
-| 8¹ |  -  | val **42.72**, test **39.20** |  -  |
+| 8¹ | - | val **42.72**, test **39.20** | - |
 
 ¹ Extended vMF run (notebook `07`); matched-epoch claims use the v41 A/B pair.
 
@@ -117,13 +117,13 @@ I interpret vMF as a **preconditioner**: it changes the path toward a body-deter
 
 ---
 
-## 5. Act IV  -  Scaling and irreducible loss
+## 5. Act IV - Scaling and irreducible loss
 
 Act IV splits into **three threads** that answer different questions.
 
-### 5.1 IV-A  -  Chinchilla-E triangulation on OpenWebText (trained here)
+### 5.1 IV-A - Chinchilla-E triangulation on OpenWebText (trained here)
 
-**Question:** Under the Chinchilla ansatz \(E_{\mathrm{app}}(N) \approx E_{\mathrm{true}} + A N^{-\alpha}\), what is the OWT floor?
+**Question:** Under the Chinchilla ansatz E_app(N) ≈ E_true + A * N^(-alpha), what is the OWT floor?
 
 **Protocol:** Three matched softmax models (10M / 25M / 51M), GPT-2 tokenizer, **500M tokens/epoch × 6 epochs**, A100 40GB.
 
@@ -139,20 +139,20 @@ Act IV splits into **three threads** that answer different questions.
 
 **Artifacts:** notebook `08`; [`Experiments/triangulation.txt`](../experiments/triangulation.txt); [`act4_scaling_laws.json`](../results/summaries/act4_scaling_laws.json).
 
-### 5.2 IV-E  -  Log-only floor recovery (zero training) ★ headline addition
+### 5.2 IV-E - Log-only floor recovery (zero training) ★ headline addition
 
 **Question:** If public model ladders already exist, can we estimate the corpus floor **without training anything**?
 
-**Method:** Download published step-wise training losses → build pseudo-epoch \(C^*\) curves → triangulate \(E_{\mathrm{true}}\) with **fixed α = 0.34** → holdout + leave-one-out gates.
+**Method:** Download published step-wise training losses → build pseudo-epoch C* curves → triangulate E_true with **fixed α = 0.34** → holdout + leave-one-out gates.
 
 | Corpus | Source | E_true (α=0.34) | Holdout | LOO | Verdict |
 |--------|--------|----------------:|---------|-----|---------|
 | The Pile | Pythia 70M-410M TSVs | **1.29 nats** | Δ=0.079 | std=0.144 | **Pass** |
 | Meta Step-2 | Public scaling CSVs | **1.65 nats** | Δ=0.024 | std=0.067 | **Pass** |
-| OpenWebText | Act IV-A (our runs) | **2.49 nats** |  -  |  -  | Reference |
+| OpenWebText | Act IV-A (our runs) | **2.49 nats** | - | - | Reference |
 | Dolma / OLMo | Partial public logs | ~2.19 | fail | fail | Truncated 13B log |
 
-**Synthetic pipeline check (Colab):** known Zipf \(H = 5.640\) nats → recovered **5.638** nats (|Δ| = 0.002).
+**Synthetic pipeline check (Colab):** known Zipf H = 5.640 nats → recovered **5.638** nats (|Δ| = 0.002).
 
 **Interpretation:** The irreducible floor is **corpus-specific**, not universal. Three independent lines (Pythia ~1.3, Step-2/MassiveText-scale ~1.7, OWT ~2.5) agree on “different corpora → different floors,” not on a single global constant. Failures track **preconditions** (truncated logs, free-α bound hits), not noise.
 
@@ -166,17 +166,17 @@ python scripts/meta_step2_chinchilla_e_from_logs.py
 python scripts/chinchilla_e_robustness.py
 ```
 
-### 5.3 IV-B / IV-C  -  Rejected or unsupported scaling forms
+### 5.3 IV-B / IV-C - Rejected or unsupported scaling forms
 
 | Hypothesis | Outcome |
 |------------|---------|
-| β_rep ∝ √N | **Failed**  -  fitted **N^−0.084**, not N^0.5 |
-| A_floor ∝ V²/T | **Not supported**  -  original +0.183 slope: invalid protocol; corrected −0.25 with flat A vs varying V²/T |
-| C* = H + c·(V²/T) | **Falsified**  -  +0.85 nats deviation by epoch 8 |
+| β_rep ∝ √N | **Failed** - fitted **N^−0.084**, not N^0.5 |
+| A_floor ∝ V²/T | **Not supported** - original +0.183 slope: invalid protocol; corrected −0.25 with flat A vs varying V²/T |
+| C* = H + c·(V²/T) | **Falsified** - +0.85 nats deviation by epoch 8 |
 
-### 5.4 Open thread  -  Universal within-run shape (optional GPU sweep)
+### 5.4 Open thread - Universal within-run shape (optional GPU sweep)
 
-Separate from IV-E. At **n = 3** OWT models, shared decay exponent \(p \approx 0.93\) fits nearly as well as free per-size \(p\) (ΔR² ≈ 0.003), but recovering the triangulated floor under fixed shared \(p\) drifts to **2.744** vs **2.485** (+0.26 nats). Three points cannot separate “universal shape” from “where is the floor.”
+Separate from IV-E. At **n = 3** OWT models, shared decay exponent p ≈ 0.93 fits nearly as well as free per-size p (ΔR² ≈ 0.003), but recovering the triangulated floor under fixed shared p drifts to **2.744** vs **2.485** (+0.26 nats). Three points cannot separate “universal shape” from “where is the floor.”
 
 **Pre-registered resolution:** train **two additional sizes** (≈100M + ≈250M; 5 total) with the Act IV protocol; confirm if shared-p ΔR² < 0.01 **and** recovered E_true ∈ [2.39, 2.58]. Estimated **~25-35 extra A100-hours** (you already have the first three models).
 
@@ -200,7 +200,7 @@ flowchart TB
     R2["A_floor ~ V²/T"]
     R3["H1 Zipf angle @ ep8"]
   end
-  subgraph open ["Open  -  optional GPU"]
+  subgraph open ["Open - optional GPU"]
     O1["Shared within-run shape p at n>=5"]
   end
   A3 --> A4
@@ -214,7 +214,7 @@ flowchart TB
 
 | Path | Purpose |
 |------|---------|
-| [`README.md`](../README.md) | Landing page  -  start here |
+| [`README.md`](../README.md) | Landing page - start here |
 | [`docs/PUBLICATION.md`](PUBLICATION.md) | This narrative |
 | [`docs/RESULTS.md`](RESULTS.md) | All numbers, tabulated |
 | [`docs/FINDINGS.md`](FINDINGS.md) | Claims, limits, corrections |
@@ -235,12 +235,12 @@ Supplementary bounded-law investigations live under `archive/internal/` (gitigno
 
 ## 8. Suggested reading order
 
-1. [`README.md`](../README.md)  -  5-minute overview  
-2. **This document**  -  full story  
-3. [`LOG_ONLY_TRIANGULATION_RESULTS.md`](LOG_ONLY_TRIANGULATION_RESULTS.md)  -  if you care about zero-GPU floor recovery  
-4. [`RESULTS.md`](RESULTS.md)  -  if you need exact tables  
-5. [`VERIFICATION.md`](VERIFICATION.md)  -  if you audit provenance  
-6. [`REPRO.md`](REPRO.md)  -  if you rerun  
+1. [`README.md`](../README.md) - 5-minute overview  
+2. **This document** - full story  
+3. [`LOG_ONLY_TRIANGULATION_RESULTS.md`](LOG_ONLY_TRIANGULATION_RESULTS.md) - if you care about zero-GPU floor recovery  
+4. [`RESULTS.md`](RESULTS.md) - if you need exact tables  
+5. [`VERIFICATION.md`](VERIFICATION.md) - if you audit provenance  
+6. [`REPRO.md`](REPRO.md) - if you rerun  
 
 ---
 
@@ -271,6 +271,6 @@ Replace author and URL before publishing.
 
 ## 11. Contact and contribution
 
-Issues and PRs welcome for reproduction fixes, additional public-log corpora, and documentation clarity. Do not open PRs that expand scope into unrelated architecture ablations  -  this repo is a **curated public subset** of a larger program.
+Issues and PRs welcome for reproduction fixes, additional public-log corpora, and documentation clarity. Do not open PRs that expand scope into unrelated architecture ablations - this repo is a **curated public subset** of a larger program.
 
 License: MIT (see [`LICENSE`](../LICENSE) if present; add before first public push).

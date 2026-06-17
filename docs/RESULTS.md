@@ -169,7 +169,7 @@ Fixed (H, c) extrapolation of C* = H + c·(V²/T): deviation from prediction rea
 
 ## Act IV-E: Log-only Chinchilla-E triangulation (zero training)
 
-**Goal:** Estimate corpus-specific irreducible loss \(E_{\text{true}}\) from **published training logs** on existing model ladders — no GPU, no new runs. Validates the same triangulation ansatz as Act IV-A on independent public data.
+**Goal:** Estimate corpus-specific irreducible loss E_true from **published training logs** on existing model ladders - no GPU, no new runs. Validates the same triangulation ansatz as Act IV-A on independent public data.
 
 **Full write-up:** [`docs/LOG_ONLY_TRIANGULATION_RESULTS.md`](LOG_ONLY_TRIANGULATION_RESULTS.md).
 
@@ -183,7 +183,7 @@ Fixed (H, c) extrapolation of C* = H + c·(V²/T): deviation from prediction rea
 | Pythia-160M | 157.1M | 2.4607 | 2.4990 |
 | Pythia-410M | 405.7M | 2.1033 | 2.1780 |
 
-**E_true (fixed α = 0.34): 1.2919 nats.** Holdout 410M ΔE_app = 0.079; LOO std = 0.144 — both pass pre-registered gates.
+**E_true (fixed α = 0.34): 1.2919 nats.** Holdout 410M ΔE_app = 0.079; LOO std = 0.144 - both pass pre-registered gates.
 
 **Artifacts:** [`results/pythia_chinchilla_from_logs/`](../results/pythia_chinchilla_from_logs/).
 
@@ -197,13 +197,13 @@ Fixed (H, c) extrapolation of C* = H + c·(V²/T): deviation from prediction rea
 | Step2-h1024-L16 | 393.6M | 1.9596 | 2.2456 |
 | Step2-h1280-L20 | 699.6M | 1.8929 | 2.1192 |
 
-**E_true (fixed α = 0.34): 1.6493 nats.** Holdout h1280 Δ = 0.024; LOO std = 0.067 — pass.
+**E_true (fixed α = 0.34): 1.6493 nats.** Holdout h1280 Δ = 0.024; LOO std = 0.067 - pass.
 
 **Artifacts:** [`results/meta_step2_chinchilla_from_logs/`](../results/meta_step2_chinchilla_from_logs/).
 
 ### IV-E-3: Synthetic pipeline check (Colab)
 
-Known Zipf \(H = 5.640\) nats; recovered \(E_{\text{true}} = 5.638\) nats (|Δ| = 0.002). Run on Colab; `results/synthetic_chinchilla/triangulation.json` not yet copied locally.
+Known Zipf H = 5.640 nats; recovered E_true = 5.638 nats (|Delta| = 0.002). Run on Colab; `results/synthetic_chinchilla/triangulation.json` not yet copied locally.
 
 ### IV-E-4: Robustness battery
 

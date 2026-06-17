@@ -1,4 +1,4 @@
-# Public ladder catalog  -  where the method holds (and where it breaks)
+# Public ladder catalog - where the method holds (and where it breaks)
 
 **Purpose:** Map publicly available model-size ladders suitable for log-only Chinchilla-E triangulation, record what we tested, and list high-value sources still to pull.
 
@@ -19,10 +19,10 @@ Output: `results/public_ladder_sweep/sweep_report.txt`
 Requirements for a **fair** floor-estimation test:
 
 1. **Same corpus + stack** across all sizes (matched data order, tokenizer, training recipe).
-2. **Step-level train CE** (or equivalent) logged deep enough to estimate late **C\*** / \(E_{\text{app}}\).
-3. **≥3 sizes** (prefer ≥5) on a monotonic \(N\) ladder.
-4. **Holdout gate:** fit on all but largest size; predict largest \(E_{\text{app}}\) with Δ < 0.15 nats.
-5. **LOO gate:** leave-one-out \(E_{\text{true}}\) std < 0.15 nats.
+2. **Step-level train CE** (or equivalent) logged deep enough to estimate late **C\*** / E_app.
+3. **≥3 sizes** (prefer ≥5) on a monotonic N ladder.
+4. **Holdout gate:** fit on all but largest size; predict largest E_app with Δ < 0.15 nats.
+5. **LOO gate:** leave-one-out E_true std < 0.15 nats.
 
 This tests the **method**, not Shannon entropy of text.
 
@@ -47,20 +47,20 @@ This tests the **method**, not Shannon entropy of text.
 | Kempner OLMo / slimpajama-chunk1 (iso-flop) | 73M-614M | 14 | 2.81 ± 0.02 | 0.084 | ✗ |
 | Kempner OLMo / starcoder (iso-flop) | 111M-778M | 13 | 1.26 ± 0.01 | 0.045 | ✗ |
 | Meta OPT / PILE @ 10B tokens | 125M-175B | 6 | 3.22 ± 0.05 | 0.136 | ✗ |
-| OWT (trained, flat E_app) | 10M-51M | 3 | 2.49 ± 0.01 |  -  | ✗* |
+| OWT (trained, flat E_app) | 10M-51M | 3 | 2.49 ± 0.01 | - | ✗* |
 
-\* OWT summary uses published flat \(E_{\text{app}}\) only (no epoch curves in repo); holdout looks good but sanity/LOO are not a fair test.
+\* OWT summary uses published flat E_app only (no epoch curves in repo); holdout looks good but sanity/LOO are not a fair test.
 
 **Score (vendored logs only): 7 / 13 corpora pass holdout + LOO + sanity** (excluding OWT as reference-only). With full Step-2 fetched grid (30 CSVs): **7 / 9** on matched-token Meta ladders alone.
 
 ### Interpretation
 
 - **Three independent corpus families** validate the method: **Pile (Pythia)**, **Step-2 English web mix (Meta Farseer)**, and **Kempner OLMo** (fineweb / fineweb-edu / smollm on iso-flop ladders).
-- Step-2 floors cluster **≈1.55-1.65 nats** across token budgets (ti134698-ti172881)  -  same corpus family, consistent triangulation.
+- Step-2 floors cluster **≈1.55-1.65 nats** across token budgets (ti134698-ti172881) - same corpus family, consistent triangulation.
 - Pile floor **≈1.48 nats** sits below Step-2, as expected for a different corpus/stack (not comparable as “entropy”).
-- Kempner **fineweb-edu ≈ 2.50 nats** aligns with our OWT reference (~2.5)  -  different stacks, similar web-edu difficulty band; not proof they are the same corpus.
+- Kempner **fineweb-edu ≈ 2.50 nats** aligns with our OWT reference (~2.5) - different stacks, similar web-edu difficulty band; not proof they are the same corpus.
 - **OLMo fails** when the largest ladder run (13B) has a **truncated** public log (~12k steps).
-- **OPT / code iso-flop failures** show the gates working: non-monotonic \(E_{\text{app}}(N)\) breaks the Chinchilla separable ansatz even when holdout Δ is small.
+- **OPT / code iso-flop failures** show the gates working: non-monotonic E_app(N) breaks the Chinchilla separable ansatz even when holdout Δ is small.
 
 ---
 
@@ -91,8 +91,8 @@ This tests the **method**, not Shannon entropy of text.
 
 | Source | Why skip |
 |--------|----------|
-| **LR-Transfer-Trajectory** (HF) | Width/LR grid, ~2k steps  -  too shallow for \(C^*\) floor |
-| **Marin optimizer sweeps** (`MR-sweep-130m-2B-*`) | Fixed 130M, optimizer ablations  -  not a size ladder |
+| **LR-Transfer-Trajectory** (HF) | Width/LR grid, ~2k steps - too shallow for C* floor |
+| **Marin optimizer sweeps** (`MR-sweep-130m-2B-*`) | Fixed 130M, optimizer ablations - not a size ladder |
 | **Chinchilla original 400-run grid** | Proprietary MassiveText + no public logs |
 | **datablations contour** | Iso-loss contours in (N,D), not matched multi-size ladder |
 
@@ -102,8 +102,8 @@ This tests the **method**, not Shannon entropy of text.
 
 1. **Vendor remaining Step-2 `ti*` tags** (ti139508, ti153451, ti172881) for standalone 7/9 matched-token score without sibling repo.
 2. **Expand Pythia W&B exports** for 1B + 2.8B with **complete** 143k-step curves (filter bad exports like current `Pythia-2.8b.csv` at 22k steps).
-3. **SmolLM2 W&B fetch**  -  fourth independent corpus family on Fineweb-edu (may overlap Kempner fineweb-edu band).
-4. **Copy synthetic triangulation.json** from Colab  -  closes the known-H validation gate in `chinchilla_e_robustness.py`.
+3. **SmolLM2 W&B fetch** - fourth independent corpus family on Fineweb-edu (may overlap Kempner fineweb-edu band).
+4. **Copy synthetic triangulation.json** from Colab - closes the known-H validation gate in `chinchilla_e_robustness.py`.
 
 ---
 

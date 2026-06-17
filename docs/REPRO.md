@@ -97,7 +97,7 @@ pip install numpy scipy pandas
 # Pythia / The Pile (downloads TSVs on first run)
 python scripts/pythia_chinchilla_e_from_logs.py
 
-# Meta FAIR Step-2 (needs data/public_logs/meta_step2/*.csv  -  vendored in repo)
+# Meta FAIR Step-2 (needs data/public_logs/meta_step2/*.csv - vendored in repo)
 python scripts/meta_step2_chinchilla_e_from_logs.py
 
 # Optional: OLMo / Dolma (exploratory; 13B log too short for gates)
@@ -113,8 +113,8 @@ python scripts/chinchilla_e_robustness.py
 |--------|------------------------:|---------|------|
 | Pythia / The Pile | **1.48 ± 0.06 nats** (LOO std) | 6.9B Δ=0.003 | PASS |
 | Meta Step-2 | **1.65 ± 0.07 nats** | h1280 Δ=0.024 | PASS |
-| OWT (Act IV-A, trained) | **≈2.5 nats** |  -  | reference |
-| OLMo / Dolma | ~2.2 nats |  -  | FAIL (truncated log) |
+| OWT (Act IV-A, trained) | **≈2.5 nats** | - | reference |
+| OLMo / Dolma | ~2.2 nats | - | FAIL (truncated log) |
 
 Outputs: `results/pythia_chinchilla_from_logs/`, `results/meta_step2_chinchilla_from_logs/`, `results/robustness_chinchilla_e/`.
 

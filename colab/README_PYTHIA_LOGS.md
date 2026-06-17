@@ -5,7 +5,7 @@ pip install numpy scipy pandas
 python scripts/pythia_chinchilla_e_from_logs.py
 ```
 
-**Runtime:** ~30–60 seconds (downloads ~12MB TSV once, then pure CPU).
+**Runtime:** ~30-60 seconds (downloads ~12MB TSV once, then pure CPU).
 
 **Output:** `results/pythia_chinchilla_from_logs/validation_report.txt`
 
@@ -34,12 +34,12 @@ Compare:
 - OWT (you trained): E_true **~2.49 nats**
 - Pythia logs (this script): E_true **~1.29 nats**
 
-Different corpora, different stacks — the point is the **same cheap machinery** runs everywhere.
+Different corpora, different stacks - the point is the **same cheap machinery** runs everywhere.
 
 ## Extend the ladder
 
-Public TSV today: `70m`, `160m`, `410m`. For 1.4B–12B, point W&B export at `eleutherai/pythia` (see EleutherAI `hmm-training-maps/training_losses/download.py`) and drop CSVs in `results/pythia_chinchilla_from_logs/cache/`.
+Public TSV today: `70m`, `160m`, `410m`. For 1.4B-12B, point W&B export at `eleutherai/pythia` (see EleutherAI `hmm-training-maps/training_losses/download.py`) and drop CSVs in `results/pythia_chinchilla_from_logs/cache/`.
 
 ## Colab
 
-Open [`pythia_floor_from_logs.ipynb`](pythia_floor_from_logs.ipynb) — one cell, no GPU.
+Open [`pythia_floor_from_logs.ipynb`](pythia_floor_from_logs.ipynb) - one cell, no GPU.

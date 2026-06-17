@@ -27,7 +27,7 @@ Latest sweep: **13 / 21 pass** holdout + LOO + sanity (`results/public_ladder_sw
 |------|--------|
 | 14M-410M | EleutherAI GitHub TSV (auto-download to cache) |
 | 1.4B, 6.9B | `pythia/Pythia-1_4b.csv`, `Pythia-6.9b.csv` |
-| 1B (optional) | `pythia/Pythia-1b.csv`  -  **not** in default 6-size ladder (protocol bump vs 410M) |
+| 1B (optional) | `pythia/Pythia-1b.csv` - **not** in default 6-size ladder (protocol bump vs 410M) |
 
 ## Meta Step-2
 
@@ -38,7 +38,7 @@ Override: `META_STEP2_LOG_DIR=/path/to/csvs`
 ## Kempner + OPT + Cerebras
 
 - Kempner: single `kempner/kempner_sweep.csv` (~529 finished runs)
-- OPT: `opt/opt_trajectories.csv`  -  scan finds monotonic token slice that passes
+- OPT: `opt/opt_trajectories.csv` - scan finds monotonic token slice that passes
 - Cerebras: hardcoded 7-point PILE eval in `point_ladder_chinchilla_e.py` (no files needed)
 
 Optional override: `META_STEP2_LOG_DIR=data/public_logs/meta_step2`

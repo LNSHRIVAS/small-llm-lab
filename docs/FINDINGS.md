@@ -120,11 +120,11 @@ Approximately **3,369 of 50,257** GPT-2 vocabulary tokens can receive zero input
 
 ## 7. Confirmed: cheap corpus-floor recovery from public logs (Act IV-E)
 
-This is the **strongest closed result** in the scaling arc  -  separate from the open bounded-law shape question (§8).
+This is the **strongest closed result** in the scaling arc - separate from the open bounded-law shape question (§8).
 
 ### Claim (confirmed)
 
-The irreducible training loss floor is **corpus-specific** (not one universal number), and you can **estimate it from existing public training ladders at zero training cost** via fixed-α Chinchilla-E triangulation  -  with holdout validation.
+The irreducible training loss floor is **corpus-specific** (not one universal number), and you can **estimate it from existing public training ladders at zero training cost** via fixed-α Chinchilla-E triangulation - with holdout validation.
 
 | Corpus family | E_true (α=0.34) | n | Holdout Δ | LOO std | Verdict |
 |---------------|----------------:|--:|----------:|--------:|---------|
@@ -133,47 +133,49 @@ The irreducible training loss floor is **corpus-specific** (not one universal nu
 | Meta Step-2 (ti134698, default) | **1.65 ± 0.07 nats** | 3 | 0.024 | 0.07 | pass |
 | Kempner OLMo / fineweb-edu (iso-flop) | **2.50 ± 0.01 nats** | 13 | 0.060 | 0.01 | pass |
 | Kempner OLMo / smollm-corpus (iso-flop) | **2.66 ± 0.03 nats** | 13 | 0.101 | 0.03 | pass |
-| OpenWebText (our runs) | **2.49 nats** | 3 |  -  |  -  | reference |
-| Chinchilla paper (MassiveText) | ~1.69 nats |  -  |  -  |  -  | not re-runnable |
+| OpenWebText (our runs) | **2.49 nats** | 3 | - | - | reference |
+| Chinchilla paper (MassiveText) | ~1.69 nats | - | - | - | not re-runnable |
 
-**Batch sweep (vendored logs): 7 / 13 corpora pass** holdout + LOO + sanity (`python scripts/public_ladder_sweep.py`). Failures are **diagnostic** (truncated OLMo 13B log; iso-flop ladders with non-monotonic \(E_{\text{app}}(N)\); OPT PILE at 10B tokens shows a mid-ladder bump).
+**Batch sweep (vendored logs): 7 / 13 corpora pass** holdout + LOO + sanity (`python scripts/public_ladder_sweep.py`). Failures are **diagnostic** (truncated OLMo 13B log; iso-flop ladders with non-monotonic E_app(N); OPT PILE at 10B tokens shows a mid-ladder bump).
 
 Full protocol and tables: [`LOG_ONLY_TRIANGULATION_RESULTS.md`](LOG_ONLY_TRIANGULATION_RESULTS.md) · catalog: [`PUBLIC_LADDER_CATALOG.md`](PUBLIC_LADDER_CATALOG.md).
 
-### Finding vs “law”  -  how to read the multi-corpus sweep
+### Finding vs “law” - how to read the multi-corpus sweep
 
-**Yes, it is a finding  -  a strong one:**
+**Yes, it is a finding - a strong one:**
 
-1. **Method finding:** When public logs satisfy a matched ladder (same corpus/stack, deep curves, monotonic \(E_{\text{app}}\downarrow\) with \(N\)), fixed-α Chinchilla triangulation **predicts the largest model’s loss out of sample** with Δ often \< 0.10 nats and LOO std \< 0.07. That held on **three independent corpus families** (Pile/Pythia, Meta Step-2 English mix, Kempner OLMo on fineweb/smollm) without retraining anything.
+1. **Method finding:** When public logs satisfy a matched ladder (same corpus/stack, deep curves, monotonic E_app decreases with N), fixed-α Chinchilla triangulation **predicts the largest model’s loss out of sample** with Δ often \< 0.10 nats and LOO std \< 0.07. That held on **three independent corpus families** (Pile/Pythia, Meta Step-2 English mix, Kempner OLMo on fineweb/smollm) without retraining anything.
 
-2. **Ansatz re-validation:** The separable form \(E_{\text{app}}(N) \approx E_{\text{true}} + A N^{-\alpha}\) with \(\alpha \approx 0.34\) is not new (Hoffmann et al.); what the sweep adds is **out-of-sample confirmation on messy public logs**, not discovery of a new functional form.
+2. **Ansatz re-validation:** The separable form E_app(N) ≈ E_true + A * N^(-alpha) with alpha ≈ 0.34 is not new (Hoffmann et al.); what the sweep adds is **out-of-sample confirmation on messy public logs**, not discovery of a new functional form.
 
 **No, it is not a single universal “entropy law”:**
 
-- **\(E_{\text{true}}\) is corpus-specific:** Pile ≈ 1.48, Step-2 ≈ 1.55-1.65, fineweb-edu ≈ 2.50, OWT ≈ 2.5  -  the spread is the point, not noise to average away.
+- **E_true is corpus-specific:** Pile ≈ 1.48, Step-2 ≈ 1.55-1.65, fineweb-edu ≈ 2.50, OWT ≈ 2.5 - the spread is the point, not noise to average away.
 - **Failures are real:** When logs are truncated (OLMo 13B) or the ladder protocol breaks monotonicity (iso-flop Kempner on code corpora; OPT at fixed 10B tokens), gates **correctly reject** the fit. A universal law would not need quality gates.
 - **Not Shannon entropy:** All numbers are irreducible **training CE** under a given tokenizer and stack.
 
-**If you want one sentence for a paper:** *We confirm a portable, zero-GPU procedure to estimate corpus-specific irreducible CE floors from public scaling ladders, and re-validate the Chinchilla power-law ansatz out-of-sample on three corpus families  -  while showing that floor values themselves are not universal.*
+**If you want one sentence for a paper:** *We confirm a portable, zero-GPU procedure to estimate corpus-specific irreducible CE floors from public scaling ladders, and re-validate the Chinchilla power-law ansatz out-of-sample on three corpus families - while showing that floor values themselves are not universal.*
 
 ### What this is not
 
 - Not Shannon entropy of raw text (model-corpus irreducible CE).
-- Not proof of a **universal within-run decay shape** across sizes  -  that is §8.
+- Not proof of a **universal within-run decay shape** across sizes - that is §8.
 
 ---
 
 ## 8. Open: universal within-run bounded law (needs 6-size OWT sweep)
 
-**Separate question.** At n=3 OWT models, shared shape exponent \(p \approx 0.93\) fits almost as well as free per-size \(p\) (ΔR² ≈ 0.003), **but** recovering the triangulated floor \(E_{\text{true}} \approx 2.485\) under that shared \(p\) drifts to **2.744** (+0.26 nats). At three sizes, **shape and floor trade off**  -  you cannot test both simultaneously.
+**Separate question.** At n=3 OWT models, shared shape exponent p ≈ 0.93 fits almost as well as free per-size p (ΔR² ≈ 0.003), **but** recovering the triangulated floor E_true ≈ 2.485 under that shared p drifts to **2.744** (+0.26 nats). At three sizes, **shape and floor trade off** - you cannot test both simultaneously.
 
 **Pre-registered test:** train **6 sizes** (10M-500M, same Act IV protocol), fit
 
-\[
-\mathrm{CE} = C_\infty(N) + (H - C_\infty(N))(1 + t/\tau)^{-p}
-\]
+```text
 
-with **H fixed**, **p shared**, **α=0.34** floor law. **Confirm** if ΔR² < 0.01 *and* recovered \(E_{\text{true}} \in [2.39, 2.58]\). **Reject** if shared \(p\) forces floor off triangulation by >0.10 nat, or ΔR² ≥ 0.01.
+CE = C_inf(N) + (H - C_inf(N)) * (1 + t/tau)^(-p)
+
+```
+
+with **H fixed**, **p shared**, **α=0.34** floor law. **Confirm** if ΔR² < 0.01 *and* recovered E_true in [2.39, 2.58]. **Reject** if shared p forces floor off triangulation by >0.10 nat, or ΔR² ≥ 0.01.
 
 Gates and protocol: [`PREREGISTER_owt_6size_bounded_law.md`](PREREGISTER_owt_6size_bounded_law.md). Prior n=3 analysis: `archive/internal/LOCKED_OWT_TWO_ANCHOR_INVESTIGATION.md`.
 

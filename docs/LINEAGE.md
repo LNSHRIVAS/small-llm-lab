@@ -11,13 +11,13 @@ This repository is a curated public subset of a larger private program (v13 thro
 | v15 | k=96/48 minimum k_out | Yes | notebook `03` |
 | v16 | k=96/96 shape-match | Yes | notebook `04` |
 | v17 | k=80/80 smaller budget | No | private |
-| v18–v25 | MoS / MTP variants | No | private |
-| v26–v30 | AdamW to Muon; v30 falsified | No | private |
+| v18-v25 | MoS / MTP variants | No | private |
+| v26-v30 | AdamW to Muon; v30 falsified | No | private |
 | v31 | Per-row SparseMuon | Yes | notebook `05`, `v31_sparse_muon_train.py` |
-| v32 | Zipf diagnostics + vMF head | Yes | notebooks `06`–`07`, `v32_zipf_diagnostics.py` |
-| v33–v36 | Ablations, tiered head, phase gate | No | private / failed gates |
+| v32 | Zipf diagnostics + vMF head | Yes | notebooks `06`-`07`, `v32_zipf_diagnostics.py` |
+| v33-v36 | Ablations, tiered head, phase gate | No | private / failed gates |
 | v37 | GGRA rare attention | No | incomplete; local only |
-| v38–v40 | Routed CE, contrastive, reweight | No | private |
+| v38-v40 | Routed CE, contrastive, reweight | No | private |
 | v41 | vMF head-only A/B vs softmax | Yes | `v41_vmf_concentrated.py`, `v32_standard_softmax_comparison.py` |
 
 ## Rationale for exclusions

@@ -17,7 +17,7 @@ Reading order for GitHub visitors and reviewers.
 
 | Topic | Documents |
 |-------|-----------|
-| Architecture (Acts I–III) | `RESULTS.md` §I–III, `FINDINGS.md` §1–3, notebooks `01`–`07` |
+| Architecture (Acts I-III) | `RESULTS.md` §I-III, `FINDINGS.md` §1-3, notebooks `01`-`07` |
 | OWT Chinchilla-E (Act IV-A) | `RESULTS.md` §IV-A, `experiments/triangulation.txt`, notebook `08` |
 | Public-log floors (Act IV-E) | `LOG_ONLY_TRIANGULATION_RESULTS.md`, `PUBLIC_LADDER_CATALOG.md`, `HYPOTHESIS_log_only_triangulation.md` |
 | Open bounded-law sweep | `PREREGISTER_owt_6size_bounded_law.md`, `FINDINGS.md` §8 |

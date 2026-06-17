@@ -84,7 +84,7 @@ JSON summaries: [`results/summaries/`](../results/summaries/). Tabulated results
 | Hypothesis | Gate | Outcome | Source |
 |------------|------|---------|--------|
 | A_floor ∝ V²/T | log-log slope ∈ [0.5, 1.5] | Not supported; original test invalid; corrected slope −0.2525 | scaling scan |
-| C* = H + c·V²/T | delta ±0.05 nats ep3–8 | Falsified as fixed ansatz | notebook `07` |
+| C* = H + c·V²/T | delta ±0.05 nats ep3-8 | Falsified as fixed ansatz | notebook `07` |
 | β_rep ∝ √N | \|Δ\| < 0.05 | Failed; N^−0.084 | triangulation.txt |
 | H1 Zipf-angle | Pearson > 0.5 | Weak; 0.23 @ ep8 | notebook `07` |
 | H2 two-learning-problems | ratio drift | Null; 0.337 stable | notebook `07` |
@@ -103,7 +103,7 @@ I confirmed the convergence claim in a head-only, matched-epoch comparison: `v32
 
 Mechanism: head/body gradient ratio **3.78×** (softmax) vs **1.31×** (vMF); softmax epoch-1 tail CE **11.38** vs uniform **10.83**; vMF epoch-1 tail CE **9.54**.
 
-The extended v32 vMF run lacks epoch 1–2 logs in the repository (Drive checkpoints only). The first logged point is epoch 3 (val 48.91, test 44.71).
+The extended v32 vMF run lacks epoch 1-2 logs in the repository (Drive checkpoints only). The first logged point is epoch 3 (val 48.91, test 44.71).
 
 ---
 

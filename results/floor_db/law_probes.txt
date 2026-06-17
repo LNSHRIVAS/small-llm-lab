@@ -3,7 +3,7 @@ FLOORDB LAW PROBES (honest / confound-aware)
 ========================================================================
 
 Universal constant: REJECTED  spread=1.517 nats (13 passes)
-  Floors differ by >0.3 nats across passing corpora — not one universal constant.
+  Floors differ by >0.3 nats across passing corpora - not one universal constant.
 
 Kempner same-stack ordering: INCONCLUSIVE
   PASS  2.42  unknown  Kempner OLMo / slimpajama-chunk1 (iso-fl

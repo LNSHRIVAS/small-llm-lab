@@ -17,13 +17,13 @@ Use this before `git push` and `gh repo create`. Goal: a **self-contained, audit
 | IV-E results | `docs/LOG_ONLY_TRIANGULATION_RESULTS.md`, `results/pythia_*`, `results/meta_step2_*`, `results/robustness_chinchilla_e/` |
 | Act I-IV summaries | `results/summaries/act*.json`, `experiments/triangulation.txt` |
 | Reproduction | `scripts/`, `requirements.txt`, `docs/REPRO.md`, `docs/VERIFICATION.md` |
-| Historical record | `archive/colab_runs/01`-`08` (large; optional slim  -  see §4) |
+| Historical record | `archive/colab_runs/01`-`08` (large; optional slim - see §4) |
 | Colab | `colab/` notebooks + READMEs |
 | Pre-registers | `docs/PREREGISTER_*.md`, `docs/HYPOTHESIS_log_only_triangulation.md` |
 
 ### Exclude (already gitignored)
 
-- `archive/internal/`  -  bounded-law deep dives, θ sweeps, Zipf v2, etc.
+- `archive/internal/` - bounded-law deep dives, θ sweeps, Zipf v2, etc.
 - `data/cache/`, `*.pt`, checkpoints, `.wandb_api_key`
 - `scripts/owt_chinchilla/` runtime outputs
 - Private monorepo root `transformers-cult/`
@@ -37,7 +37,7 @@ Use this before `git push` and `gh repo create`. Goal: a **self-contained, audit
 
 ## 2. Pre-push hygiene
 
-- [ ] Add `LICENSE` (MIT  -  stated in README)
+- [ ] Add `LICENSE` (MIT - stated in README)
 - [ ] Replace `LNSHRIVAS` in docs and [`../../RESUME_BULLETS.md`](../../RESUME_BULLETS.md)
 - [ ] Remove junk files (e.g. `_tmp_*.csv` in repo root)
 - [ ] Run CPU validation smoke test:
@@ -77,7 +77,7 @@ data/public_logs/
 
 Pythia 14M-410M TSVs **download automatically** from EleutherAI GitHub on first run.
 
-Legacy note: `meta_step2` and `olmo` scripts fall back to sibling `chinchilla-slope-one-repro` for local monorepo dev only  -  **do not link that repo on GitHub**.
+Legacy note: `meta_step2` and `olmo` scripts fall back to sibling `chinchilla-slope-one-repro` for local monorepo dev only - **do not link that repo on GitHub**.
 
 ---
 
@@ -106,7 +106,7 @@ The root [`README.md`](../README.md) should contain:
 5. Documentation map → `docs/PUBLICATION.md`  
 6. Scope / limitations / license  
 
-Do not bury IV-E  -  it is the most **field-portable** result.
+Do not bury IV-E - it is the most **field-portable** result.
 
 ---
 
@@ -124,7 +124,7 @@ Do not bury IV-E  -  it is the most **field-portable** result.
 
 ## 7. Release narrative (GitHub Release v0.1.0)
 
-**Title:** `v0.1.0  -  Public release: Acts I-IV + log-only floor recovery`
+**Title:** `v0.1.0 - Public release: Acts I-IV + log-only floor recovery`
 
 **Body template:**
 
@@ -143,7 +143,7 @@ python scripts/chinchilla_e_robustness.py
 docs/PUBLICATION.md
 
 ## Open work
-Optional 5-size OWT sweep for within-run shape law  -  docs/PREREGISTER_owt_6size_bounded_law.md (~25-35 A100-h incremental)
+Optional 5-size OWT sweep for within-run shape law - docs/PREREGISTER_owt_6size_bounded_law.md (~25-35 A100-h incremental)
 ```
 
 ---
@@ -176,7 +176,7 @@ Log-only IV-E: **$0 GPU**.
 
 ## 10. What not to claim in the GitHub README
 
-- “Universal text entropy = X nats”  -  floors are **corpus-specific**
-- “Proved Chinchilla wrong”  -  different corpora, different stacks
-- “Universal within-run law confirmed”  -  **open** until 5-size sweep
+- “Universal text entropy = X nats” - floors are **corpus-specific**
+- “Proved Chinchilla wrong” - different corpora, different stacks
+- “Universal within-run law confirmed” - **open** until 5-size sweep
 - Numbers from the held meta-analysis paper

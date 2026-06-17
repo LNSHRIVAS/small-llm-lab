@@ -111,7 +111,7 @@ def probe_universal_constant(df: pd.DataFrame) -> dict[str, Any]:
         spread=spread,
         pooled_std=pooled_std,
         verdict="REJECTED" if spread > 0.3 else "marginal",
-        note="Floors differ by >0.3 nats across passing corpora — not one universal constant.",
+        note="Floors differ by >0.3 nats across passing corpora - not one universal constant.",
     )
 
 

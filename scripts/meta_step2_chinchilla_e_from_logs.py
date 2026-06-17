@@ -251,7 +251,7 @@ def write_report(tri: dict) -> str:
             f"(alpha={t3['alpha_used']:.4f})",
             f"  Three-point fixed alpha=0.34:    E_true = {t34['E_true']:.4f} nats",
             "",
-            "NOTE: Independent corpus/stack from Pythia/The Pile — compare floors qualitatively.",
+            "NOTE: Independent corpus/stack from Pythia/The Pile - compare floors qualitatively.",
             "",
             "=" * 72,
         ]

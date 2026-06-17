@@ -6,7 +6,7 @@ Chinchilla original runs: NOT public (MassiveText + code proprietary).
 Paper reference E on MassiveText ~ 1.69 nats (compare only).
 
 --- Synthetic validation ---
-  (skipped — no results on disk)
+  (skipped - no results on disk)
 
 --- Pythia / The Pile (public logs) ---
   E_true (fixed alpha=0.34): 1.4820 nats
@@ -36,9 +36,9 @@ Paper reference E on MassiveText ~ 1.69 nats (compare only).
   Holdout B_51M: pred E_app=3.4379  actual=3.4406  delta=0.0027  PASS=True
   LOO E_true: [2.4797, 2.4925]  std=0.0064  PASS=True (gate < 0.15)
   Sanity: E_true < min E_app=True  monotonic E_app=True  PASS=True
-  Note: Holdout/LOO on flat E_app — optimistic; full test needs epoch JSON curves
+  Note: Holdout/LOO on flat E_app - optimistic; full test needs epoch JSON curves
 
 OVERALL (Pythia + Meta Step-2 holdout gates; synthetic if present):
-  PASS — method supported for cheap floor estimation
+  PASS - method supported for cheap floor estimation
   Pythia floor estimate: 1.48 ± 0.06 nats (LOO std, α=0.34)  |  Step-2: ~1.65 ± 0.07 nats (LOO std)
 ========================================================================

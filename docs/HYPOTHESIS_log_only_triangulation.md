@@ -6,17 +6,21 @@
 
 Chinchilla spent **400+ training runs** to fit
 
-\[
-L(N,D) = E + \frac{A}{N^\alpha} + \frac{B}{D^\beta}
-\]
+```text
+
+L(N,D) = E + A/N^alpha + B/D^beta
+
+```
 
 We only need a **1D slice** at fixed data protocol:
 
-\[
-E_{\text{app}}(N) \approx E_{\text{true}} + A \cdot N^{-\alpha}
-\]
+```text
 
-If a public **model ladder** already exists (same data, same stack, published losses), we can estimate \(E_{\text{true}}\) **without training anything**.
+E_app(N) ≈ E_true + A * N^(-alpha)
+
+```
+
+If a public **model ladder** already exists (same data, same stack, published losses), we can estimate E_true **without training anything**.
 
 Cost: download logs + CPU fit. Time: seconds.
 
@@ -37,13 +41,13 @@ Scripts: `scripts/pythia_chinchilla_e_from_logs.py`, `scripts/meta_step2_chinchi
 ## What would make this a field-level tool
 
 1. **FloorDB:** map `(corpus, architecture family)` → triangulated E_true from public ladders (Pythia/Pile, OLMo/Dolma, LLaMA mixes, …)
-2. **6+ point ladders** beat 3-point exact-fit (default: 14m–6.9b on Pile; GitHub TSV + vendored CSV)
+2. **6+ point ladders** beat 3-point exact-fit (default: 14m-6.9b on Pile; GitHub TSV + vendored CSV)
 3. **Holdout validation:** fit on 70m+160m, predict 410m final loss
 4. **Compare to Chinchilla grid** on same corpus where both exist
 
 ## Honest limits
 
-- E_true is **model–corpus irreducible loss**, not Shannon entropy of text
+- E_true is **model-corpus irreducible loss**, not Shannon entropy of text
 - Free-α fits can hit bounds (Pythia run: use fixed α=0.34)
 - Public logs are sparse for large models (W&B export in progress on EleutherAI side)
 - Same 3-parameter exact-fit caveat as OWT when only three anchors are used
@@ -52,4 +56,4 @@ Scripts: `scripts/pythia_chinchilla_e_from_logs.py`, `scripts/meta_step2_chinchi
 
 DeepMind paid in **compute**. We pay in **API calls to GitHub**.
 
-If the ansatz holds, the floor of a dataset becomes a **table lookup** for any corpus that already has a public scaling ladder — not a million-dollar science project.
+If the ansatz holds, the floor of a dataset becomes a **table lookup** for any corpus that already has a public scaling ladder - not a million-dollar science project.

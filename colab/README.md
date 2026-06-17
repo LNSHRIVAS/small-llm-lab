@@ -1,6 +1,6 @@
-# Synthetic Chinchilla-E validation — Colab (A100)
+# Synthetic Chinchilla-E validation - Colab (A100)
 
-One notebook, ~15–25 minutes on A100 with the fast preset.
+One notebook, ~15-25 minutes on A100 with the fast preset.
 
 ## Files
 
@@ -22,8 +22,8 @@ One notebook, ~15–25 minutes on A100 with the fast preset.
 
 | Preset | Tokens/epoch | Epochs | Typical A100 time |
 |--------|--------------|--------|-------------------|
-| **`a100_fast`** (default in notebook) | 5M | 4 | ~15–25 min |
-| `full` | 10M | 6 | ~45–90 min |
+| **`a100_fast`** (default in notebook) | 5M | 4 | ~15-25 min |
+| `full` | 10M | 6 | ~45-90 min |
 | `smoke` | 2M | 3 | ~10 min (sanity check) |
 
 Override any setting with env vars, e.g. `SYNTH_N_EPOCHS=6`.
@@ -32,8 +32,8 @@ Override any setting with env vars, e.g. `SYNTH_N_EPOCHS=6`.
 
 Written to `/content/synthetic_chinchilla/` (fast local disk):
 
-- `validation_report.txt` — pass/fail vs known H_true
-- `triangulation.json` — full numbers
+- `validation_report.txt` - pass/fail vs known H_true
+- `triangulation.json` - full numbers
 - `S_1M.json`, `S_2M.json`, `S_3M.json`
 
 Optional last cell copies results to Google Drive.

@@ -16,6 +16,6 @@ TRIANGULATION (E_app(N) = E_true + A*N^{-alpha}):
   Three-point free alpha:          E_true = 2.5434 nats  (alpha=0.2000)
   Three-point fixed alpha=0.34:    E_true = 2.1867 nats
 
-NOTE: 7B/13B curves are short W&B samples — prefer Meta Step-2 or Pythia for holdout gates.
+NOTE: 7B/13B curves are short W&B samples - prefer Meta Step-2 or Pythia for holdout gates.
 
 ========================================================================

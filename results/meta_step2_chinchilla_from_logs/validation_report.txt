@@ -15,6 +15,6 @@ TRIANGULATION (E_app(N) = E_true + A*N^{-alpha}):
   Three-point free alpha:          E_true = 1.4367 nats  (alpha=0.2000)
   Three-point fixed alpha=0.34:    E_true = 1.6493 nats
 
-NOTE: Independent corpus/stack from Pythia/The Pile — compare floors qualitatively.
+NOTE: Independent corpus/stack from Pythia/The Pile - compare floors qualitatively.
 
 ========================================================================

@@ -8,19 +8,23 @@
 
 ## Corpus (ground truth known before training)
 
-I generate **i.i.d. unigram** token sequences from a fixed Zipf distribution over **2,048 active types** (truncated from rank-ordered GPT-2 vocabulary slots). Full softmax remains over the active set only, so models can be ~1–3M parameters and still learn the distribution.
+I generate **i.i.d. unigram** token sequences from a fixed Zipf distribution over **2,048 active types** (truncated from rank-ordered GPT-2 vocabulary slots). Full softmax remains over the active set only, so models can be ~1-3M parameters and still learn the distribution.
 
-\[
-p_k \propto \frac{1}{k^{s}}, \quad k = 1,\ldots,V, \quad V = 2048 \text{ (default)}, \quad s = 1.0
-\]
+```text
+
+p_k proportional to 1/k^s, k = 1..V, V = 2048 (default), s = 1.0
+
+```
 
 **Ground-truth entropy (nats):**
 
-\[
-H_{\text{true}} = -\sum_{k=1}^{V} p_k \ln p_k
-\]
+```text
 
-Computed analytically before training. For i.i.d. unigram text, optimal cross-entropy equals \(H_{\text{true}}\); I use that as the triangulation target.
+H_true = -sum_k p_k ln p_k
+
+```
+
+Computed analytically before training. For i.i.d. unigram text, optimal cross-entropy equals H_true; I use that as the triangulation target.
 
 Override vocabulary size: `SYNTH_ACTIVE_VOCAB=2048` (default).
 
@@ -97,7 +101,7 @@ Per epoch: validation CE, bucket CE, and H8-style `C*` from training CE vs step 
 
 ## Runtime estimate
 
-On a single GPU (T4 or better): roughly **30–90 minutes** for all three models at default 10M tokens/epoch × 6 epochs. CPU is supported but much slower.
+On a single GPU (T4 or better): roughly **30-90 minutes** for all three models at default 10M tokens/epoch × 6 epochs. CPU is supported but much slower.
 
 Quick smoke test:
 
@@ -106,7 +110,7 @@ set SYNTH_PRESET=smoke
 python scripts/synthetic_chinchilla_e_validation.py
 ```
 
-Colab A100 (~15–25 min): open [`colab/synthetic_chinchilla_e_a100.ipynb`](../colab/synthetic_chinchilla_e_a100.ipynb), upload `scripts/`, run with `SYNTH_PRESET=a100_fast`.
+Colab A100 (~15-25 min): open [`colab/synthetic_chinchilla_e_a100.ipynb`](../colab/synthetic_chinchilla_e_a100.ipynb), upload `scripts/`, run with `SYNTH_PRESET=a100_fast`.
 
 ---
 
