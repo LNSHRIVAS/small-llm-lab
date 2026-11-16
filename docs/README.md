@@ -22,7 +22,6 @@ Reading order for GitHub visitors and reviewers.
 | Public-log floors (Act IV-E) | `LOG_ONLY_TRIANGULATION_RESULTS.md`, `PUBLIC_LADDER_CATALOG.md`, `HYPOTHESIS_log_only_triangulation.md` |
 | Open bounded-law sweep | `PREREGISTER_owt_6size_bounded_law.md`, `FINDINGS.md` §8 |
 | Synthetic pipeline validation | `PREREGISTER_synthetic_chinchilla_e.md`, `colab/synthetic_chinchilla_e_a100.ipynb` |
-| GitHub release | `PUBLISHING.md` |
 | Version history / exclusions | `LINEAGE.md` |
 
 ## Scripts ↔ docs

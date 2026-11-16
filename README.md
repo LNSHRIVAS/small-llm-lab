@@ -106,7 +106,6 @@ Full guide: [`docs/REPRO.md`](docs/REPRO.md)
 | **[`docs/FINAL_DISCOVERY.md`](docs/FINAL_DISCOVERY.md)** | Discovery framing + headline numbers (start here for the IV-E result) |
 | **[`docs/PUBLICATION.md`](docs/PUBLICATION.md)** | Full research narrative (start here for deep read) |
 | [`docs/LOG_ONLY_TRIANGULATION_RESULTS.md`](docs/LOG_ONLY_TRIANGULATION_RESULTS.md) | IV-E methods + numbers |
-| [`docs/PUBLISHING.md`](docs/PUBLISHING.md) | GitHub release checklist |
 | [`docs/README.md`](docs/README.md) | Index of all docs |
 | [`docs/VERIFICATION.md`](docs/VERIFICATION.md) | Metric → source audit |
 

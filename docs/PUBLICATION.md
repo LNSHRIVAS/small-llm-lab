@@ -1,7 +1,7 @@
 # Publication narrative - Small Language Model Architecture Lab
 
 This document is the **GitHub-facing research story**: what was done, what was found, what failed, and how each claim is backed. 
-Shorter tables live in [`RESULTS.md`](RESULTS.md). Interpretation and limits in [`FINDINGS.md`](FINDINGS.md). Audit trail in [`VERIFICATION.md`](VERIFICATION.md). Step-by-step reproduction in [`REPRO.md`](REPRO.md). GitHub release checklist in [`PUBLISHING.md`](PUBLISHING.md).
+Shorter tables live in [`RESULTS.md`](RESULTS.md). Interpretation and limits in [`FINDINGS.md`](FINDINGS.md). Audit trail in [`VERIFICATION.md`](VERIFICATION.md). Step-by-step reproduction in [`REPRO.md`](REPRO.md).
 
 ---
 
@@ -134,7 +134,7 @@ Act IV splits into **three threads** that answer different questions.
 
 **Triangulation:** E_true **2.486-2.532 nats** (α = 0.34 or free α ≈ 0.353); inside pre-registered band; fit residuals ±0.0000 on anchors.
 
-**Cost:** ~**17.5 A100 GPU-hours** for all three models (see [`PUBLISHING.md`](PUBLISHING.md) budget table).
+**Cost:** ~**17.5 A100 GPU-hours** for all three models.
 
 **Artifacts:** notebook `08`; [`Experiments/triangulation.txt`](../experiments/triangulation.txt); [`act4_scaling_laws.json`](../results/summaries/act4_scaling_laws.json).
 
@@ -220,7 +220,6 @@ flowchart TB
 | [`docs/LOG_ONLY_TRIANGULATION_RESULTS.md`](LOG_ONLY_TRIANGULATION_RESULTS.md) | IV-E deep dive |
 | [`docs/VERIFICATION.md`](VERIFICATION.md) | Metric → source audit |
 | [`docs/REPRO.md`](REPRO.md) | How to rerun |
-| [`docs/PUBLISHING.md`](PUBLISHING.md) | GitHub release checklist |
 | [`scripts/`](../scripts/) | Local reproduction |
 | [`archive/colab_runs/`](../archive/colab_runs/) | Executed notebooks 01-08 |
 | [`results/summaries/`](../results/summaries/) | Machine-readable act JSON |
