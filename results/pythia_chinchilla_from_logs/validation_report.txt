@@ -1,0 +1,26 @@
+========================================================================
+PYTHIA CHINCHILLA-E FROM PUBLIC LOGS (ZERO TRAINING)
+========================================================================
+
+Corpus: The Pile (EleutherAI Pythia matched ladder, same token order)
+Metric: train/lm_loss -> pseudo-epoch C* (steps >= 50,000)
+Tokens/step: 2,097,152  Ladder: 6 sizes
+
+LADDER:
+  Pythia-14M        14.0M params  E_app=3.6271  beta=0.0437  final_loss=3.5870
+  Pythia-70M        70.4M params  E_app=2.8162  beta=1.4785  final_loss=2.8004
+  Pythia-160M      157.1M params  E_app=2.6484  beta=1.8694  final_loss=2.4990
+  Pythia-410M      405.7M params  E_app=2.1276  beta=1.4668  final_loss=2.1780
+  Pythia-1.4B     1451.8M params  E_app=1.8310  beta=0.1014  final_loss=2.0195
+  Pythia-6.9B     6857.3M params  E_app=1.7500  beta=1.4449  final_loss=1.8022
+
+TRIANGULATION (E_app(N) = E_true + A*N^{-alpha}):
+  N-point OLS (alpha=0.34, n=6, dof=4):  E_true = 1.4820 nats  RMSE = 0.1002
+  Three-point fixed alpha=0.34 (legacy):    E_true = 2.3137 nats
+  Two-point (alpha=0.34):                   E_true = 1.8973 nats
+  Three-point free alpha (do not claim):    E_true = 2.0213 nats  (alpha=0.6000)
+
+NOTE: Primary estimate uses overdetermined N-point fit when n>=4.
+Report uncertainty from holdout/LOO (chinchilla_e_robustness.py), not in-sample RMSE.
+
+========================================================================

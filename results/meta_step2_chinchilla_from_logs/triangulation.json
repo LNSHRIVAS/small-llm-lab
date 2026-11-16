@@ -1,0 +1,154 @@
+{
+  "protocol": {
+    "corpus": "Meta FAIR Step-2",
+    "source": "FS-step2v2 public CSV (data/public_logs/meta_step2)",
+    "token_budget_tag": "ti134698",
+    "late_token_frac": 0.35,
+    "n_pseudo_epochs": 6
+  },
+  "results": {
+    "h832": {
+      "n_params": 227556992,
+      "final_train_loss": 2.386531
+    },
+    "h1024": {
+      "n_params": 393644032,
+      "final_train_loss": 2.24557
+    },
+    "h1280": {
+      "n_params": 699640320,
+      "final_train_loss": 2.119199
+    }
+  },
+  "triangulation": {
+    "triplet": {
+      "small": "h832",
+      "mid": "h1024",
+      "large": "h1280"
+    },
+    "per_model": [
+      {
+        "size": "h832",
+        "label": "Step2-h832-L12",
+        "n_params": 227556992,
+        "E_app": 2.0089568801447513,
+        "beta": 0.3387944224041482,
+        "final_loss": 2.386531
+      },
+      {
+        "size": "h1024",
+        "label": "Step2-h1024-L16",
+        "n_params": 393644032,
+        "E_app": 1.9595839434679563,
+        "beta": 0.30567736032986487,
+        "final_loss": 2.24557
+      },
+      {
+        "size": "h1280",
+        "label": "Step2-h1280-L20",
+        "n_params": 699640320,
+        "E_app": 1.8929224580077375,
+        "beta": 0.7538449466655069,
+        "final_loss": 2.119199
+      }
+    ],
+    "two_point_alpha_034": {
+      "N_A": 227556992,
+      "N_B": 699640320,
+      "alpha_prior": 0.34,
+      "E_app_A": 2.0089568801447504,
+      "beta_A": 1.5,
+      "E_app_B": 1.8929224580077368,
+      "beta_B": 1.5,
+      "A_amp": 253.72455019665333,
+      "E_true": 1.643402637610263
+    },
+    "three_point_free": {
+      "models": [
+        "step2_h832",
+        "step2_h1024",
+        "step2_h1280"
+      ],
+      "N_list": [
+        227556992,
+        393644032,
+        699640320
+      ],
+      "E_app_list": [
+        2.0089568801447504,
+        1.9595839434679552,
+        1.8929224580077368
+      ],
+      "beta_list": [
+        1.5,
+        1.5,
+        1.5
+      ],
+      "alpha_used": 0.200006242294666,
+      "alpha_fitted": 0.200006242294666,
+      "E_true": 1.4367356459078864,
+      "A_amp": 27.014532431063603,
+      "residuals": [
+        -0.003387335121790791,
+        0.006998733721580219,
+        -0.0036113985997858755
+      ],
+      "beta_sqrt_N": {
+        "C_sqrt": 0.00016145844575186677,
+        "beta_pred_mid": 1.9728678821550667,
+        "beta_actual_mid": 1.5,
+        "delta_mid": -0.4728678821550667,
+        "beta_pred_large": 2.630168558091251,
+        "beta_actual_large": 1.5,
+        "delta_large": -1.1301685580912508,
+        "fitted_exponent": 0.0,
+        "pass_mid": false,
+        "pass_large": false
+      }
+    },
+    "three_point_fixed_034": {
+      "models": [
+        "step2_h832",
+        "step2_h1024",
+        "step2_h1280"
+      ],
+      "N_list": [
+        227556992,
+        393644032,
+        699640320
+      ],
+      "E_app_list": [
+        2.0089568801447504,
+        1.9595839434679552,
+        1.8929224580077368
+      ],
+      "beta_list": [
+        1.5,
+        1.5,
+        1.5
+      ],
+      "alpha_used": 0.34,
+      "alpha_fitted": null,
+      "E_true": 1.6492566488960247,
+      "A_amp": 252.4016546709265,
+      "residuals": [
+        -0.003948046445211073,
+        0.008501085264067454,
+        -0.004553038818855493
+      ],
+      "beta_sqrt_N": {
+        "C_sqrt": 0.00016145844575186677,
+        "beta_pred_mid": 1.9728678821550667,
+        "beta_actual_mid": 1.5,
+        "delta_mid": -0.4728678821550667,
+        "beta_pred_large": 2.630168558091251,
+        "beta_actual_large": 1.5,
+        "delta_large": -1.1301685580912508,
+        "fitted_exponent": 0.0,
+        "pass_mid": false,
+        "pass_large": false
+      }
+    },
+    "note": "E_app = last pseudo-epoch C* (runs are >> knee; inner T-sweep fit hits floor bound)"
+  }
+}

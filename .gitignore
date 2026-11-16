@@ -1,0 +1,19 @@
+# Local-only side research (one-law stack, drift investigations, Zipf v2)
+archive/internal/
+
+__pycache__/
+*.py[cod]
+.Python
+.venv/
+venv/
+.env
+.wandb_api_key
+data/cache/
+!data/cache/.gitkeep
+checkpoints/
+*.pt
+*.pth
+.ipynb_checkpoints/
+scripts/owt_chinchilla/
+.DS_Store
+Thumbs.db

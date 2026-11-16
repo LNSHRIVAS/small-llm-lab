@@ -1,0 +1,51 @@
+
+================================================================================
+CHINCHILLA-E TRIANGULATION ON OPENWEBTEXT
+================================================================================
+
+THREE MODELS (matched softmax architecture, GPT-2 tokenizer):
+  Model A:     10,165,681 params  E_app=4.1379  β_rep=1.8254
+  Model C:     25,147,153 params  E_app=3.6984  β_rep=1.4915
+  Model B:     51,016,529 params  E_app=3.4406  β_rep=1.5933
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TWO-POINT TRIANGULATION (A + B only, replicates WT103 result)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  With α = 0.34 (Chinchilla prior):   E_true = 2.4863 nats
+  With α = 0.384 (WT103-implied):     E_true = 2.6279 nats
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+THREE-POINT TRIANGULATION (A + C + B, overdetermined OLS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Free α (OLS-fitted):  α = 0.3531   E_true = 2.5322 nats
+  Fixed α = 0.34:                      E_true = 2.4852 nats
+
+  Fit residuals (E_app_actual - E_app_predicted):
+    A_10M: +0.0000 nats
+    C_25M: -0.0000 nats
+    B_51M: +0.0000 nats
+
+  GPT-2 medium upper-bound on OWT (~70K steps): 2.855 nats
+  Expected range (E_OWT > E_WT103 = 2.68, E_OWT < 2.855):
+    PASS if 2.485 < E < 2.855
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PRE-REGISTERED β_rep ~ √N TEST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Prediction: β_rep(N) = 0.000161 × √N   (anchored at WT103 10M β=0.5135)
+
+  25M model:  β_pred = 2.8711   β_actual = 1.4915
+              delta  = -1.3796   PASS (|Δ|<0.05): False
+
+  51M model:  β_pred = 4.0893   β_actual = 1.5933
+              delta  = -2.4960   PASS (|Δ|<0.05): False
+
+  Fitted exponent: β_rep ~ N^-0.0843
+  Pre-registered:  β_rep ~ N^0.5000
+
+  Overall β_rep scaling PASS: False
+
+================================================================================

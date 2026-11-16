@@ -1,0 +1,59 @@
+{
+  "act": "I — Factorized embedding geometry (E4)",
+  "dataset": "WikiText-103",
+  "d_model": 192,
+  "n_layers": 8,
+  "epochs_reported": 2,
+  "experiments": [
+    {
+      "id": "v13",
+      "k_in": 96,
+      "k_out": 64,
+      "params": 11614816,
+      "params_M": 11.6,
+      "epoch2": { "test_ppl": 50.20, "val_ppl": 53.63 },
+      "role": "Baseline asymmetric shape; establishes k_out marginal rate"
+    },
+    {
+      "id": "v14",
+      "k_in": 128,
+      "k_out": 64,
+      "params": 13229184,
+      "params_M": 13.2,
+      "epoch2": { "test_ppl": 49.61, "val_ppl": 52.84 },
+      "role": "Reserve-dimension test (extra k_in rows past k_out)"
+    },
+    {
+      "id": "v15",
+      "k_in": 96,
+      "k_out": 48,
+      "params": 10807632,
+      "params_M": 10.8,
+      "epoch2": { "test_ppl": 53.41, "val_ppl": 57.08 },
+      "role": "Minimum k_out compression; worst PPL in trio"
+    },
+    {
+      "id": "v16",
+      "k_in": 96,
+      "k_out": 96,
+      "params": 13229184,
+      "params_M": 13.2,
+      "epoch2": { "test_ppl": 46.46, "val_ppl": 50.11 },
+      "prediction": { "test_ppl_ep2": "45.7 ± 2", "linear_extrapolation": 43.77 },
+      "verdict": "CONFIRMED in 44-48 band for this run; falsifies naive linear extrapolation",
+      "contested": "A sister shape-match run is logged at test_ppl 65.19 in downaloads/the_dead_end_autopsy.md (treated as a stalled run). Later notes (the_two_bottlenecks.md) argue the optimum is k_in >= k_out rather than strict equality.",
+      "role": "Shape-match boundary: k_in = k_out at fixed param budget"
+    }
+  ],
+  "derived_rates": {
+    "k_out_marginal_ppl_per_dim": 0.201,
+    "k_in_marginal_ppl_per_dim": 0.018,
+    "k_out_vs_k_in_efficiency_ratio": 11.2
+  },
+  "source_notebooks": [
+    "archive/colab_runs/01_v13_k96_k64.ipynb",
+    "archive/colab_runs/02_v14_k128_k64.ipynb",
+    "archive/colab_runs/03_v15_k96_k48.ipynb",
+    "archive/colab_runs/04_v16_k96_k96_shape_match.ipynb"
+  ]
+}

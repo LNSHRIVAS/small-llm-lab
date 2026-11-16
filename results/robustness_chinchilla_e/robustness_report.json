@@ -1,0 +1,379 @@
+{
+  "synthetic": null,
+  "pythia": {
+    "corpus": "The Pile (Pythia)",
+    "method": "N-point OLS + holdout/LOO (not corpus Shannon entropy)",
+    "n_sizes": 6,
+    "ladder_sizes": [
+      "14m",
+      "70m",
+      "160m",
+      "410m",
+      "1.4b",
+      "6.9b"
+    ],
+    "triangulation_fixed_alpha": 1.4820262894360565,
+    "uncertainty_loo_std": 0.056548347634793376,
+    "triangulation_report": "1.48 \u00b1 0.06 nats (LOO std, \u03b1=0.34)",
+    "n_point_fit": {
+      "alpha_prior": 0.34,
+      "n_points": 6,
+      "dof": 4,
+      "E_true": 1.4820262894360565,
+      "A_amp": 596.7096903643651,
+      "rmse": 0.10019399620014792,
+      "residuals": [
+        -0.07273988469205817,
+        0.05315786614728868,
+        0.19124354160202728,
+        -0.06065422828446021,
+        -0.10889762798968117,
+        -0.0021096667831237426
+      ],
+      "E_app_pred": [
+        3.6998158775699554,
+        2.763044690316164,
+        2.4571728541462807,
+        2.188278992337827,
+        1.939868815271903,
+        1.7520929512625776
+      ]
+    },
+    "per_model": [
+      {
+        "size": "14m",
+        "label": "Pythia-14M",
+        "n_params": 14015104,
+        "E_app": 3.6270759928778973,
+        "beta": 0.043713061321197975,
+        "final_loss": 3.586955070495605
+      },
+      {
+        "size": "70m",
+        "label": "Pythia-70M",
+        "n_params": 70415744,
+        "E_app": 2.8162025564634527,
+        "beta": 1.4784524576735418,
+        "final_loss": 2.800392866134644
+      },
+      {
+        "size": "160m",
+        "label": "Pythia-160M",
+        "n_params": 157092864,
+        "E_app": 2.648416395748308,
+        "beta": 1.8693818657687178,
+        "final_loss": 2.4990196228027344
+      },
+      {
+        "size": "410m",
+        "label": "Pythia-410M",
+        "n_params": 405736448,
+        "E_app": 2.1276247640533668,
+        "beta": 1.4668276450084123,
+        "final_loss": 2.178030490875244
+      },
+      {
+        "size": "1.4b",
+        "label": "Pythia-1.4B",
+        "n_params": 1451786752,
+        "E_app": 1.8309711872822219,
+        "beta": 0.10144820879407034,
+        "final_loss": 2.019484043121338
+      },
+      {
+        "size": "6.9b",
+        "label": "Pythia-6.9B",
+        "n_params": 6857302016,
+        "E_app": 1.7499832844794538,
+        "beta": 1.4448812337772783,
+        "final_loss": 1.802158236503601
+      }
+    ],
+    "holdout": {
+      "holdout": "6.9b",
+      "train_sizes": [
+        "14m",
+        "70m",
+        "160m",
+        "410m",
+        "1.4b"
+      ],
+      "n_train": 5,
+      "E_true": 1.4835441679699526,
+      "A_amp": 596.1297370714537,
+      "E_app_pred": 1.7533483469637643,
+      "E_app_actual": 1.7499832844794538,
+      "delta": 0.003365062484310455,
+      "gate_pass": true
+    },
+    "holdout_410m": {
+      "holdout": "6.9b",
+      "train_sizes": [
+        "14m",
+        "70m",
+        "160m",
+        "410m",
+        "1.4b"
+      ],
+      "n_train": 5,
+      "E_true": 1.4835441679699526,
+      "A_amp": 596.1297370714537,
+      "E_app_pred": 1.7533483469637643,
+      "E_app_actual": 1.7499832844794538,
+      "delta": 0.003365062484310455,
+      "gate_pass": true
+    },
+    "leave_one_out": {
+      "runs": [
+        {
+          "dropped": "1.4b",
+          "E_true": 1.538855516148986
+        },
+        {
+          "dropped": "14m",
+          "E_true": 1.3742745380507015
+        },
+        {
+          "dropped": "160m",
+          "E_true": 1.4429045822591546
+        },
+        {
+          "dropped": "410m",
+          "E_true": 1.5030115296908477
+        },
+        {
+          "dropped": "6.9b",
+          "E_true": 1.4835441679699526
+        },
+        {
+          "dropped": "70m",
+          "E_true": 1.4787793720151867
+        }
+      ],
+      "E_true_min": 1.3742745380507015,
+      "E_true_max": 1.538855516148986,
+      "E_true_std": 0.056548347634793376,
+      "E_true_spread": 0.16458097809828454,
+      "gate_pass": true
+    },
+    "sanity": {
+      "E_app_monotonic": true,
+      "E_true_below_min_E_app": true,
+      "E_true_below_min_final_loss": true,
+      "gate_pass": true
+    },
+    "vs_chinchilla_paper": {
+      "note": "MassiveText != Pile; reference only",
+      "chinchilla_E": 1.69,
+      "delta_nats": -0.20797371056394343
+    }
+  },
+  "meta_step2": {
+    "corpus": "Meta FAIR Step-2 (public CSV)",
+    "n_sizes": 3,
+    "triangulation_fixed_alpha": 1.6492566488960247,
+    "per_model": [
+      {
+        "size": "h832",
+        "label": "Step2-h832-L12",
+        "n_params": 227556992,
+        "E_app": 2.0089568801447513,
+        "beta": 0.3387944224041482,
+        "final_loss": 2.386531
+      },
+      {
+        "size": "h1024",
+        "label": "Step2-h1024-L16",
+        "n_params": 393644032,
+        "E_app": 1.9595839434679563,
+        "beta": 0.30567736032986487,
+        "final_loss": 2.24557
+      },
+      {
+        "size": "h1280",
+        "label": "Step2-h1280-L20",
+        "n_params": 699640320,
+        "E_app": 1.8929224580077375,
+        "beta": 0.7538449466655069,
+        "final_loss": 2.119199
+      }
+    ],
+    "holdout": {
+      "holdout": "h1280",
+      "train_sizes": [
+        "h832",
+        "h1024"
+      ],
+      "n_train": 2,
+      "E_true": 1.7185365843519154,
+      "A_amp": 201.57544447337222,
+      "E_app_pred": 1.9167715153530867,
+      "E_app_actual": 1.8929224580077375,
+      "delta": 0.023849057345349145,
+      "gate_pass": true
+    },
+    "leave_one_out": {
+      "runs": [
+        {
+          "dropped": "h1024",
+          "E_true": 1.643402637610264
+        },
+        {
+          "dropped": "h1280",
+          "E_true": 1.7185365843519154
+        },
+        {
+          "dropped": "h832",
+          "E_true": 1.5842589331269215
+        }
+      ],
+      "E_true_min": 1.5842589331269215,
+      "E_true_max": 1.7185365843519154,
+      "E_true_std": 0.06729731959928686,
+      "E_true_spread": 0.1342776512249939,
+      "gate_pass": true
+    },
+    "sanity": {
+      "E_app_monotonic": true,
+      "E_true_below_min_E_app": true,
+      "E_true_below_min_final_loss": true,
+      "gate_pass": true
+    },
+    "note": "E_app = late C*; holdout on flat asymptotes (256B-token runs)"
+  },
+  "olmo": {
+    "corpus": "Dolma / OLMo (Allen AI W&B exports)",
+    "n_sizes": 3,
+    "triangulation_fixed_alpha": 2.187929959549529,
+    "per_model": [
+      {
+        "size": "1b",
+        "label": "OLMo-1B",
+        "n_params": 1000000000,
+        "E_app": 1.6061649452582696,
+        "beta": 0.1748311786309882,
+        "final_loss": 2.1372556686401367
+      },
+      {
+        "size": "7b",
+        "label": "OLMo-7B",
+        "n_params": 7000000000,
+        "E_app": 1.3510818222526555,
+        "beta": 0.23228391900523063,
+        "final_loss": 1.9076638221740725
+      },
+      {
+        "size": "13b",
+        "label": "OLMo2-13B",
+        "n_params": 13000000000,
+        "E_app": 2.3206219736065927,
+        "beta": 1.557315836845454,
+        "final_loss": 2.4628968238830566
+      }
+    ],
+    "holdout": {
+      "holdout": "13b",
+      "train_sizes": [
+        "1b",
+        "7b"
+      ],
+      "n_train": 2,
+      "E_true": 1.6051083834661695,
+      "A_amp": 554.2449013699515,
+      "E_app_pred": 1.806926880144673,
+      "E_app_actual": 2.351168701879956,
+      "delta": 0.5442418217352829,
+      "gate_pass": false
+    },
+    "leave_one_out": {
+      "runs": [
+        {
+          "dropped": "13b",
+          "E_true": 1.6051083834661695
+        },
+        {
+          "dropped": "1b",
+          "E_true": 4.472567396262241
+        },
+        {
+          "dropped": "7b",
+          "E_true": 2.5403601409935774
+        }
+      ],
+      "E_true_min": 1.6051083834661695,
+      "E_true_max": 4.472567396262241,
+      "E_true_std": 1.4623293015674452,
+      "E_true_spread": 2.867459012796072,
+      "gate_pass": false
+    },
+    "sanity": {
+      "E_app_monotonic": false,
+      "E_true_below_min_E_app": false,
+      "E_true_below_min_final_loss": false,
+      "gate_pass": false
+    }
+  },
+  "owt": {
+    "corpus": "OpenWebText (published E_app only)",
+    "note": "Holdout/LOO on flat E_app \u2014 optimistic; full test needs epoch JSON curves",
+    "triangulation_fixed_alpha": 2.4850769269815354,
+    "per_model": [
+      {
+        "size": "A_10M",
+        "n_params": 10165681,
+        "E_app": 4.1379
+      },
+      {
+        "size": "C_25M",
+        "n_params": 25147153,
+        "E_app": 3.6984
+      },
+      {
+        "size": "B_51M",
+        "n_params": 51016529,
+        "E_app": 3.4406
+      }
+    ],
+    "holdout_B_51M": {
+      "holdout": "B_51M",
+      "train_sizes": [
+        "A_10M",
+        "C_25M"
+      ],
+      "n_train": 2,
+      "E_true": 2.479696804887643,
+      "A_amp": 400.003830241748,
+      "E_app_pred": 3.437866523261376,
+      "E_app_actual": 3.4406,
+      "delta": 0.0027334767386237857,
+      "gate_pass": true
+    },
+    "leave_one_out": {
+      "runs": [
+        {
+          "dropped": "A_10M",
+          "E_true": 2.4924832493662037
+        },
+        {
+          "dropped": "B_51M",
+          "E_true": 2.479696804887643
+        },
+        {
+          "dropped": "C_25M",
+          "E_true": 2.486171723605624
+        }
+      ],
+      "E_true_min": 2.479696804887643,
+      "E_true_max": 2.4924832493662037,
+      "E_true_std": 0.006393396231454265,
+      "E_true_spread": 0.01278644447856081,
+      "gate_pass": true
+    },
+    "sanity": {
+      "E_app_monotonic": true,
+      "E_true_below_min_E_app": true,
+      "E_true_below_min_final_loss": true,
+      "gate_pass": true
+    }
+  }
+}

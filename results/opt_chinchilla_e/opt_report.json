@@ -1,0 +1,111 @@
+{
+  "corpus": "Meta OPT / PILE",
+  "protocol": "E_app=interp train CE at 10^10.0 tokens",
+  "n_sizes": 6,
+  "ladder_sizes": [
+    "125m",
+    "1.3b",
+    "6.7b",
+    "13b",
+    "30b",
+    "175b"
+  ],
+  "triangulation_fixed_alpha": 3.2173685731003774,
+  "uncertainty_loo_std": 0.054737471222994,
+  "triangulation_report": "3.22 \u00b1 0.05 nats (LOO std)",
+  "per_model": [
+    {
+      "size": "125m",
+      "n_params": 125000000,
+      "E_app": 3.7012709616914674,
+      "final_loss": 3.7012709616914674
+    },
+    {
+      "size": "1.3b",
+      "n_params": 1300000000,
+      "E_app": 3.288940855798706,
+      "final_loss": 3.288940855798706
+    },
+    {
+      "size": "6.7b",
+      "n_params": 6700000000,
+      "E_app": 3.2353844167098433,
+      "final_loss": 3.2353844167098433
+    },
+    {
+      "size": "13b",
+      "n_params": 13000000000,
+      "E_app": 3.435788993963157,
+      "final_loss": 3.435788993963157
+    },
+    {
+      "size": "30b",
+      "n_params": 30000000000,
+      "E_app": 3.437405242885724,
+      "final_loss": 3.437405242885724
+    },
+    {
+      "size": "175b",
+      "n_params": 175000000000,
+      "E_app": 3.160023498705471,
+      "final_loss": 3.160023498705471
+    }
+  ],
+  "holdout": {
+    "holdout": "175b",
+    "train_sizes": [
+      "125m",
+      "1.3b",
+      "6.7b",
+      "13b",
+      "30b"
+    ],
+    "n_train": 5,
+    "E_true": 3.2634032940963458,
+    "A_amp": 213.76259432214434,
+    "E_app_pred": 3.295562015628682,
+    "E_app_actual": 3.160023498705471,
+    "delta": 0.13553851692321084,
+    "gate_pass": true
+  },
+  "leave_one_out": {
+    "runs": [
+      {
+        "dropped": "1.3b",
+        "E_true": 3.234398704702556
+      },
+      {
+        "dropped": "125m",
+        "E_true": 3.3042513834771183
+      },
+      {
+        "dropped": "13b",
+        "E_true": 3.1751123946660416
+      },
+      {
+        "dropped": "175b",
+        "E_true": 3.2634032940963458
+      },
+      {
+        "dropped": "30b",
+        "E_true": 3.1585373351871735
+      },
+      {
+        "dropped": "6.7b",
+        "E_true": 3.2445948720197384
+      }
+    ],
+    "E_true_min": 3.1585373351871735,
+    "E_true_max": 3.3042513834771183,
+    "E_true_std": 0.054737471222994,
+    "E_true_spread": 0.14571404828994483,
+    "gate_pass": true
+  },
+  "sanity": {
+    "E_app_monotonic": false,
+    "E_true_below_min_E_app": false,
+    "E_true_below_min_final_loss": false,
+    "gate_pass": false
+  },
+  "overall_pass": false
+}

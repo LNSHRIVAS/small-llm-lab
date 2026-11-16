@@ -1,0 +1,1279 @@
+{
+  "log_path": "data/public_logs/kempner/kempner_sweep.csv",
+  "sections": {
+    "fineweb-100b": {
+      "corpus": "Kempner OLMo / fineweb-100b (iso-flop)",
+      "protocol": "iso_flop=4.57e+18; E_app=final train CE",
+      "n_sizes": 14,
+      "ladder_sizes": [
+        "72M",
+        "90M",
+        "110M",
+        "134M",
+        "161M",
+        "192M",
+        "227M",
+        "266M",
+        "311M",
+        "360M",
+        "415M",
+        "475M",
+        "541M",
+        "613M"
+      ],
+      "triangulation_fixed_alpha": 2.9370925201388607,
+      "uncertainty_loo_std": 0.013814887399721231,
+      "triangulation_report": "2.94 \u00b1 0.01 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "72M",
+          "n_params": 72717120,
+          "E_app": 3.13662052154541,
+          "final_loss": 3.13662052154541,
+          "tokens_trained": 10481370639.342464
+        },
+        {
+          "size": "90M",
+          "n_params": 90138240,
+          "E_app": 3.068424224853516,
+          "final_loss": 3.068424224853516,
+          "tokens_trained": 8455624233.904974
+        },
+        {
+          "size": "110M",
+          "n_params": 110508992,
+          "E_app": 3.052152156829834,
+          "final_loss": 3.052152156829834,
+          "tokens_trained": 6896950852.158191
+        },
+        {
+          "size": "134M",
+          "n_params": 134124288,
+          "E_app": 3.051743268966675,
+          "final_loss": 3.051743268966675,
+          "tokens_trained": 5682603038.649813
+        },
+        {
+          "size": "161M",
+          "n_params": 161279040,
+          "E_app": 3.044640064239502,
+          "final_loss": 3.044640064239502,
+          "tokens_trained": 4725816116.871372
+        },
+        {
+          "size": "192M",
+          "n_params": 192268160,
+          "E_app": 3.022226333618164,
+          "final_loss": 3.022226333618164,
+          "tokens_trained": 3964125347.356227
+        },
+        {
+          "size": "227M",
+          "n_params": 227386560,
+          "E_app": 2.997781753540039,
+          "final_loss": 2.997781753540039,
+          "tokens_trained": 3351891538.9966
+        },
+        {
+          "size": "266M",
+          "n_params": 266929152,
+          "E_app": 3.01859188079834,
+          "final_loss": 3.01859188079834,
+          "tokens_trained": 2855346000.3707
+        },
+        {
+          "size": "311M",
+          "n_params": 311190848,
+          "E_app": 2.995418071746826,
+          "final_loss": 2.995418071746826,
+          "tokens_trained": 2449220764.183729
+        },
+        {
+          "size": "360M",
+          "n_params": 360466560,
+          "E_app": 3.0482568740844727,
+          "final_loss": 3.0482568740844727,
+          "tokens_trained": 2114412739.2719665
+        },
+        {
+          "size": "415M",
+          "n_params": 415051200,
+          "E_app": 3.020108699798584,
+          "final_loss": 3.020108699798584,
+          "tokens_trained": 1836339917.9319143
+        },
+        {
+          "size": "475M",
+          "n_params": 475239680,
+          "E_app": 3.029184579849243,
+          "final_loss": 3.029184579849243,
+          "tokens_trained": 1603769884.167801
+        },
+        {
+          "size": "541M",
+          "n_params": 541326912,
+          "E_app": 3.023418664932251,
+          "final_loss": 3.023418664932251,
+          "tokens_trained": 1407975605.2208664
+        },
+        {
+          "size": "613M",
+          "n_params": 613607808,
+          "E_app": 3.041818618774414,
+          "final_loss": 3.041818618774414,
+          "tokens_trained": 1242120906.2345283
+        }
+      ],
+      "holdout": {
+        "holdout": "613M",
+        "train_sizes": [
+          "72M",
+          "90M",
+          "110M",
+          "134M",
+          "161M",
+          "192M",
+          "227M",
+          "266M",
+          "311M",
+          "360M",
+          "415M",
+          "475M",
+          "541M"
+        ],
+        "n_train": 13,
+        "E_true": 2.917324472319642,
+        "A_amp": 81.14991053104188,
+        "E_app_pred": 3.0007703999885624,
+        "E_app_actual": 3.041818618774414,
+        "delta": 0.04104821878585163,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "110M",
+            "E_true": 2.9326848780702224
+          },
+          {
+            "dropped": "134M",
+            "E_true": 2.936043750373235
+          },
+          {
+            "dropped": "161M",
+            "E_true": 2.9366797938967855
+          },
+          {
+            "dropped": "192M",
+            "E_true": 2.937473452493043
+          },
+          {
+            "dropped": "227M",
+            "E_true": 2.941189356049684
+          },
+          {
+            "dropped": "266M",
+            "E_true": 2.9395558567072206
+          },
+          {
+            "dropped": "311M",
+            "E_true": 2.9452341668862907
+          },
+          {
+            "dropped": "360M",
+            "E_true": 2.9288458648131486
+          },
+          {
+            "dropped": "415M",
+            "E_true": 2.9366248040476117
+          },
+          {
+            "dropped": "475M",
+            "E_true": 2.9306429854210716
+          },
+          {
+            "dropped": "541M",
+            "E_true": 2.930964559337756
+          },
+          {
+            "dropped": "613M",
+            "E_true": 2.917324472319642
+          },
+          {
+            "dropped": "72M",
+            "E_true": 2.9798296282717276
+          },
+          {
+            "dropped": "90M",
+            "E_true": 2.93383195286851
+          }
+        ],
+        "E_true_min": 2.917324472319642,
+        "E_true_max": 2.9798296282717276,
+        "E_true_std": 0.013814887399721231,
+        "E_true_spread": 0.06250515595208572,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": false,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "overall_pass": true
+    },
+    "fineweb-edu-100b": {
+      "corpus": "Kempner OLMo / fineweb-edu-100b (iso-flop)",
+      "protocol": "iso_flop=2.20e+19; E_app=final train CE",
+      "n_sizes": 13,
+      "ladder_sizes": [
+        "161M",
+        "192M",
+        "227M",
+        "266M",
+        "311M",
+        "360M",
+        "415M",
+        "475M",
+        "541M",
+        "613M",
+        "777M",
+        "970M",
+        "1193M"
+      ],
+      "triangulation_fixed_alpha": 2.501593467715663,
+      "uncertainty_loo_std": 0.014961480309578704,
+      "triangulation_report": "2.50 \u00b1 0.01 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "161M",
+          "n_params": 161279040,
+          "E_app": 2.6155426502227783,
+          "final_loss": 2.6155426502227783,
+          "tokens_trained": 22734923686.715065
+        },
+        {
+          "size": "192M",
+          "n_params": 192268160,
+          "E_app": 2.595890998840332,
+          "final_loss": 2.595890998840332,
+          "tokens_trained": 19070586969.08873
+        },
+        {
+          "size": "227M",
+          "n_params": 227386560,
+          "E_app": 2.556657314300537,
+          "final_loss": 2.556657314300537,
+          "tokens_trained": 16125256772.72512
+        },
+        {
+          "size": "266M",
+          "n_params": 266929152,
+          "E_app": 2.570833206176758,
+          "final_loss": 2.570833206176758,
+          "tokens_trained": 13736478909.080214
+        },
+        {
+          "size": "311M",
+          "n_params": 311190848,
+          "E_app": 2.5733654499053955,
+          "final_loss": 2.5733654499053955,
+          "tokens_trained": 11782694414.800611
+        },
+        {
+          "size": "360M",
+          "n_params": 360466560,
+          "E_app": 2.568779230117798,
+          "final_loss": 2.568779230117798,
+          "tokens_trained": 10172002270.24295
+        },
+        {
+          "size": "415M",
+          "n_params": 415051200,
+          "E_app": 2.548422813415528,
+          "final_loss": 2.548422813415528,
+          "tokens_trained": 8834251452.99343
+        },
+        {
+          "size": "475M",
+          "n_params": 475239680,
+          "E_app": 2.532309532165528,
+          "final_loss": 2.532309532165528,
+          "tokens_trained": 7715405133.398513
+        },
+        {
+          "size": "541M",
+          "n_params": 541326912,
+          "E_app": 2.539137840270996,
+          "final_loss": 2.539137840270996,
+          "tokens_trained": 6773479362.257657
+        },
+        {
+          "size": "613M",
+          "n_params": 613607808,
+          "E_app": 2.5435264110565186,
+          "final_loss": 2.5435264110565186,
+          "tokens_trained": 5975586716.567119
+        },
+        {
+          "size": "777M",
+          "n_params": 777930240,
+          "E_app": 2.542442798614502,
+          "final_loss": 2.542442798614502,
+          "tokens_trained": 4713361787.641353
+        },
+        {
+          "size": "970M",
+          "n_params": 970566272,
+          "E_app": 2.561404228210449,
+          "final_loss": 2.561404228210449,
+          "tokens_trained": 3777863266.4732313
+        },
+        {
+          "size": "1193M",
+          "n_params": 1193875200,
+          "E_app": 2.588646173477173,
+          "final_loss": 2.588646173477173,
+          "tokens_trained": 3071231119.1878905
+        }
+      ],
+      "holdout": {
+        "holdout": "1193M",
+        "train_sizes": [
+          "161M",
+          "192M",
+          "227M",
+          "266M",
+          "311M",
+          "360M",
+          "415M",
+          "475M",
+          "541M",
+          "613M",
+          "777M",
+          "970M"
+        ],
+        "n_train": 12,
+        "E_true": 2.4608131854297306,
+        "A_amp": 82.86937135261896,
+        "E_app_pred": 2.528769216746738,
+        "E_app_actual": 2.588646173477173,
+        "delta": 0.059876956730434916,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "1193M",
+            "E_true": 2.4608131854297306
+          },
+          {
+            "dropped": "161M",
+            "E_true": 2.527487526911655
+          },
+          {
+            "dropped": "192M",
+            "E_true": 2.509926122617774
+          },
+          {
+            "dropped": "227M",
+            "E_true": 2.493667409811153
+          },
+          {
+            "dropped": "266M",
+            "E_true": 2.50103000877608
+          },
+          {
+            "dropped": "311M",
+            "E_true": 2.501941738671738
+          },
+          {
+            "dropped": "360M",
+            "E_true": 2.5015527101890545
+          },
+          {
+            "dropped": "415M",
+            "E_true": 2.503352621736353
+          },
+          {
+            "dropped": "475M",
+            "E_true": 2.507581125391544
+          },
+          {
+            "dropped": "541M",
+            "E_true": 2.507288200638674
+          },
+          {
+            "dropped": "613M",
+            "E_true": 2.5063156828692184
+          },
+          {
+            "dropped": "777M",
+            "E_true": 2.506671758778917
+          },
+          {
+            "dropped": "970M",
+            "E_true": 2.4915617699886305
+          }
+        ],
+        "E_true_min": 2.4608131854297306,
+        "E_true_max": 2.527487526911655,
+        "E_true_std": 0.014961480309578704,
+        "E_true_spread": 0.06667434148192442,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": false,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "overall_pass": true
+    },
+    "proof-pile-2": {
+      "corpus": "Kempner OLMo / proof-pile-2 (iso-flop)",
+      "protocol": "iso_flop=1.00e+19; E_app=final train CE",
+      "n_sizes": 13,
+      "ladder_sizes": [
+        "110M",
+        "134M",
+        "161M",
+        "192M",
+        "227M",
+        "266M",
+        "311M",
+        "360M",
+        "415M",
+        "475M",
+        "541M",
+        "613M",
+        "777M"
+      ],
+      "triangulation_fixed_alpha": 1.7473335986992944,
+      "uncertainty_loo_std": 0.02072737211620595,
+      "triangulation_report": "1.75 \u00b1 0.02 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "110M",
+          "n_params": 110508992,
+          "E_app": 1.814847469329834,
+          "final_loss": 1.814847469329834,
+          "tokens_trained": 15081728975.2011
+        },
+        {
+          "size": "134M",
+          "n_params": 134124288,
+          "E_app": 1.764635682106018,
+          "final_loss": 1.764635682106018,
+          "tokens_trained": 12426285287.469088
+        },
+        {
+          "size": "161M",
+          "n_params": 161279040,
+          "E_app": 1.7657259702682495,
+          "final_loss": 1.7657259702682495,
+          "tokens_trained": 10334056221.23412
+        },
+        {
+          "size": "192M",
+          "n_params": 192268160,
+          "E_app": 1.7599434852600098,
+          "final_loss": 1.7599434852600098,
+          "tokens_trained": 8668448622.313059
+        },
+        {
+          "size": "227M",
+          "n_params": 227386560,
+          "E_app": 1.7450765371322632,
+          "final_loss": 1.7450765371322632,
+          "tokens_trained": 7329662169.420508
+        },
+        {
+          "size": "266M",
+          "n_params": 266929152,
+          "E_app": 1.729562759399414,
+          "final_loss": 1.729562759399414,
+          "tokens_trained": 6243854049.581916
+        },
+        {
+          "size": "311M",
+          "n_params": 311190848,
+          "E_app": 1.737274408340454,
+          "final_loss": 1.737274408340454,
+          "tokens_trained": 5355770188.545733
+        },
+        {
+          "size": "360M",
+          "n_params": 360466560,
+          "E_app": 1.7279181480407717,
+          "final_loss": 1.7279181480407717,
+          "tokens_trained": 4623637395.564978
+        },
+        {
+          "size": "415M",
+          "n_params": 415051200,
+          "E_app": 1.727820873260498,
+          "final_loss": 1.727820873260498,
+          "tokens_trained": 4015568842.269741
+        },
+        {
+          "size": "475M",
+          "n_params": 475239680,
+          "E_app": 1.744889736175537,
+          "final_loss": 1.744889736175537,
+          "tokens_trained": 3507002333.3629603
+        },
+        {
+          "size": "541M",
+          "n_params": 541326912,
+          "E_app": 1.7743980884552002,
+          "final_loss": 1.7743980884552002,
+          "tokens_trained": 3078854255.571662
+        },
+        {
+          "size": "613M",
+          "n_params": 613607808,
+          "E_app": 1.7852365970611572,
+          "final_loss": 1.7852365970611572,
+          "tokens_trained": 2716175780.257781
+        },
+        {
+          "size": "777M",
+          "n_params": 777930240,
+          "E_app": 1.8128066062927248,
+          "final_loss": 1.8128066062927248,
+          "tokens_trained": 2142437176.200615
+        }
+      ],
+      "holdout": {
+        "holdout": "777M",
+        "train_sizes": [
+          "110M",
+          "134M",
+          "161M",
+          "192M",
+          "227M",
+          "266M",
+          "311M",
+          "360M",
+          "415M",
+          "475M",
+          "541M",
+          "613M"
+        ],
+        "n_train": 12,
+        "E_true": 1.7006687930239321,
+        "A_amp": 40.70619894342516,
+        "E_app_pred": 1.7392824317076787,
+        "E_app_actual": 1.8128066062927248,
+        "delta": 0.07352417458504612,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "110M",
+            "E_true": 1.7959286923105104
+          },
+          {
+            "dropped": "134M",
+            "E_true": 1.747314462230111
+          },
+          {
+            "dropped": "161M",
+            "E_true": 1.7481583641889866
+          },
+          {
+            "dropped": "192M",
+            "E_true": 1.746741131381026
+          },
+          {
+            "dropped": "227M",
+            "E_true": 1.7460258322676114
+          },
+          {
+            "dropped": "266M",
+            "E_true": 1.7486435113740215
+          },
+          {
+            "dropped": "311M",
+            "E_true": 1.7507855286848986
+          },
+          {
+            "dropped": "360M",
+            "E_true": 1.7553009707217508
+          },
+          {
+            "dropped": "415M",
+            "E_true": 1.7582199724382732
+          },
+          {
+            "dropped": "475M",
+            "E_true": 1.7534094711130057
+          },
+          {
+            "dropped": "541M",
+            "E_true": 1.7385741604439724
+          },
+          {
+            "dropped": "613M",
+            "E_true": 1.729846459815651
+          },
+          {
+            "dropped": "777M",
+            "E_true": 1.7006687930239321
+          }
+        ],
+        "E_true_min": 1.7006687930239321,
+        "E_true_max": 1.7959286923105104,
+        "E_true_std": 0.02072737211620595,
+        "E_true_spread": 0.0952598992865783,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": false,
+        "E_true_below_min_E_app": false,
+        "E_true_below_min_final_loss": false,
+        "gate_pass": false
+      },
+      "overall_pass": false
+    },
+    "slimpajama-chunk1": {
+      "corpus": "Kempner OLMo / slimpajama-chunk1 (iso-flop)",
+      "protocol": "iso_flop=4.57e+18; E_app=final train CE",
+      "n_sizes": 14,
+      "ladder_sizes": [
+        "72M",
+        "90M",
+        "110M",
+        "134M",
+        "161M",
+        "192M",
+        "227M",
+        "266M",
+        "311M",
+        "360M",
+        "415M",
+        "475M",
+        "541M",
+        "613M"
+      ],
+      "triangulation_fixed_alpha": 2.811851074542476,
+      "uncertainty_loo_std": 0.018643828635076597,
+      "triangulation_report": "2.81 \u00b1 0.02 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "72M",
+          "n_params": 72717120,
+          "E_app": 2.94929313659668,
+          "final_loss": 2.94929313659668,
+          "tokens_trained": 10481370639.342464
+        },
+        {
+          "size": "90M",
+          "n_params": 90138240,
+          "E_app": 2.938165187835694,
+          "final_loss": 2.938165187835694,
+          "tokens_trained": 8455624233.904974
+        },
+        {
+          "size": "110M",
+          "n_params": 110508992,
+          "E_app": 2.888341188430786,
+          "final_loss": 2.888341188430786,
+          "tokens_trained": 6896950852.158191
+        },
+        {
+          "size": "134M",
+          "n_params": 134124288,
+          "E_app": 2.849191188812256,
+          "final_loss": 2.849191188812256,
+          "tokens_trained": 5682603038.649813
+        },
+        {
+          "size": "161M",
+          "n_params": 161279040,
+          "E_app": 2.8439254760742188,
+          "final_loss": 2.8439254760742188,
+          "tokens_trained": 4725816116.871372
+        },
+        {
+          "size": "192M",
+          "n_params": 192268160,
+          "E_app": 2.798729658126831,
+          "final_loss": 2.798729658126831,
+          "tokens_trained": 3964125347.356227
+        },
+        {
+          "size": "227M",
+          "n_params": 227386560,
+          "E_app": 2.860336303710937,
+          "final_loss": 2.860336303710937,
+          "tokens_trained": 3351891538.9966
+        },
+        {
+          "size": "266M",
+          "n_params": 266929152,
+          "E_app": 2.814448595046997,
+          "final_loss": 2.814448595046997,
+          "tokens_trained": 2855346000.3707
+        },
+        {
+          "size": "311M",
+          "n_params": 311190848,
+          "E_app": 2.828320026397705,
+          "final_loss": 2.828320026397705,
+          "tokens_trained": 2449220764.183729
+        },
+        {
+          "size": "360M",
+          "n_params": 360466560,
+          "E_app": 2.880701303482056,
+          "final_loss": 2.880701303482056,
+          "tokens_trained": 2114412739.2719665
+        },
+        {
+          "size": "415M",
+          "n_params": 415051200,
+          "E_app": 2.882547378540039,
+          "final_loss": 2.882547378540039,
+          "tokens_trained": 1836339917.9319143
+        },
+        {
+          "size": "475M",
+          "n_params": 475239680,
+          "E_app": 2.870227336883545,
+          "final_loss": 2.870227336883545,
+          "tokens_trained": 1603769884.167801
+        },
+        {
+          "size": "541M",
+          "n_params": 541326912,
+          "E_app": 2.87163519859314,
+          "final_loss": 2.87163519859314,
+          "tokens_trained": 1407975605.2208664
+        },
+        {
+          "size": "613M",
+          "n_params": 613607808,
+          "E_app": 2.921516895294189,
+          "final_loss": 2.921516895294189,
+          "tokens_trained": 1242120906.2345283
+        }
+      ],
+      "holdout": {
+        "holdout": "613M",
+        "train_sizes": [
+          "72M",
+          "90M",
+          "110M",
+          "134M",
+          "161M",
+          "192M",
+          "227M",
+          "266M",
+          "311M",
+          "360M",
+          "415M",
+          "475M",
+          "541M"
+        ],
+        "n_train": 13,
+        "E_true": 2.771192228369586,
+        "A_amp": 64.08369176787048,
+        "E_app_pred": 2.8370890737638095,
+        "E_app_actual": 2.921516895294189,
+        "delta": 0.08442782153037953,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "110M",
+            "E_true": 2.8124929700989187
+          },
+          {
+            "dropped": "134M",
+            "E_true": 2.8056582997093695
+          },
+          {
+            "dropped": "161M",
+            "E_true": 2.8092436142228334
+          },
+          {
+            "dropped": "192M",
+            "E_true": 2.8131985912907758
+          },
+          {
+            "dropped": "227M",
+            "E_true": 2.812867290014743
+          },
+          {
+            "dropped": "266M",
+            "E_true": 2.8213987531232556
+          },
+          {
+            "dropped": "311M",
+            "E_true": 2.8210236103947355
+          },
+          {
+            "dropped": "360M",
+            "E_true": 2.8056707908928855
+          },
+          {
+            "dropped": "415M",
+            "E_true": 2.802713486340099
+          },
+          {
+            "dropped": "475M",
+            "E_true": 2.8058508872374857
+          },
+          {
+            "dropped": "541M",
+            "E_true": 2.8031872247589793
+          },
+          {
+            "dropped": "613M",
+            "E_true": 2.771192228369586
+          },
+          {
+            "dropped": "72M",
+            "E_true": 2.854509713234958
+          },
+          {
+            "dropped": "90M",
+            "E_true": 2.836255617801464
+          }
+        ],
+        "E_true_min": 2.771192228369586,
+        "E_true_max": 2.854509713234958,
+        "E_true_std": 0.018643828635076597,
+        "E_true_spread": 0.08331748486537194,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": false,
+        "E_true_below_min_E_app": false,
+        "E_true_below_min_final_loss": false,
+        "gate_pass": false
+      },
+      "overall_pass": false
+    },
+    "smollm-corpus": {
+      "corpus": "Kempner OLMo / smollm-corpus (iso-flop)",
+      "protocol": "iso_flop=2.09e+18; E_app=final train CE",
+      "n_sizes": 13,
+      "ladder_sizes": [
+        "45M",
+        "57M",
+        "72M",
+        "90M",
+        "110M",
+        "134M",
+        "161M",
+        "192M",
+        "227M",
+        "266M",
+        "311M",
+        "360M",
+        "415M"
+      ],
+      "triangulation_fixed_alpha": 2.6610980346864377,
+      "uncertainty_loo_std": 0.02584238665252671,
+      "triangulation_report": "2.66 \u00b1 0.03 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "45M",
+          "n_params": 45544128,
+          "E_app": 2.881822347640991,
+          "final_loss": 2.881822347640991,
+          "tokens_trained": 7652940847.400204
+        },
+        {
+          "size": "57M",
+          "n_params": 57950720,
+          "E_app": 2.846133232116699,
+          "final_loss": 2.846133232116699,
+          "tokens_trained": 6014532995.110731
+        },
+        {
+          "size": "72M",
+          "n_params": 72717120,
+          "E_app": 2.767275333404541,
+          "final_loss": 2.767275333404541,
+          "tokens_trained": 4793183744.494052
+        },
+        {
+          "size": "90M",
+          "n_params": 90138240,
+          "E_app": 2.7540409564971924,
+          "final_loss": 2.7540409564971924,
+          "tokens_trained": 3866799679.363868
+        },
+        {
+          "size": "110M",
+          "n_params": 110508992,
+          "E_app": 2.7444090843200684,
+          "final_loss": 2.7444090843200684,
+          "tokens_trained": 3154010467.5864143
+        },
+        {
+          "size": "134M",
+          "n_params": 134124288,
+          "E_app": 2.7278623580932617,
+          "final_loss": 2.7278623580932617,
+          "tokens_trained": 2598683077.6721315
+        },
+        {
+          "size": "161M",
+          "n_params": 161279040,
+          "E_app": 2.681055784225464,
+          "final_loss": 2.681055784225464,
+          "tokens_trained": 2161139584.7248554
+        },
+        {
+          "size": "192M",
+          "n_params": 192268160,
+          "E_app": 2.712721347808838,
+          "final_loss": 2.712721347808838,
+          "tokens_trained": 1812814547.8191671
+        },
+        {
+          "size": "227M",
+          "n_params": 227386560,
+          "E_app": 2.7249069213867188,
+          "final_loss": 2.7249069213867188,
+          "tokens_trained": 1532836934.2956038
+        },
+        {
+          "size": "266M",
+          "n_params": 266929152,
+          "E_app": 2.7380757331848145,
+          "final_loss": 2.7380757331848145,
+          "tokens_trained": 1305764150.9700048
+        },
+        {
+          "size": "311M",
+          "n_params": 311190848,
+          "E_app": 2.7736058235168457,
+          "final_loss": 2.7736058235168457,
+          "tokens_trained": 1120041028.7465246
+        },
+        {
+          "size": "360M",
+          "n_params": 360466560,
+          "E_app": 2.7868056297302246,
+          "final_loss": 2.7868056297302246,
+          "tokens_trained": 966931627.5285656
+        },
+        {
+          "size": "415M",
+          "n_params": 415051200,
+          "E_app": 2.81349778175354,
+          "final_loss": 2.81349778175354,
+          "tokens_trained": 839767521.5260752
+        }
+      ],
+      "holdout": {
+        "holdout": "415M",
+        "train_sizes": [
+          "45M",
+          "57M",
+          "72M",
+          "90M",
+          "110M",
+          "134M",
+          "161M",
+          "192M",
+          "227M",
+          "266M",
+          "311M",
+          "360M"
+        ],
+        "n_train": 12,
+        "E_true": 2.6108151506567916,
+        "A_amp": 86.44558392772127,
+        "E_app_pred": 2.7123437145373397,
+        "E_app_actual": 2.81349778175354,
+        "delta": 0.10115406721620035,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "110M",
+            "E_true": 2.6599069430930085
+          },
+          {
+            "dropped": "134M",
+            "E_true": 2.6635357244881703
+          },
+          {
+            "dropped": "161M",
+            "E_true": 2.6733056094904257
+          },
+          {
+            "dropped": "192M",
+            "E_true": 2.6711229075411835
+          },
+          {
+            "dropped": "227M",
+            "E_true": 2.668976434893952
+          },
+          {
+            "dropped": "266M",
+            "E_true": 2.6638234917178005
+          },
+          {
+            "dropped": "311M",
+            "E_true": 2.645515448618664
+          },
+          {
+            "dropped": "360M",
+            "E_true": 2.633604883327616
+          },
+          {
+            "dropped": "415M",
+            "E_true": 2.6108151506567916
+          },
+          {
+            "dropped": "45M",
+            "E_true": 2.7207293650424846
+          },
+          {
+            "dropped": "57M",
+            "E_true": 2.68426266835526
+          },
+          {
+            "dropped": "72M",
+            "E_true": 2.6535189551487766
+          },
+          {
+            "dropped": "90M",
+            "E_true": 2.6565620602398186
+          }
+        ],
+        "E_true_min": 2.6108151506567916,
+        "E_true_max": 2.7207293650424846,
+        "E_true_std": 0.02584238665252671,
+        "E_true_spread": 0.10991421438569304,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": false,
+        "E_true_below_min_E_app": true,
+        "E_true_below_min_final_loss": true,
+        "gate_pass": true
+      },
+      "overall_pass": true
+    },
+    "starcoder": {
+      "corpus": "Kempner OLMo / starcoder (iso-flop)",
+      "protocol": "iso_flop=1.00e+19; E_app=final train CE",
+      "n_sizes": 13,
+      "ladder_sizes": [
+        "110M",
+        "134M",
+        "161M",
+        "192M",
+        "227M",
+        "266M",
+        "311M",
+        "360M",
+        "415M",
+        "475M",
+        "541M",
+        "613M",
+        "777M"
+      ],
+      "triangulation_fixed_alpha": 1.2607053788573928,
+      "uncertainty_loo_std": 0.014010739508238395,
+      "triangulation_report": "1.26 \u00b1 0.01 nats (LOO std)",
+      "per_model": [
+        {
+          "size": "110M",
+          "n_params": 110508992,
+          "E_app": 1.325193166732788,
+          "final_loss": 1.325193166732788,
+          "tokens_trained": 15081728975.2011
+        },
+        {
+          "size": "134M",
+          "n_params": 134124288,
+          "E_app": 1.3158832788467407,
+          "final_loss": 1.3158832788467407,
+          "tokens_trained": 12426285287.469088
+        },
+        {
+          "size": "161M",
+          "n_params": 161279040,
+          "E_app": 1.2739572525024414,
+          "final_loss": 1.2739572525024414,
+          "tokens_trained": 10334056221.23412
+        },
+        {
+          "size": "192M",
+          "n_params": 192268160,
+          "E_app": 1.2821069955825806,
+          "final_loss": 1.2821069955825806,
+          "tokens_trained": 8668448622.313059
+        },
+        {
+          "size": "227M",
+          "n_params": 227386560,
+          "E_app": 1.245450735092163,
+          "final_loss": 1.245450735092163,
+          "tokens_trained": 7329662169.420508
+        },
+        {
+          "size": "266M",
+          "n_params": 266929152,
+          "E_app": 1.2755378484725952,
+          "final_loss": 1.2755378484725952,
+          "tokens_trained": 6243854049.581916
+        },
+        {
+          "size": "311M",
+          "n_params": 311190848,
+          "E_app": 1.259468913078308,
+          "final_loss": 1.259468913078308,
+          "tokens_trained": 5355770188.545733
+        },
+        {
+          "size": "360M",
+          "n_params": 360466560,
+          "E_app": 1.2525262832641602,
+          "final_loss": 1.2525262832641602,
+          "tokens_trained": 4623637395.564978
+        },
+        {
+          "size": "415M",
+          "n_params": 415051200,
+          "E_app": 1.2859903573989868,
+          "final_loss": 1.2859903573989868,
+          "tokens_trained": 4015568842.269741
+        },
+        {
+          "size": "475M",
+          "n_params": 475239680,
+          "E_app": 1.294859766960144,
+          "final_loss": 1.294859766960144,
+          "tokens_trained": 3507002333.3629603
+        },
+        {
+          "size": "541M",
+          "n_params": 541326912,
+          "E_app": 1.299027681350708,
+          "final_loss": 1.299027681350708,
+          "tokens_trained": 3078854255.571662
+        },
+        {
+          "size": "613M",
+          "n_params": 613607808,
+          "E_app": 1.2723841667175293,
+          "final_loss": 1.2723841667175293,
+          "tokens_trained": 2716175780.257781
+        },
+        {
+          "size": "777M",
+          "n_params": 777930240,
+          "E_app": 1.3113789558410645,
+          "final_loss": 1.3113789558410645,
+          "tokens_trained": 2142437176.200615
+        }
+      ],
+      "holdout": {
+        "holdout": "777M",
+        "train_sizes": [
+          "110M",
+          "134M",
+          "161M",
+          "192M",
+          "227M",
+          "266M",
+          "311M",
+          "360M",
+          "415M",
+          "475M",
+          "541M",
+          "613M"
+        ],
+        "n_train": 12,
+        "E_true": 1.232292553071612,
+        "A_amp": 36.17956026427899,
+        "E_app_pred": 1.2666122513987228,
+        "E_app_actual": 1.3113789558410645,
+        "delta": 0.044766704442341654,
+        "gate_pass": true
+      },
+      "leave_one_out": {
+        "runs": [
+          {
+            "dropped": "110M",
+            "E_true": 1.2926672581029541
+          },
+          {
+            "dropped": "134M",
+            "E_true": 1.2763298137170398
+          },
+          {
+            "dropped": "161M",
+            "E_true": 1.2548048082863692
+          },
+          {
+            "dropped": "192M",
+            "E_true": 1.25954871104036
+          },
+          {
+            "dropped": "227M",
+            "E_true": 1.2575421794901285
+          },
+          {
+            "dropped": "266M",
+            "E_true": 1.261082664844916
+          },
+          {
+            "dropped": "311M",
+            "E_true": 1.2642836491170766
+          },
+          {
+            "dropped": "360M",
+            "E_true": 1.2681615788320555
+          },
+          {
+            "dropped": "415M",
+            "E_true": 1.2590666005593267
+          },
+          {
+            "dropped": "475M",
+            "E_true": 1.2542787766013772
+          },
+          {
+            "dropped": "541M",
+            "E_true": 1.250197649574096
+          },
+          {
+            "dropped": "613M",
+            "E_true": 1.2647216448522391
+          },
+          {
+            "dropped": "777M",
+            "E_true": 1.232292553071612
+          }
+        ],
+        "E_true_min": 1.232292553071612,
+        "E_true_max": 1.2926672581029541,
+        "E_true_std": 0.014010739508238395,
+        "E_true_spread": 0.060374705031342124,
+        "gate_pass": true
+      },
+      "sanity": {
+        "E_app_monotonic": false,
+        "E_true_below_min_E_app": false,
+        "E_true_below_min_final_loss": false,
+        "gate_pass": false
+      },
+      "overall_pass": false
+    }
+  }
+}

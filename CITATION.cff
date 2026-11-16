@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: Small Language Model Architecture Lab
+message: >-
+  If you use this software, data, or results, please cite it using the
+  metadata below.
+type: software
+authors:
+  - family-names: Shrivas
+    given-names: Laksh
+repository-code: 'https://github.com/LNSHRIVAS/small-llm-lab'
+url: 'https://github.com/LNSHRIVAS/small-llm-lab'
+license: CC-BY-4.0
+keywords:
+  - scaling laws
+  - chinchilla
+  - language models
+  - corpus floor
+  - triangulation
+abstract: >-
+  Pre-registered small-LM experiments plus a zero-GPU instrument to estimate
+  corpus-specific irreducible training CE from public scaling ladders, with
+  holdout/LOO validation on 13/21 corpora.

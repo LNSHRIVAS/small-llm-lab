@@ -1,0 +1,26 @@
+{
+  "act": "II — Optimizer geometry (Muon / SparseMuon)",
+  "dataset": "WikiText-103",
+  "stack": "v28–v31",
+  "included_in_repo": "v31 only (V28–V30 notebooks remain private)",
+  "v31": {
+    "id": "v31",
+    "optimizer": "Muon + per-row SparseMuon on A_in/A_out",
+    "head": "vMF, single head",
+    "k_in": 48,
+    "k_out": 48,
+    "d_model": 224,
+    "n_layers": 8,
+    "params": 9958162,
+    "epoch2": { "test_ppl": 48.93, "val_ppl": 53.60 },
+    "prediction": { "test_ppl_ep2": "48.3 ± 2" },
+    "verdict": "CONFIRMED in band for this run; best pre-v32 stack",
+    "notes": [
+      "Notebook header comment still references the older 'v17 k_in=k_out=80' label; the executed run is v31_kin48_kout48_d224 (verify in archive/colab_runs/05_v31_sparse_muon.ipynb).",
+      "v30 basin-hopping (SGDR) falsified in private runs",
+      "v29 tangential SparseMuon variant did not beat v31"
+    ]
+  },
+  "source_notebook": "archive/colab_runs/05_v31_sparse_muon.ipynb",
+  "reproduce": "python scripts/v31_sparse_muon_train.py"
+}
